@@ -16,7 +16,7 @@
 \makeatletter
 \renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
 \renewcommand{\thispagestyle}[1]{}
-\markright{\textbf{\textsc{AIF401/AIF402 \textemdash Rencana Kerja Skripsi \textemdash Sem. Genap 2016/2017}}}
+\markright{\textbf{\textsc{AIF184001-03/AIF184002-05 \textemdash Rencana Kerja Skripsi \textemdash Sem. Ganjil 2020/2021 	}}}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
 \renewcommand{\baselinestretch}{1}
@@ -24,18 +24,18 @@
 \setlength{\parskip}{6 pt}
 
 \onehalfspacing
- 
+ \graphicspath{{Images/}}
 \begin{document}
 
 \title{\@judultopik}
 \author{\nama \textendash \@npm} 
 
 %tulis nama dan NPM anda di sini:
-\newcommand{\nama}{Lionov}
-\newcommand{\@npm}{1997730020}
-\newcommand{\@judultopik}{Simulasi Kerumunan di Museum} % Judul/topik anda
+\newcommand{\nama}{Gabriel Panji Lazuardi}
+\newcommand{\@npm}{2016730068}
+\newcommand{\@judultopik}{Aplikasi mobile IDE UNPAR berbasis Moodle App} % Judul/topik anda
 \newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
-\newcommand{\tanggal}{01/01/1900}
+\newcommand{\tanggal}{24/09/2020}
 
 % Dokumen hasil template ini harus dicetak bolak-balik !!!!
 
@@ -44,74 +44,87 @@
 \pagenumbering{arabic}
 
 \section{Deskripsi}
-Tuliskan deskripsi dari topik skripsi yang akan anda ajukan. Di sini dapat dituliskan latar belakang, seperti apa penelitian yang sudah ada sebelumnya dan apa yang akan anda kerjakan. Sertakan gambar agar penjelasan anda menjadi lebih baik.
+IDE UNPAR adalah \textit{learning management system} yang digunakan oleh UNPAR untuk membantu proses pembelajaran interaktif. IDE UNPAR bekerja dengan menyediakan mata kuliah yang diambil oleh mahasiswa secara virtual lengkap dengan peserta lain dari mata kuliah tersebut yang dapat mengaksesnya. IDE UNPAR juga membantu dosen merencanakan dan memantau proses pembelajaran. Mahasiswa juga dipermudah untuk melihat dan mengetahui proses dan tujuan pembelajaran dari suatu mata kuliah.
 
-Pada skripsi ini, akan dibuat sebuah perangkat lunak yang dapat menampilkan visualisasi dan simulasi kerumunan orang yang berkunjung ke sebuah museum. Dengan menggunakan perangkat lunak tersebut, pengelola museum dapat mengatur tempat peletakan objek sehingga tidak terjadi kerumunan yang terlalu padat.
+IDE UNPAR dibuat dengan menggunakan \textit{Blackboard Open Learning Management System} yang merupakan program berbasis Moodle. Moodle adalah \textit{learning management system} bersifat \textit{Open-source} yang dilisensikan dibawah lisensi \textit{GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007}. Lisensi tersebut memperbolehkan adannya modifikasi terhadap program yang dilisensikan. Moodle juga menyediakan \textit{source code} untuk \textit{learning management system} berbasis mobile. Moodle mobile memungkinkan penggunanya mengakses \textit{learning management system} berbasis Moodle web melalui perangkat mobile mereka. Pengguna Moodle mobile dapat mengakses \textit{learning management system} yang mereka gunakan dengan memasukkan \textit{URL} \textit{learning management system} dan memasukkan kredensial login mereka apabila diperlukan. Moodle mobile akan menampilkan data dan memberi akses yang serupa dengan apa yang ada pada \textit{learning management system} Moodle web. Moodle mobile dilisensikan dibawah lisensi   \textit{APACHE LICENSE, VERSION 2.0}. Lisensi tersebut juga memperbolehkan dilakukannya modidfikasi terhadap \textit{source} dari aplikasi.
 
-Dari berbagai macam teknik yang dapat digunakan untuk melakukan simulasi kerumunan, dipilih dua buah teknik yaitu teknik {\it flow tiles} dan {\it social force model (steering behaviour)}.
+Pada skripsi ini, akan dibuat aplikasi mobile IDE UNPAR. Aplikasi tersebut akan memungkinkan mahasiswa dan dosen untuk mengakses IDE UNPAR tanpa mengunakan browser dari perangkat mobile. Aplikasi ini akan dibuat dengan memanfaatkan Moodle mobile. 
 
-Dst, dst, dst, \ldots\ldots\ldots 
+%Tuliskan deskripsi dari topik skripsi yang akan anda ajukan. Di sini dapat dituliskan latar belakang, seperti apa penelitian yang sudah ada sebelumnya dan apa yang akan anda kerjakan. Sertakan gambar agar penjelasan anda menjadi lebih baik.
 
-Perangkat lunak akan dibuat dengan bantuan {\it framework} OpenSteer. Sebagai studi kasus, museum yang digunakan untuk melakukan simulasi adalah Museum Geologi Bandung.
+%Pada skripsi ini, akan dibuat sebuah perangkat lunak yang dapat menampilkan visualisasi dan simulasi kerumunan orang yang berkunjung ke sebuah museum. Dengan menggunakan perangkat lunak tersebut, pengelola museum dapat mengatur tempat peletakan objek sehingga tidak terjadi kerumunan yang terlalu padat.
 
-Dst, dst, dst, \ldots\ldots\ldots 
+%Dari berbagai macam teknik yang dapat digunakan untuk melakukan simulasi kerumunan, dipilih dua buah teknik yaitu teknik {\it flow tiles} dan {\it social force model (steering behaviour)}.
+
+%Dst, dst, dst, \ldots\ldots\ldots 
+
+%Perangkat lunak akan dibuat dengan bantuan {\it framework} OpenSteer. Sebagai studi kasus, museum yang digunakan untuk melakukan simulasi adalah Museum Geologi Bandung.
+
+%Dst, dst, dst, \ldots\ldots\ldots 
 
 \section{Rumusan Masalah}
-Tuliskan rumusan dari masalah yang akan anda bahas pada skripsi ini. Rumusan masalah biasanya berupa kalimat pertanyaan. Gunakan itemize seperti contoh di bagian Deskripsi Perangkat Lunak.
+\begin{itemize}
+	\item Bagaimana Moodle mobile IDE UNPAR dapat mengakses Moodle web IDE UNPAR?
+	\item Bagaimana agar user tidak perlu memasukkan \textit{URL} IDE UNPAR ketika membuka aplikasi?
+	\item Bagaimana mengubah branding menjadi UNPAR dan bukan Moodle?
+\end{itemize}
+%Tuliskan rumusan dari masalah yang akan anda bahas pada skripsi ini. Rumusan masalah biasanya berupa kalimat pertanyaan. Gunakan itemize seperti contoh di bagian Deskripsi Perangkat Lunak.
 
 \section{Tujuan}
-Tuliskan tujuan dari topik skripsi yang anda ajukan. Tujuan penelitian biasanya berkaitan erat dengan pertanyaan yang diajukan di bagian rumusan masalah. Gunakan itemize seperti contoh di bagian Deskripsi Perangkat Lunak.
+\begin{itemize}
+	\item Menghubungkan Moodle mobile IDE UNPAR dengan Moodle web IDE UNPAR agar data yang ditampilkan sama.
+	\item Melakukan \textit{hardcode} URL "https://ide.unpar.ac.id" agar saat aplikasi dibuka pengguna tidak perlu memasukkan alamat IDE UNPAR.
+	\item Menganalisis lisensi dari Moodle dan apabila diperbolehkan merubah branding menjadi UNPAR
+\end{itemize}
+%Tuliskan tujuan dari topik skripsi yang anda ajukan. Tujuan penelitian biasanya berkaitan erat dengan pertanyaan yang diajukan di bagian rumusan masalah. Gunakan itemize seperti contoh di bagian Deskripsi Perangkat Lunak.
 
 \section{Deskripsi Perangkat Lunak}
-Tuliskan deksripsi dari perangkat lunak yang akan anda hasilkan. Apa saja fitur yang disediakan oleh PL tersebut dan apa saja kemampuan dari PL tersebut. Perhatikan contoh di bawah ini:
+%Tuliskan deksripsi dari perangkat lunak yang akan anda hasilkan. Apa saja fitur yang disediakan oleh PL tersebut dan apa saja kemampuan dari PL tersebut. Perhatikan contoh di bawah ini:
 
 Perangkat lunak akhir yang akan dibuat memiliki fitur minimal sebagai berikut:
 \begin{itemize}
-	\item Pengguna dapat melihat denah Musem Geologi Bandung dalam bidang dua dimensi. Sedangkan pengunjung direpresentasikan menggunakan lingkaran-lingkaran kecil (tidak menggunakan gambar manusia yang diambil dari atas)
-	\item Pengguna dapat memunculkan atau menghilangkan gambar {\it flow tiles} pada denah museum. 
-	\item Pengguna dapat mengatur jalannya simulasi: memulai(start) simulasi, menunda(pause) simulasi, melanjutkan(continue) simulasi, maupun menghentikan(stop) simulasi
-	\item Pengguna dapat mengatur banyaknya pengunjung di dalam museum, baik melalui perubahan frekuensi kedatangan pengunjung maupun menambahkan dan menghapus pengunjung satu-persatu secara manual.
-	\item Posisi kamera dapat diubah (pergerakan di bidang tiga dimensi) sehingga pengguna dapat melihat simulasi di museum dari berbagai arah. 
-	\item Posisi kamera dapat diubah untuk emngikuti perjalanan seorang pengunjung di dalam 
-	\item Pengguna dapat memilih apakah akan menggunakan teknik {\it flow tiles} atau tidak pada saat simulasi berlangsung
-	\item Jenis {\it flow tiles} yang digunakan dapat diubah-ubah pada saat simulasi sedang berlangsung
-		
+	\item Mahasiswa dapat melihat mata kuliah yang diambil.
+	\item Mahasiswa dapat mengakses bahan kuliah yang dicatumkan oleh dosen.
+	\item Mahasiswa dapat melihat nilai dari mata kuliah yang diambil. 
+	\item Mahasiswa dapat melihat tugas dan mengumpulkan tugas yang diberikan oleh dosen.
+	\item Mahasiswa dan dosen dapat melihat siapa saja yang ikut serta dalam mata kuliah.
+	\item Dosen dapat melihat mata kuliah di mana dosen tersebut sebagai pengajar.
+	\item Dosen dapat melihat nilai-nilai mahasiswa dari mata kuliah di mana dosen tersebut sebagai pengajar.
+	
 \end{itemize}
 
 \section{Detail Pengerjaan Skripsi}
-Tuliskan bagian-bagian pengerjaan skripsi secara detail. Bagian pekerjaan tersebut mencakup awal hingga akhir skripsi, termasuk di dalamnya pengerjaan dokumentasi skripsi, pengujian, survei, dll.
+%Tuliskan bagian-bagian pengerjaan skripsi secara detail. Bagian pekerjaan tersebut mencakup awal hingga akhir skripsi, termasuk di dalamnya pengerjaan dokumentasi skripsi, pengujian, survei, dll.
 
 Bagian-bagian pekerjaan skripsi ini adalah sebagai berikut :
 	\begin{enumerate}
-		\item Melakukan survei ke Museum Geologi Bandung untuk mendapatkan denah serta mengetahui perilaku pengunjung museum secara umum (arah perjalanan, kecepatan, lama melihat objek, dll)
-		\item Melakukan analisis pada hasil survei terhadap pergerakan pengunjung di museum dan membuat rancangan denah di komputer yang dilengkapi dengan penghalang dan objek di museum.
-		\item Melakukan studi literatur mengenai sifat kolektif suatu kerumunan, teknik {\it social force model} dan teknik {\it flow tiles}
-		\item Mempelajari bahasa pemrograman C++ dan cara menggunakan framework OpenSteer
-		\item Merancang pergerakan kerumunan di dalam museum menggunakan teknik {\it social force model} dan {\it flow tiles} serta menggunakan teknik lainnya seperti konsep pathway dan waypoints. Selain itu, dirancang pula adanya waktu tunggu (pada saat pengunjung melihat objek di museum) dan cara pembuatan jalur bagi setiap individu pengunjung
-		\item Melakukan analisa dan merancang struktur data yang cocok untuk menyimpan penghalang (obstacle)
-		\item Mengimplementasikan keseluruhan algoritma dan struktur data yang dirancang, dengan menggunakan framework OpenSteer 
-		\item Melakukan pengujian (dan eksperimen) yang melibatkan responde untuk menilai hasil simulasi secara kualitatif
-		\item Menulis dokumen skripsi
+		\item Mempelajari Moodle mobile.
+		\item Menganalisis lisensi dari Moodle mobile.
+		\item Menyiapkan lingkungan pengembangan aplikasi.
+		\item Bersama pembimbing membuat replika dari IDE UNPAR untuk dihubungkan ke aplikasi Moodle Mobile. \footnote{Selama masa semester padat 2020/2021, peneliti bersama pembimbing berusaha menghubungkan Moodle Mobile ke IDE UNPAR, namun ada konfigurasi yang sepertinya harus diatur pada server IDE, karena kesibukan, sampai semester padat berakhir belum disesuaikan oleh pihak BTI / LPPK.}
+		\item Mengubah branding dari Moodle menjadi UNPAR.
+		\item Menulis dokumen skripsi.
 	\end{enumerate}
 
 \section{Rencana Kerja}
 Rincian capaian yang direncanakan di Skripsi 1 adalah sebagai berikut:
 \begin{enumerate}
-\item
-\item
-\item
+\item Mempelajari Moodle mobile. 
+\item Menganalisis lisensi dari Moodle mobile.
+\item Menyiapkan lingkungan pengembangan aplikasi.
+\item Menulis sebagian dokumen skripsi yaitu bab 1, 2 dan 3.
 \end{enumerate}
 
 Sedangkan yang akan diselesaikan di Skripsi 2 adalah sebagai berikut:
 \begin{enumerate}
-\item
-\item
-\item
+\item Bersama pembimbing membuat replika dari IDE UNPAR untuk dihubungkan ke aplikasi Moodle Mobile.
+\item Melakukan branding UNPAR.
+\item Menulis dokumen skripsi yaitu bab 4, 5 dan 6
 \end{enumerate}
 
 \vspace{1cm}
 \centering Bandung, \tanggal\\
-\vspace{2cm} \nama \\ 
+\vspace{2cm} \includegraphics{Signature} \\ \nama \\ 
 \vspace{1cm}
 
 Menyetujui, \\
