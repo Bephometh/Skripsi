@@ -1,44 +1,62 @@
 %versi 2 (8-10-2016) 
-\chapter{Pendahuluan}
+%\chapter{Pendahuluan}
 \label{chap:intro}
    
 \section{Latar Belakang}
 \label{sec:label}
 
-Bagian ini akan diisi dengan apa yang melatarbelakangi pembuatan template skripsi ini.
-Termasuk juga masalah-masalah yang akan dihadapi untuk membuatnya, termasuk kurangnya kemampuan penguasaan \LaTeX{} sehingga template ini dibuat dengan mengandalkan berbagai contoh yang tersebar di dunia maya, yang digabung-gabung menjadi satu jua.
-Bagian lain juga akan dilengkapi, untuk sementara diisi dengan lorem ipsum versi bahasa inggris.
+IDE UNPAR adalah \textit{learning management system} berbasis web yang digunakan oleh UNPAR untuk membantu proses pembelajaran interaktif. IDE UNPAR bekerja dengan menyediakan mata kuliah yang diambil oleh mahasiswa secara virtual lengkap dengan peserta lain dari mata kuliah tersebut yang dapat mengaksesnya. IDE UNPAR juga membantu dosen merencanakan dan memantau proses pembelajaran. Mahasiswa juga dipermudah untuk melihat dan mengetahui proses dan tujuan pembelajaran dari suatu mata kuliah. %Mahasiswa dan dosen akan selalu bisa menggunakan fitur-fitur yang disediakan oleh IDE UNPAR selama mereka dapat mengakses web IDE UNPAR, namun dalam kondisi mahasiswa atau dosen tidak dapat mengakses web IDE UNPAR maka fitur- fitur IDE UNPAR tidak dapat digunakan. Fitur-fitur dari IDE UNPAR akan dapat selalu digunakan oleh mahasiswa atau dosen apabila fitur tersedia secara offline atau tanpa harus mengakses web IDE UNPAR. 
 
-\dtext{5-10}
+IDE UNPAR dibuat dengan menggunakan \textit{Blackboard Open Learning Management System} yang merupakan program berbasis Moodle. Moodle adalah \textit{learning management system} bersifat \textit{Open-source} yang dibuat menggunakan bahasa pemrograman \textit{PHP} dan dengan menggunakan prinsip pedagogi \cite{moodle:phil} . Moodle dilisensikan dibawah lisensi \textit{GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007}. Lisensi tersebut memperbolehkan adannya modifikasi terhadap program yang dilisensikan.
+
+Mahasiswa dan dosen akan selalu bisa menggunakan fitur-fitur yang disediakan oleh IDE UNPAR selama mereka dapat mengakses web IDE UNPAR, namun dalam kondisi mahasiswa atau dosen tidak dapat mengakses web IDE UNPAR maka fitur- fitur IDE UNPAR tidak dapat digunakan. Fitur-fitur dari IDE UNPAR akan dapat selalu digunakan oleh mahasiswa atau dosen apabila fitur tersedia secara offline atau tanpa harus mengakses web IDE UNPAR. Salah satu cara untuk mencapai solusi tersebut adalah dengan menyediakan \textit{learning management system} berbasis  mobile. Selain untuk mencapai solusi tersebut, \textit{learning management system} berbasis mobile juga memiliki kegunaan dan keuntungan tersendiri\cite{mlms:stat}.
+
+Moodle menyediakan \textit{source code} untuk \textit{learning management system} berbasis mobile. Moodle mobile memungkinkan penggunanya mengakses \textit{learning management system} berbasis Moodle web melalui perangkat mobile mereka. Pengguna Moodle mobile dapat mengakses \textit{learning management system} yang mereka gunakan dengan memasukkan \textit{URL} \textit{learning management system} dan memasukkan kredensial login mereka apabila diperlukan. Moodle mobile akan menampilkan data dan memberi akses yang serupa dengan apa yang ada pada \textit{learning management system} Moodle web. Moodle mobile dibangung dengan menggunakan \textit{Ionic Framework}. \textit{Ionic Framework} adalah sebuah \textit{Software development kit} untuk membuat aplikasi mobile dan desktop dengnan menggunakan teknologi seperti HTML, CSS dan \textit{Javascript}\cite{Ionic:intro}. Moodle mobile dilisensikan dibawah lisensi   \textit{APACHE LICENSE, VERSION 2.0}. Lisensi tersebut juga memperbolehkan dilakukannya modidfikasi terhadap \textit{source} dari aplikasi.
+
+
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
-Bagian ini akan diisi dengan penajaman dari masalah-masalah yang sudah diidentifikasi di bagian sebelumnya. 
-
-\dtext{6}
+Rumusan masalah yang akan dibahas dalam penulisan skripsi ini adalah :
+\begin{itemize}
+	\item Bagaimana Moodle mobile IDE UNPAR dapat mengakses Moodle web IDE UNPAR?
+	\item Bagaimana agar user tidak perlu memasukkan \textit{URL} IDE UNPAR ketika membuka aplikasi?
+	\item Bagaimana mengubah branding menjadi UNPAR dan bukan Moodle?
+\end{itemize}
 
 \section{Tujuan}
 \label{sec:tujuan}
-Akan dipaparkan secara lebih terperinci dan tersturkur apa yang menjadi tujuan pembuatan template skripsi ini
-
-\dtext{7}
+Tujuan yang ingin dicapai dalam penulisan skripsi ini adalah :
+\begin{enumerate}
+	\item Menghubungkan Moodle mobile IDE UNPAR dengan Moodle web IDE UNPAR agar data yang ditampilkan sama.
+	\item Melakukan \textit{hardcode} URL "https://ide.unpar.ac.id" agar saat aplikasi dibuka pengguna tidak perlu memasukkan alamat IDE UNPAR.
+	\item Menganalisis lisensi dari Moodle dan apabila diperbolehkan merubah branding menjadi UNPAR
+\end{enumerate}
 
 \section{Batasan Masalah}
 \label{sec:batasan}
-Untuk mempermudah pembuatan template ini, tentu ada hal-hal yang harus dibatasi, misalnya saja bahwa template ini bukan berupa style \LaTeX{} pada umumnya (dengan alasannya karena belum mampu jika diminta membuat seperti itu)
-
-\dtext{8}
+Adanya masalah pada web IDE UNPAR yang menyebabkan aplikasi Moodle mobile tidak dapat mengaksesnya, maka diperlukan adanya batasan masalah yang jelas mengenai pembuatan aplikasi dan penulisan skripsi ini. Berikut merupakan batasan masalah untuk skripsi ini :
+\begin{enumerate}
+	\item Web yang akan diakses melalui aplikasi adalah web model IDE UNPAR menggunakan \textit{moodledemo}.
+	\item Data yang digunakan untuk web model IDE UNPAR dan aplikasi Moodle mobile adalah data tiruan yang dibuat semirip mungkin dengan data dari web IDE UNPAR.
+\end{enumerate}
 
 \section{Metodologi}
 \label{sec:metlit}
-Tentunya akan diisi dengan metodologi yang serius sehingga templatenya terkesan lebih serius.
-
-\dtext{9}
+Metode penelitian yang digunakan dalam skripsi ini adalah :
+\begin{enumerate}
+		\item Mempelajari Moodle mobile.
+		\item Menganalisis lisensi dari Moodle mobile.
+		\item Menyiapkan lingkungan pengembangan aplikasi.
+		\item Bersama pembimbing membuat replika dari IDE UNPAR untuk dihubungkan ke aplikasi Moodle Mobile. \footnote{Selama masa semester padat 2020/2021, peneliti bersama pembimbing berusaha menghubungkan Moodle Mobile ke IDE UNPAR, namun ada konfigurasi yang sepertinya harus diatur pada server IDE, karena kesibukan, sampai semester padat berakhir belum disesuaikan oleh pihak BTI / LPPK.}
+		\item Mengubah branding dari Moodle menjadi UNPAR.
+		\item Menulis dokumen skripsi.
+\end{enumerate}
 
 \section{Sistematika Pembahasan}
 \label{sec:sispem}
-Rencananya Bab 2 akan berisi petunjuk penggunaan template dan dasar-dasar \LaTeX.
-Mungkin bab 3,4,5 dapt diisi oleh ketiga jurusan, misalnya peraturan dasar skripsi atau pedoman penulisan, tentu jika berkenan.
-Bab 6 akan diisi dengan kesimpulan, bahwa membuat template ini ternyata sungguh menghabiskan banyak waktu.
-
-\dtext{10}
+ Sistematika pembahasan pada skripsi ini adalah sebagai berikut :
+ \begin{enumerate}
+ 	\item Bab 1 akan membahas latar belakang, rumusan masalah, tujuan, batasan masalah, meteodologi dan sistematika pembasahan.
+ 	\item Bab 2 akan membahas 
+ \end{enumerate}
