@@ -2,156 +2,59 @@
 \chapter{Landasan Teori}
 \label{chap:teori}
 
+\section{IDE UNPAR}
+\label{sec:IDE UNPAR} 
+
+IDE UNPAR (\textit{Interactive Digital learning Enviroment}) dibangun dengan tujuan untuk menjawab tantangan dan peluang dari fenomena \textit{Massive Open Online Courses}\cite{IDE:dasar-dasar}. IDE UNPAR memiliki fitur-fitur untuk membantu pembelajaran berbasi \textit{e-learning} yang akan dibahas di dalam subbab-subbab berikut ini.
+
+\subsection{Mengelola Mata Kuliah}
+Mata kuliah adalah komponen yang penting ketika akan menjalankan pembelajaran secara daring. IDE UNPAR memiliki fitur untuk membantu pengajar menyusun mata kuliah yang akan diajar.  Fitur mengelola mata kuliah IDE UNPAR memungkinkan pengajar untuk menambahkan kerangka kuliah, silabus, dan lain-lain.
+
+Fitur mengelola mata kuliah juga memungkinkan dosen untuk menambahkan buku untuk sebagai sumber pembelajaran, menggungah file agar mahasiswa peserta mata kuliah tersebut dapat mengakses dokumen-dokumen yang digunakan dan dibagikan oleh dosen, menambahkan folder untuk menyusun file-file yang akan digunakan dalam proyek mahasiswa atau tempat berbagi file antara dosen pengajar dalam satu mata kuliah, penambahan tautan untuk menyediakan sumber untuk mahasiswa dalam bentuk halaman web, menambahkan label untuk memberi informasi tambahan pada suatu aktivitas di dalam mata kuliah, membuat \textit{page} untuk menyatukan informasi-informasi terkait suatu topic mata kuliah di dalam satu tempat.
+
+\subsection{Mengelola Kelas} 
+Fitur mnegelola kelas memungkinkan dosen untuk mengelompokkan mahasiswa peserta mata kuliah dengan tujuan memberikan tugas kepada masing- masing kelompok, atau ketika suatu mata kuliah diampu oleh dua dosen atau lebih sehingga ada pembagian mahasiswa yang akan diajar oleh kedua dosen tersebut.
+
+Fitur mengelola kelas juga meiliki fungsi laporan atau \textit{reports}. IDE UNPAR akan menyediakan laporan aktivitas apa saja yang dilakukan oleh mahasiswa dan dapat dilihat oleh dosen pengampu mata kuliah tersebut. Laporan yang disediakan oleh IDE UNPAR dapat membantu dosen untuk menentukan \textit{recourse} atau aktivitas mana saja yang lebih menarik untuk mahasiswa penempuh mata kuliah.
+
+\subsection{Forum dan Pesan}
+Fitur forum menyediakan tempat untuk mahasiswa dan dosen melakukan sesi diskusi yang dapat dilihat oleh semua yang mengikuti mata kuliah tersebut. Forum juga memungkinkan dosen untuk memberikan pengumuman terkait matakuliah yang diampu agar dapat dilihat oleh semua mahasiswa peserta mata kuliah. Fitur forum dari IDE UNPAR juga bersifat asinkronus sehingga peserta dalam forum tidak diharuskan \textit{online} diwaktu yang bersamaan.
+
+Fitur pesan atau \textit{messages} dari IDE UNPAR berbeda dengan fitru forum karena fitur pesan bersifat sinkronus, sehingga pihak yang terkait harus \textit{online} secara bersamaan. Fitur pesan hanya dapat dilihat oleh dua pihak yang sedang terkait. Fitur pesan dapat digunakan untuk bertukar informasi antara dosen dan mahasiswa, atau sesama mahasiswa.
+
+\subsection{Tugas dan Kuis}
+Tugas dan kuis juga menjadi salah satu komponen yang penting dari suatu mata kuliah. Fitur tugas memungkinkan mahasiswa untuk mengumpulkan submisi dari tugas yang telah diberikan oleh dosen pengampu mata kuliah. Dosen pengampu mata kuliah tersebut juga dapat menentukan batas pengumpulan tugas yang diberikan, menilai dan memberi komentar kepada submisi tugas mahasiswa dan mengunduh seluruh submsisi mahasiswa pada mata kuliah tersebut dengan mudah.
+
+Fitur kuis pada IDE UNPAR dapat merancang kuis dalam bentuk pilihan ganda, jawaban singkat, benar atau salah, dan lain-lain\cite{IDE:dasar-dasar}. Fitur kuis juga memungkinkan dosen untuk mengatur lamanya pengerjaan kuis, pembatasan akses kuis, pembatasan kelompok yang dapat menempu kuis, dan pembatasan jumlah pengerjaan kuis.  Dosen juga dapat memilih untuk memberikan \textit{feedback} atau menunjukkan jawaban yang benar kepada peserta kuis.
+\section{Moodle}
+\label{sec:Moodle}
+
+Moodle (\textit{Modular Object-Oriented Dynamic Learning Environment}\cite{moodle:name}) pertama di kembangkan oleh Martin Dougiamas dan direlease pada 20 Agustus 2002\cite{moodle:release}. Tujuan dari Moodle adalah untuk augmentasi dan memindahkan pembelajaran bersifat \textit{offline} menjadi {online}. Moodle dibangun dengan panduan pandangan \textit{social constructist pedagogy}\cite{moodle:phil}. Pandangan Moodle membantu mereka untuk membuat \textit{ Learning Management System} yang memiliki fokus pembelajaran dari sudut pandang pelajar. Tidak hanya digunakan dalam lingkungan pendidikan, Moodle juga digunakan di dalam lingkungan seperti pelatihan, pengembangan, dan bisnis.
+
+Struktur moodle disusun di sekitar \textit{course}. Struktur Moodle biasanya berupa sebuah halaman atau area di dalam platform moodle dimana pengajar dapat memberika aktivitas atau sumber pembeljaran kepada peserta dari \textit{course} mereka.\textit{Course} yang dimaksud adalah mata pelajara, mata kuliah, atau topik pelajaran apapun yang digunakan oleh yayasan yang menggunakan Moodle. 
+
+Moodle bersifat modular sehingga Moodle dibentuk sebagai sebuah aplikasi pusat, dimana bisa ditambahkan plugin untuk memasukkan sebuah fitur baru yang spesifik seperti plugin autentikasi dan plugin aktivitas di dalam \textit{course}. Setiap jenis plugin yang berbeda akan berkomunikasi dengan inti Moodle melalui API yang berbeda. Moodle tidak hanya menyediakan fitur-fitur spesifik yang berbeda, Moodle juga menyediakan pengubahan tema tampilan. Pengubahan tema pada Moodle bekerja tidak jauh dengan cara bekerja plugin. Tema di dalam Moodle juga berada pada level yang berbeda yaitu tema Moodle secara keseluruhan, tema spesifik dari \textit{course}, dan tema dari semua \textit{course} dari suatu kategori. \cite{moodle:architecture}
+
+
+Moodle telah mencapai dan mematuhi standar internasional sebagai berikut : \cite{moodle:standards}
+		\begin{enumerate}
+			\item \textbf{An Open Source Initiative} \\
+				Moodle disediakan sebagai perangkat lunak \textit{open source} yang dapat digunakan dan dimodifikasi secara gratis dibawah lisensi \textit{GNU General Public License}.
+			\item \textbf{IMS LTI\texttrademark} \\
+				Moodle telah memenuhi standar untuk integrasi aplikasi pembelajaran, sehingga pengguna dapar mengitegrasikan dan menyajikan aplikasi dan konten yang dihosting secara eksternal.
+			\item \textbf{SCORM-ADL} \\
+				Moodle memungkinkan penggunanya untuk mengirimkan konten SCORM (\textit{Shareable Content Object Reference Model}) dengan mengunggah paket SCORM atau AICC ke dalam \textit{course} Moodle.
+	
+			\item \textbf{Open Badges} \\
+				Open Badges milik Mozilla mendukung dan menstandarisasi pemblajaran secara daring dengan menggunakan \textit{badges}. Moodle telah mengitegrasikan fitur tersebut sehingga institusi, organisasi, atau individu dapat membuat dan membagikan \textit{badges} kepada pelajar di platform Moodle.
+		\end{enumerate}
+
+Lisensi Moodle, yaitu \textit{GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007} menyatakan secara eksplisit pada bagian pembukaan bahwa lisensi tersebut menjamin kebebasan untuk membagi dan mengubah semua versi dari aplikasi agar aplikasi tersebut bersifat gratis untuk seluruh penggunanya\cite{GNU:preamble}.
 \section{Moodle mobile}
-\label{sec:Moodle mobile} 
- 
-Moodle, singkatan dari modular objec oriented dynamic learning enviroment bersifat \textit{open source} yangg dibangung memnggunakan PHP. Moodle ditujukan 
+\label{sec:Moodle mobile}
+Moodle mobile dikembangkan menggunakan Ionic karena Ionic memungkinkan pengembangan aplikasi yang bersifat \textit{cross-platform}\cite{Ionic:intro}. Sifat \textit{cross-platform} dari Ionic membuat Moodle mobile dengan mudah diterapkan ke berbagai platform dengan mudah. Ionic juga memungkinkan Moodle mobile untuk bekerja seperti aplikasi \textit{native} karena Ionic menggunakan Cordova. Cordova adalah sebuah \textit{framework} pengembangan aplikasi mobile yang bersifat \textit{open source}. Cordova memungkinkan pengembangan aplikasi mobile dengan menggunakan teknologi standar web. Aplikasi yang dikembangkan dengan menggunakan Cordova akan bergantung kepada binding API yang sesuai standar untuk mengakses kemampuan setiap perangkat seperti sensor, data, status jaringan dan lain-lain\cite{cordova:overview}. Ionic juga dapat dikembangkan dengan integrasi bersama \textit{framework} lain seperti Angular atau React. Moodle mobile versi 3.5 dikembangkan menggunakan Ionic versi 3 \cite{Moodlemobile:mm}. Ionic versi 3 masih menggunakan Angular secara langsung, sehingga Moodle mobile dikembangkan dengan Ionic yang diintegrasikan dengan Angular \cite{Moodlemobile:ionicangular}.
 
-\dtext{11-12} 
+Secara keseluruhan Moodle mobile memiliki fitur yang sama dengan Moodle berbasis web.
 
-\section{Ionic}
-\label{sec:Ionic}
-
-Membahas Ionic 3 yang digunakan sebagai framework Moodle mobile
-
-\dtext{13-14}
-
-
-\section{APACHE LICENSE VERSION 2.0}
-\label{sec:license}
-
-Menjelaskan APACHE LICENSE VERSION 2.0 dan apa saja yang diperbolehkan oleh lisensi. 
-
-\dtext{15-16}
-
-\subsection{Tabel}  
-Berikut adalah contoh pembuatan tabel. 
-Penempatan tabel dan gambar secara umum diatur secara otomatis oleh \LaTeX{}, perhatikan contoh di file bab2.tex untuk melihat bagaimana cara memaksa tabel ditempatkan sesuai keinginan kita.
-
-Perhatikan bawa berbeda dengan penempatan judul gambar gambar, keterangan tabel harus diletakkan di atas tabel!!
-Lihat Tabel~\ref{tab:contoh1} berikut ini:
-
-\begin{table}[H] %atau h saja untuk "kira kira di sini"
-	\centering 
-	\caption{Tabel contoh}
-	\label{tab:contoh1}
-	\begin{tabular}{cccc}
-		\toprule
-		& $v_{start}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
-
-		\midrule
-		$\tau_{1}$ & 1 & 12& 20\\
-		$\tau_{2}$ & 1 &  & 20\\
-		$\tau_{3}$ & 1 & 9 & 20\\
-		$\tau_{4}$ & 1 &  & 20\\
-
-		\bottomrule
-		
-	\end{tabular} 
-\end{table}
-Tabel~\ref{tab:cthwarna1} dan Tabel~\ref{tab:cthwarna2} berikut ini adalah tabel dengan sel yang berwarna dan ada dua tabel yang bersebelahan. 
-\begin{table}[H]
-	\begin{minipage}[c]{0.49\linewidth}
-		\centering
-		\caption{Tabel bewarna(1)}
-		\label{tab:cthwarna1}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{2}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 5 \cellcolor{green}& 12& 20\\
-			$\tau_{2}$ & 1 & 8 \cellcolor{green}& & 20\\
-			$\tau_{3}$ & 1 & 2/8/17 \cellcolor{green}& 9 & 20\\
-			$\tau_{4}$ & 1 & \cellcolor{red}& & 20\\
-			
-			\bottomrule
-
-		\end{tabular}
-	\end{minipage}
-	\begin{minipage}[c]{0.49\linewidth}
-		
-		\centering 
-		\caption{Tabel bewarna(2)}
-		\label{tab:cthwarna2}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{1}$ & $\mathcal{S}_{2}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 12& 5 \cellcolor{red} &20\\
-			$\tau_{2}$ & 1 &  &  8 \cellcolor{green} &20\\
-			$\tau_{3}$ & 1 & 9 & 2/8/17 \cellcolor{green} &20\\
-			$\tau_{4}$ & 1 &   & \cellcolor{red} &20\\
-			
-			\bottomrule
-		
-		\end{tabular}
-	\end{minipage}
-\end{table}
-
- 
-\subsection{Kutipan}
-\label{subs:kutipan} 
-Berikut contoh kutipan dari berbagai sumber, untuk keterangan lebih lengkap, silahkan membaca file referensi.bib yang disediakan juga di template ini.
-Contoh kutipan:
-\begin{itemize}
-	\item Buku:~\cite{berg:08:compgeom} 
-	\item Bab dalam buku:~\cite{kreveld:04:GIS}
-	\item Artikel dari Jurnal:~\cite{buchin:13:median}
-	\item Artikel dari prosiding seminar/konferensi:~\cite{kreveld:11:median}
-	\item Skripsi/Thesis/Disertasi:~\cite{lionov:02:animasi}~\cite{wiratma:10:following}~\cite{wiratma:22:later}
-	\item Technical/Scientific Report:~\cite{kreveld:07:watertight}
-	\item RFC (Request For Comments):~\cite{RFC1654}
-	\item Technical Documentation/Technical Manual:~\cite{Z.500}~\cite{unicode:16:stdv9}~\cite{google:16:and7}
-	\item Paten:~\cite{webb:12:comm}
-	\item Tidak dipublikasikan:~\cite{wiratma:09:median}~\cite{lionov:11:cpoly}
-	\item Laman web:~\cite{erickson:03:cgmodel}  
-	\item Lain-lain:~\cite{agung:12:tango}
-\end{itemize}    
-  
-\subsection{Gambar}
-
-Pada hampir semua editor, penempatan gambar di dalam dokumen \LaTeX{} tidak dapat dilakukan melalui proses {\it drag and drop}.
-Perhatikan contoh pada file bab2.tex untuk melihat bagaimana cara menempatkan gambar.
-Beberapa hal yang harus diperhatikan pada saat menempatkan gambar:
-\begin{itemize}
-	\item Setiap gambar {\bf harus} diacu di dalam teks (gunakan {\it field} {\sc label})
-	\item {\it Field} {\sc caption} digunakan untuk teks pengantar pada gambar. Terdapat dua bagian yaitu yang ada di antara tanda $[$ dan $]$ dan yang ada di antara tanda $\{$ dan $\}$. Yang pertama akan muncul di Daftar Gambar, sedangkan yang kedua akan muncul di teks pengantar gambar. Untuk skripsi ini, samakan isi keduanya.
-	\item Jenis file yang dapat digunakan sebagai gambar cukup banyak, tetapi yang paling populer adalah tipe {\sc png} (lihat Gambar~\ref{fig:ularpng}), tipe {\sc jpg} (Gambar~\ref{fig:ularjpg}) dan tipe {\sc pdf} (Gambar~\ref{fig:ularpdf})
-	\item Besarnya gambar dapat diatur dengan {\it field} {\sc scale}.
-	\item Penempatan gambar diatur menggunakan {\it placement specifier} (di antara tanda  $[$ dan $]$ setelah deklarasi gambar.
-	Yang umum digunakan adalah {\bf H} untuk menempatkan gambar {\bf sesuai} penempatannya di file .tex atau  {\bf h} yang berarti "kira-kira" di sini. \\
-	Jika tidak menggunakan {\it placement specifier}, \LaTeX{} akan menempatkan gambar secara otomatis untuk menghindari bagian kosong pada dokumen anda.
-	Walaupun cara ini sangat mudah, hindarkan terjadinya penempatan dua gambar secara berurutan. 	
-	\begin{itemize}
-		\item Gambar~\ref{fig:ularpng} ditempatkan di bagian atas halaman, walaupun penempatannya dilakukan setelah penulisan 3 paragraf setelah penjelasan ini.
-		\item Gambar~\ref{fig:ularjpg} dengan skala 0.5 ditempatkan di antara dua buah paragraf. Perhatikan penulisannya di dalam file bab2.tex!
-		\item Gambar~\ref{fig:ularpdf} ditempatkan menggunakan {\it specifier} {\bf h}.
-	\end{itemize}
-\end{itemize}
- 
-\dtext{17-18}
-\begin{figure} 
-	\centering  
-	\includegraphics[scale=1]{ular-png}  
-	\caption[Gambar {\it Serpentes} dalam format png]{Gambar {\it Serpentes} dalam format png} 
-	\label{fig:ularpng} 
-\end{figure} 
-
-\dtext{19-20}
-\begin{figure}[H]
-	\centering  
-	\includegraphics[scale=0.5]{ular-jpg}  
-	\caption[Ular kecil]{Ular kecil} 
-	\label{fig:ularjpg} 
-\end{figure} 
-\dtext{21-22}
-
-\begin{figure}[ht] 
-	\centering  
-	\includegraphics[scale=1]{ular-pdf}  
-	\caption[ {\it Serpentes} betina]{ {\it Serpentes} jantan} 
-	\label{fig:ularpdf} 
-\end{figure} 
- 
+\section{Moodle mobile Development}
+\label{sec:MoodleAppDev}
