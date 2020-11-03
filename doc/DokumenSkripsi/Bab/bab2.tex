@@ -35,7 +35,6 @@ Struktur moodle disusun di sekitar \textit{course}. Struktur Moodle biasanya ber
 
 Moodle bersifat modular sehingga Moodle dibentuk sebagai sebuah aplikasi pusat, dimana bisa ditambahkan plugin untuk memasukkan sebuah fitur baru yang spesifik seperti plugin autentikasi dan plugin aktivitas di dalam \textit{course}. Setiap jenis plugin yang berbeda akan berkomunikasi dengan inti Moodle melalui API yang berbeda. Moodle tidak hanya menyediakan fitur-fitur spesifik yang berbeda, Moodle juga menyediakan pengubahan tema tampilan. Pengubahan tema pada Moodle bekerja tidak jauh dengan cara bekerja plugin. Tema di dalam Moodle juga berada pada level yang berbeda yaitu tema Moodle secara keseluruhan, tema spesifik dari \textit{course}, dan tema dari semua \textit{course} dari suatu kategori. \cite{moodle:architecture}
 
-
 Moodle telah mencapai dan mematuhi standar internasional sebagai berikut : \cite{moodle:standards}
 		\begin{enumerate}
 			\item \textbf{An Open Source Initiative} \\
@@ -54,7 +53,21 @@ Lisensi Moodle, yaitu \textit{GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 \label{sec:Moodle mobile}
 Moodle mobile dikembangkan menggunakan Ionic karena Ionic memungkinkan pengembangan aplikasi yang bersifat \textit{cross-platform}\cite{Ionic:intro}. Sifat \textit{cross-platform} dari Ionic membuat Moodle mobile dengan mudah diterapkan ke berbagai platform dengan mudah. Ionic juga memungkinkan Moodle mobile untuk bekerja seperti aplikasi \textit{native} karena Ionic menggunakan Cordova. Cordova adalah sebuah \textit{framework} pengembangan aplikasi mobile yang bersifat \textit{open source}. Cordova memungkinkan pengembangan aplikasi mobile dengan menggunakan teknologi standar web. Aplikasi yang dikembangkan dengan menggunakan Cordova akan bergantung kepada binding API yang sesuai standar untuk mengakses kemampuan setiap perangkat seperti sensor, data, status jaringan dan lain-lain\cite{cordova:overview}. Ionic juga dapat dikembangkan dengan integrasi bersama \textit{framework} lain seperti Angular atau React. Moodle mobile versi 3.5 dikembangkan menggunakan Ionic versi 3 \cite{Moodlemobile:mm}. Ionic versi 3 masih menggunakan Angular secara langsung, sehingga Moodle mobile dikembangkan dengan Ionic yang diintegrasikan dengan Angular \cite{Moodlemobile:ionicangular}.
 
-Secara keseluruhan Moodle mobile memiliki fitur yang sama dengan Moodle berbasis web.
+\subsection{\textit{Themes} dan \textit{Plugins}}
+Moodle mobile juga bersifat modular seperti Moodle berbasis web yang berarti Moodle mobile juga mendukung \textit{themes} dan \textit{plugins}. \textit{Themes} dan \textit{plugins} pada Moodle mobile bekerja berbeda dengan Moodle berbasis web. Perbedaan yang ada dari Moodle berbasis web dengan Moodle mobile diantaranya adalah \textit{themes} dan \textit{plugin}.Pada Moodle mobile sebelum versi 3.5 \textit{themes} yang sudah digunakan pada Moodle web akan secara otomatis digunakan juga pada Moodle mobile. Moodle mobile versi 3.5 dan seterusnya sudah tidak dapat mendukung penggunaan \textit{themes} lagi karena Ionic versi 3 tidak mendukung \textit{customg themes} dari Moodle sebelum versi 3.5.\cite{Moodlemobile:themes}. Sehingga untuk mengubah tampilan dari Moodle mobile adalah dengan mengubah source code Moodle mobile sendiri. Awalnya \textit{plugin} pada Moodle mobile sebelum versi 3.5 dapat bekerja dengan membuat modul Angular atau Ionic lalu menambahkannya pada bagian \textit{plugin} di dalam Moodle mobile. Semenjak Moodle mobile versi 3.5 plugin dapat digunakan tanpa harus membuat modul Angular atau Ionic, pengembang aplikasi cukup membuat template plugin menggunakan PHP dan \textit{markup} Ionic 3\cite{Moodlemobile:plugin}. \textit{Plugin} pada Moodle mobile juga dapat dibagi menjadi tiga jenis dengan cara bekerja yang berbeda-beda. Tiga jenis \textit{plugin} pada Moodle mobile yaitu :
+
+	\begin{enumerate}
+	\item Template \textit{plugin} yang dihasilkan dan diunduh ketika pengguna membuka \textit{plugin}-nya\\
+		Template \textit{plugin} ini akan mulai diproses ketika pengguna akan membuka \textit{plugin}-nya. Fungsi yang dipanggil dari template ini akan menerima beberapa parameter \textit{context}.
+		
+	\item Template \textit{plugin} yang diunduh ketika pengguna \textit{login} dan di-\textit{render} menggunakan data dari JavaScript \\
+		Template \textit{plugin} ini  akan mulai diproses ketika pengguna \textit{login} ke dalam Moodle mobile dan template akan disimpan ke dalam perangkat pengguna. Fungsi dari template \textit{plugin} ini tidak akan menerima parameter \textit{context} seperti pada template \textit{plugin} sebelumnya.
+	\item \textit{Plugin} yang dibuat hanya menggunaka JavaScript \\
+		\textit{Plugin} ini akan bekerja sesuai dengan bagaiamana pengembang aplikasi membuatnya, karena \textit{plugin} ini tidak menggunakan API dari Moodle.
+	
+
+	
+	\end{enumerate}
 
 \section{Moodle mobile Development}
 \label{sec:MoodleAppDev}
