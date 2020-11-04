@@ -51,10 +51,13 @@ Moodle telah mencapai dan mematuhi standar internasional sebagai berikut : \cite
 Lisensi Moodle, yaitu \textit{GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007} menyatakan secara eksplisit pada bagian pembukaan bahwa lisensi tersebut menjamin kebebasan untuk membagi dan mengubah semua versi dari aplikasi agar aplikasi tersebut bersifat gratis untuk seluruh penggunanya\cite{GNU:preamble}.
 \section{Moodle mobile}
 \label{sec:Moodle mobile}
-Moodle mobile dikembangkan menggunakan Ionic karena Ionic memungkinkan pengembangan aplikasi yang bersifat \textit{cross-platform}\cite{Ionic:intro}. Sifat \textit{cross-platform} dari Ionic membuat Moodle mobile dengan mudah diterapkan ke berbagai platform dengan mudah. Ionic juga memungkinkan Moodle mobile untuk bekerja seperti aplikasi \textit{native} karena Ionic menggunakan Cordova. Cordova adalah sebuah \textit{framework} pengembangan aplikasi mobile yang bersifat \textit{open source}. Cordova memungkinkan pengembangan aplikasi mobile dengan menggunakan teknologi standar web. Aplikasi yang dikembangkan dengan menggunakan Cordova akan bergantung kepada binding API yang sesuai standar untuk mengakses kemampuan setiap perangkat seperti sensor, data, status jaringan dan lain-lain\cite{cordova:overview}. Ionic juga dapat dikembangkan dengan integrasi bersama \textit{framework} lain seperti Angular atau React. Moodle mobile versi 3.5 dikembangkan menggunakan Ionic versi 3 \cite{Moodlemobile:mm}. Ionic versi 3 masih menggunakan Angular secara langsung, sehingga Moodle mobile dikembangkan dengan Ionic yang diintegrasikan dengan Angular \cite{Moodlemobile:ionicangular}.
+Moodle mobile dikembangkan menggunakan Ionic karena Ionic memungkinkan pengembangan aplikasi yang bersifat \textit{cross-platform}\cite{Ionic:intro}. Sifat \textit{cross-platform} dari Ionic membuat Moodle mobile dengan mudah diterapkan ke berbagai platform dengan hanya satu \textit{codebase}. Pengembangan aplikasi dengan \textit{view} yang besar akan lebih cepat dengan penggembangan \textit{framework} bersifat \textit{cross-platform} dibandingkan dengan pengembangan secara \textit{native} \cite{cross-platform}. 
 
+Ionic memungkinkan Moodle mobile untuk bekerja seperti aplikasi \textit{native} karena Ionic menggunakan Cordova. Cordova adalah sebuah \textit{framework} pengembangan aplikasi mobile yang bersifat \textit{open source}. Cordova memungkinkan pengembangan aplikasi mobile dengan menggunakan teknologi standar web. Aplikasi yang dikembangkan dengan menggunakan Cordova akan bergantung kepada binding API yang sesuai standar untuk mengakses kemampuan setiap perangkat seperti sensor, data, status jaringan dan lain-lain\cite{cordova:overview}. Ionic juga dapat dikembangkan dengan integrasi bersama \textit{framework} lain seperti Angular atau React. Moodle mobile versi 3.5 dikembangkan menggunakan Ionic versi 3 \cite{Moodlemobile:mm}. Ionic versi 3 masih menggunakan Angular secara langsung, sehingga Moodle mobile dikembangkan dengan Ionic yang diintegrasikan dengan Angular \cite{Moodlemobile:ionicangular}.
+
+Moodle mobile bersifat modular seperti Moodle berbasis web yang berarti Moodle mobile juga mendukung \textit{themes} dan \textit{plugins}. \textit{Plugin} akan membantu pengembang menambahkan fitur dengan mudah ke dalam aplikasi Moodle mobile. \textit{Themes} memungkinkan pengembang Moodle mobile untuk mengubah gaya dan layout dari aplikasi Moodle mobile sesuai dengan keinginannya. Pada subbab-subbab berikut akan dibahas mengenai fitur-fitur, \textit{plugin}, dan \textit{theme} dari Moodle mobile.
 \subsection{\textit{Themes} dan \textit{Plugins}}
-Moodle mobile juga bersifat modular seperti Moodle berbasis web yang berarti Moodle mobile juga mendukung \textit{themes} dan \textit{plugins}. \textit{Themes} dan \textit{plugins} pada Moodle mobile bekerja berbeda dengan Moodle berbasis web. Perbedaan yang ada dari Moodle berbasis web dengan Moodle mobile diantaranya adalah \textit{themes} dan \textit{plugin}.Pada Moodle mobile sebelum versi 3.5 \textit{themes} yang sudah digunakan pada Moodle web akan secara otomatis digunakan juga pada Moodle mobile. Moodle mobile versi 3.5 dan seterusnya sudah tidak dapat mendukung penggunaan \textit{themes} lagi karena Ionic versi 3 tidak mendukung \textit{customg themes} dari Moodle sebelum versi 3.5.\cite{Moodlemobile:themes}. Sehingga untuk mengubah tampilan dari Moodle mobile adalah dengan mengubah source code Moodle mobile sendiri. Awalnya \textit{plugin} pada Moodle mobile sebelum versi 3.5 dapat bekerja dengan membuat modul Angular atau Ionic lalu menambahkannya pada bagian \textit{plugin} di dalam Moodle mobile. Semenjak Moodle mobile versi 3.5 plugin dapat digunakan tanpa harus membuat modul Angular atau Ionic, pengembang aplikasi cukup membuat template plugin menggunakan PHP dan \textit{markup} Ionic 3\cite{Moodlemobile:plugin}. \textit{Plugin} pada Moodle mobile juga dapat dibagi menjadi tiga jenis dengan cara bekerja yang berbeda-beda. Tiga jenis \textit{plugin} pada Moodle mobile yaitu :
+\textit{Themes} dan \textit{plugins} pada Moodle mobile bekerja berbeda dengan Moodle berbasis web. Perbedaan yang ada dari Moodle berbasis web dengan Moodle mobile diantaranya adalah \textit{themes} dan \textit{plugin}.Pada Moodle mobile sebelum versi 3.5 \textit{themes} yang sudah digunakan pada Moodle web akan secara otomatis digunakan juga pada Moodle mobile. Moodle mobile versi 3.5 dan seterusnya sudah tidak dapat mendukung penggunaan \textit{themes} lagi karena Ionic versi 3 tidak mendukung \textit{customg themes} dari Moodle sebelum versi 3.5.\cite{Moodlemobile:themes}. Sehingga untuk mengubah tampilan dari Moodle mobile adalah dengan mengubah source code Moodle mobile sendiri. Awalnya \textit{plugin} pada Moodle mobile sebelum versi 3.5 dapat bekerja dengan membuat modul Angular atau Ionic lalu menambahkannya pada bagian \textit{plugin} di dalam Moodle mobile. Semenjak Moodle mobile versi 3.5 plugin dapat digunakan tanpa harus membuat modul Angular atau Ionic, pengembang aplikasi cukup membuat template plugin menggunakan PHP dan \textit{markup} Ionic 3\cite{Moodlemobile:plugin}. \textit{Plugin} pada Moodle mobile juga dapat dibagi menjadi tiga jenis dengan cara bekerja yang berbeda-beda. Tiga jenis \textit{plugin} pada Moodle mobile yaitu :
 
 	\begin{enumerate}
 	\item Template \textit{plugin} yang dihasilkan dan diunduh ketika pengguna membuka \textit{plugin}-nya\\
@@ -95,3 +98,163 @@ Tertulis di atas adalah sebagian dari fitur yang disediakan oleh Moodle mobile b
 
 \section{Moodle mobile Development}
 \label{sec:MoodleAppDev}
+
+Selama masa pengembangan Moodle mobile dikategorikan menjadi dua, yaitu Moodle mobile 1 dan Moodle mobile 2 \cite{Moodlemobile:verhistory}. Perbedaan dari kedua versi Moodle mobile ini adalah kelengkapan fitur-fitur yang digunakan dan teknologi yang digunakan. Pada dasarnya kedua versi dari Moodle mobile ini dapat dianggap sebagai \textit{webservice client} yang menggunakan protokol REST untuk mendapatkan dan mengirim informasi dari Moodle ke Moodle mobile. 
+
+\subsection{Moodle mobile 1}
+ Moodle mobile 1 pertama kali dirilis pada tanggal 15 april 2013 untuk iOS dan 8 april 2013 untuk Android dengan versi 1.2.1. Versi 1.2.1 digunakan karena fitur-fitur tersedia diwariskan dari aplikasi My Moodle, My Moodle adalah aplikasi khusu iOS yang sudah usang.\cite{Moodlemobile:version1:intro}
+
+Moodle mobile 1 dikembangkan tanpa menggunakan Ionic, melainkan dikembangkan dengan teknologi sebagai berikut : \cite{Moodlemobile:version1:tech}
+	\begin{itemize}
+		\item HTML5
+		\item CSS3
+		\item \textit{Media queries for screen width and height}
+		\item Phonegap
+		\item jQuery
+		\item jQuery UI
+		\item jQuery touch swipe
+		\item matchMedia
+		\item Backbone dan Underscore
+		\item RequireJS
+		\item jsdoc
+		\item Google Javascript Style Guide
+		\item Google Closure Lint
+	\end{itemize}
+Dengan menggunakan teknologi diatas Moodle mobile 1 dapat menggunakan atau mengakses fitur dari perangkat seluler seperti kamera, perekema audio dan vidio, file sistem, dan lain-lain.
+
+Moodle mobile 1 dikembangkan dari versi 1.2.1 sampai dengan versi 1.15 sebelum akhirnya digantikan oleh Moodle mobile 2. Fitur-fitur yang dirilis pada versi-versi Moodle mobile 1 kemudian akan digunakan atau diimplementasi ulang pada Moodle mobile 2. Bagian berikut akan membahas rilis \textit{major} selama Moodle mobile 1 dikembangkan.
+
+\subsubsection{Versi 1.2.1 }
+Rilis pertama Moodle mobile 1 dengan fitur-fitur sebagai berikut  :\cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Desain responsif untuk ponsel dan tablet
+		\item Mengunggah file ke dalam area file pribadi
+		\item Merekam audio dan mengunggah ke dalam area file pribadi
+		\item Mengirim pesan pribadi kepada peserta \textit{courses}
+		\item Menulis catatan pribadi
+		\item Menelpon peserta \textit{course} lainnya
+		\item Mencari alamat peserta \textit{course} lainnya dengan google maps
+		\item Mengunduh dan melihat beberapa sumber 
+		\item Akses cepat menuju konten \textit{course}
+		\item Translasi jarak jauh
+		\item Kustomisasi layout dan gaya jarak jauh
+	\end{itemize}
+
+Sebagai rilis pertama dari Moodle mobile 1, versi ini didesain dengan kekuatan seperti aplikasi yang aman, dapat bekerja secara luring, dapat mendukung notifikasi, dapat diubah merek dan ekspansi oleh institusi, dan membuat beberapa operasi Moodle lebih cepat dan mudah. \cite{Moodlemobile:version1:intro}
+
+\subsubsection{Versi 1.3}
+Versi 1.3 dirilis pada 24 september 2013 untuk Android dan iOS, dengan menambahkan fitur-fitur sebagai berikut : \cite{Moodlemobile:version1:1.3}
+	\begin{itemize}
+		\item Opsi untuk \textit{refresh} pada menu utama
+		\item Sebagian dukungan untuk menjalankan aplikasi pada desktop
+		\item Dukungan untuk label teks lengkap
+		\item Perbaikan desain secara general
+		\item Ikon loading yang kontekstual
+		\item Informasi tolongan pada halama login
+		\item Menggantikan library jQuery UI dengan dialog HTML5 rancangan sendiri 
+	\end{itemize}
+
+\subsubsection{Versi 1.4}
+Versi 1.4 dirilis pada 3 maret 2014 untuk Android dan iOS dengan fitur-fitur : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Notifikasi untuk iOS dan Moodle versi 2.7 atau 2.6
+		\item Kalender acara
+		\item Peringatan saat mengunduh file yang terlalu besar
+	\end{itemize}
+
+\subsubsection{Versi 1.5}
+Versi 1.5 dirilis pada 18 juli 2014 untuk Android dan iOS dengan tambahan fitur-fitur : \cite{Moodlemobile:version1:intro}
+
+	\begin{itemize}
+		\item Melihat nilai aktivitas dan hasilnya
+		\item Halaman baru untuk sign in dan mengelola akun
+	\end{itemize}
+
+Selain fitur-fitur di atas ada beberapa perbaikan juga yand diimplementasi oleh Moodle sebagai berikut :
+	\begin{itemize}
+		\item URL situs dapat mendukung domain tanpa protokol HTTP atau HTTPS
+		\item Perbaikan halaman notifikasi
+		\item Pesan yang diterima dapat dibalas secara \textit{in-line}
+		\item \textit{Refresh} dapat memperbarui semua informasi terkait situs
+		\item Tautan bantuan sekarang merujuk ke dokumentasi sesuai versi yang digunakan
+		\item Perbaikan dukungan untuk tema
+	\end{itemize}
+	
+\subsubsection{Versi 1.6}
+Versi 1.6 dirilis pada 7 agustus 2014 untuk Android dan iOS dengan fitur-fitur baru sebagai berikut : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Melihat total nilai untuk setiap \textit{course}
+		\item Fitur \textit{My files} untuk melihat dan mengunduh file pribadi dan file \textit{courses}
+		\item Menu \textit{course} yang dapat dilipat
+	\end{itemize}
+
+\subsubsection{Versi 1.7}
+Versi 1.7 dirilis pada 10 oktober 2014 dengan fitur-fitur baru sebagai berikut :  \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Dukungan untuk aktivitas forum
+		\item Seluruh file dalam direktori, halaman atau sumber file dapat diunduh dengan sekali sentuh
+		\item Memperbarui bahasa translasi
+		\item Memperbarui performa animasi 
+	\end{itemize}
+\subsubsection{Versi 1.8}
+Versi 1.8 dirilis pada 10 november 2014 dengan fitur-fitur baru seperti :\cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Dukungan untuk Moodle 2.8
+		\item Pesan dan notfikasi ditampilkan secara terpisah
+		\item HTML dan sumber daya halaman ditampilkan menggunakan \textit{viewer} di dalam aplikasi
+		\item Apabila pengguna menekan notifikas, aplikasi akan dibuka dan menunjukkan notfikasi secara lengkap
+		\item Judulu notifikasi ditampilkan pada bilah notifikasi Android
+	\end{itemize}
+\subsubsection{Versi 1.9}
+Versi 1.9 dirilis pada 29 november 2014 dengan fitur-fitur baru seperti : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Penambahan bahasa baru
+		\item Notifikasi forum lebih ringkas dan mengandung tautan untuk membuka diskus secara langsung
+		\item Penambahan tombo \textit{show grades} dalam profil peserta untuk melihat nilai peserta
+	\end{itemize}
+\subsubsection{Versi 1.10}
+Versi 1.10 dirilis pada 26 desember 2014 dengan fitur baru untuk \textit{messages} yaitu antarmuka baru yang serupa dengan WhatsApp atau Telegram, pengguna dapat melihat pesan baru,  mencari kontak, menambah atau menhapus kontak, dan melihat profil pengguna. \cite{Moodlemobile:version1:1.10}
+
+\subsubsection{Versi 1.11}
+Versi 1.11 dirilis pada 16 Januari 2015, dengan fitur-fitur sebagai berikut : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Integrasi kalender dengan pengingat peringatan sebagai notifikas lokal
+		\item Bagian ringkasan ditampilkan di dalam halaman konten \textit{courses}
+	\end{itemize}
+
+\subsubsection{Versi 1.12}
+Versi 1.12 dirilis pada 20 Februari 2015 dengan fitur-fitur sebagai berikut : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Semua tipe file dapat diunggah ke Moodle
+		\item Acara grup sekarang ditampilkan pada daftar acara
+		\item Opsi pengingat baru untu notifikasi lokal
+		\item Menghapus \textit{permissions} yang tidak digunakan dalam Android
+		\item Pengguna yang diblokir akan ditampilkan dalam kontak	
+		\item Penggun dapat memblokir dan buka blokir dalam opsi \textit{messages}
+	\end{itemize}
+
+\subsubsection{Versi 1.13}
+Versi 1.13 dirilis pada 27 Maret 2015 dengan fitur-fitur sebagai berikut : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Pengajar dapat melihat submisi tugas murid secara daring dan luring
+		\item File dalam iOS dibuka menggunakan \textit{framework} Quick Look
+	\end{itemize}
+
+\subsubsection{Versi 1.14}
+Versi 1.14 dirilis pada 30 April 2015 dengan fitur-fitur baru dan perbaikan sebagai berikut : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Aktivitas murid ditampilkan pada catatan situs Moodle
+		\item Konten dalam aplikasi diproses melalui filter Moodle
+		\item Applikasi diperbarui untuk menggunakan fitur dan perbaikan baru dalam Moodle 2.9 
+	\end{itemize}
+
+\subsubsection{Versi 1.5}
+Versi 1.15 dirilis pada 29 Mei 2015. Versi ini adalah versi terakhir yang dirilis untuk Moodle mobile 1. Berikut adalah fitur-fitur dan perbaikan pada versi 1.15 : \cite{Moodlemobile:version1:intro}
+	\begin{itemize}
+		\item Menghalangi pengguna untuk login ketika fitur mengunduh file tidak diaktifkan di dalam \textit{Mobile service}
+		\item Konten sudah ditampilkan dengan benar pada Android 4.4.2
+		\item \textit{Plugin} fitur tambahan diperbarui untuk mendukung Moodle 2.9
+		\item Mencegah untuk memproses kode js filter Moodle saat merender panel
+	\end{itemize}
+
+\subsection{Moodle mobile 2}
