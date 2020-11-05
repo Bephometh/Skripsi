@@ -55,6 +55,8 @@ Moodle mobile dikembangkan menggunakan Ionic karena Ionic memungkinkan pengemban
 
 Ionic memungkinkan Moodle mobile untuk bekerja seperti aplikasi \textit{native} karena Ionic menggunakan Cordova. Cordova adalah sebuah \textit{framework} pengembangan aplikasi mobile yang bersifat \textit{open source}. Cordova memungkinkan pengembangan aplikasi mobile dengan menggunakan teknologi standar web. Aplikasi yang dikembangkan dengan menggunakan Cordova akan bergantung kepada binding API yang sesuai standar untuk mengakses kemampuan setiap perangkat seperti sensor, data, status jaringan dan lain-lain\cite{cordova:overview}. Ionic juga dapat dikembangkan dengan integrasi bersama \textit{framework} lain seperti Angular atau React. Moodle mobile versi 3.5 dikembangkan menggunakan Ionic versi 3 \cite{Moodlemobile:mm}. Ionic versi 3 masih menggunakan Angular secara langsung, sehingga Moodle mobile dikembangkan dengan Ionic yang diintegrasikan dengan Angular \cite{Moodlemobile:ionicangular}.
 
+Moodle mobile dilisensikan dengan lisensi \textit{Apache 2.0}\cite{Moodlemobile:license}. Lisensi tersebut merupakan lisensi yang bersifat \textit{open source}, sehingga memungkinkan distribusi Moodle mobile secara gratis dan diperbolehkannya modifikasi terhadap Moodle mobile. Dengan begitu Moodle mobile dapat dianggap sebagai suatu proyek atau aplikasi \textit{open source}.
+
 Moodle mobile bersifat modular seperti Moodle berbasis web yang berarti Moodle mobile juga mendukung \textit{themes} dan \textit{plugins}. \textit{Plugin} akan membantu pengembang menambahkan fitur dengan mudah ke dalam aplikasi Moodle mobile. \textit{Themes} memungkinkan pengembang Moodle mobile untuk mengubah gaya dan layout dari aplikasi Moodle mobile sesuai dengan keinginannya. Pada subbab-subbab berikut akan dibahas mengenai fitur-fitur, \textit{plugin}, dan \textit{theme} dari Moodle mobile.
 \subsection{\textit{Themes} dan \textit{Plugins}}
 \textit{Themes} dan \textit{plugins} pada Moodle mobile bekerja berbeda dengan Moodle berbasis web. Perbedaan yang ada dari Moodle berbasis web dengan Moodle mobile diantaranya adalah \textit{themes} dan \textit{plugin}.Pada Moodle mobile sebelum versi 3.5 \textit{themes} yang sudah digunakan pada Moodle web akan secara otomatis digunakan juga pada Moodle mobile. Moodle mobile versi 3.5 dan seterusnya sudah tidak dapat mendukung penggunaan \textit{themes} lagi karena Ionic versi 3 tidak mendukung \textit{customg themes} dari Moodle sebelum versi 3.5.\cite{Moodlemobile:themes}. Sehingga untuk mengubah tampilan dari Moodle mobile adalah dengan mengubah source code Moodle mobile sendiri. Awalnya \textit{plugin} pada Moodle mobile sebelum versi 3.5 dapat bekerja dengan membuat modul Angular atau Ionic lalu menambahkannya pada bagian \textit{plugin} di dalam Moodle mobile. Semenjak Moodle mobile versi 3.5 plugin dapat digunakan tanpa harus membuat modul Angular atau Ionic, pengembang aplikasi cukup membuat template plugin menggunakan PHP dan \textit{markup} Ionic 3\cite{Moodlemobile:plugin}. \textit{Plugin} pada Moodle mobile juga dapat dibagi menjadi tiga jenis dengan cara bekerja yang berbeda-beda. Tiga jenis \textit{plugin} pada Moodle mobile yaitu :
@@ -258,3 +260,30 @@ Versi 1.15 dirilis pada 29 Mei 2015. Versi ini adalah versi terakhir yang dirili
 	\end{itemize}
 
 \subsection{Moodle mobile 2}
+Moodle mobile 2 adalah seri lanjutan dari Moodle mobile 1 dengan perubahan utama pada teknologi yang digunakan. Moodle mobike 2 dikembangkan menggunakan \textit{framework} Ionic 1. Moodle mobile 2 juga menggunakan Cordova untuk kompilasi atau pengemasan interaksi dengan perangkat pengguna. Struktur dari Moodle mobile 2 dibagi menjadi dua, yaitu \textit{core} dan \textit{addons}. 
+
+\textit{Core} dan \textit{addons} memiliki struktur yang sama, yaitu struktur standar Angular. \textit{Core} dan \textit{addons} akan memiliki komponen Angular yang diorganisir menjadi \textit{NgModules}\cite{angular:architecture}
+. \textit{NgModules} dapat dianggap sebagai wadah untuk untuk kode yang didekasikan untuk domain aplikasi, \textit{workflow}, atau kapabilitas aplikasi yang berseifat erat. \textit{NgModules} akan menyediakan sebuah kompilasi kontex untuk komponen. \cite{angular:architecture:modules}
+
+Komponen pada Angular akan mengendalikan sepetak \textit{view}, \textit{view} yang dimaksud adalah template pasangan dari komponen Angular tersebut dalam bentuk HTML. Template dari komponen Angular akan memiliki \textit{template syntax} Angular yang dapat digunakan untuk mengubah HTML sesuai dengan logika aplikasi dan keadaan aplikasi dan data DOM. Template tersebut dapat menggunakan \textit{data binding} untuk mengkordinasi apliksai dan data DOM, \textit{pipe} untuk mengubah data sebelum ditampilkan, atau \textit{directives} untuk menerapkan logika aplikasi kepada apa saja yang akan ditampilkan. \cite{angular:architecture:components}
+
+\textit{Core} dan \textit{addons} menjadi wadah untuk fitur yang akan digunakan pada Moodle mobile 2, dengan perbedaan \textit{core} akan menyimpan fitur yang dibutuhkan oleh Moodle mobile 2 atau fitur-fitur dasar dengan struktur Angular yang standar. \textit{Addons} akan berisi fitur yang bukan menjadi fitur utama dari Moodle mobile 2. \cite{Moodlemobile2:overview}
+
+Moodle mobile 2 menyediakan \textit{directives} bawaan yang dapat digunakan untuk \textit{addons} dan komponen. berikut adalah directives yang disediakan oleh Moodle mobile 2 : \cite{Moodlemobile2:overview}
+\begin{itemize}
+\item mmAutoFocus digunakan untuk secara otomatis fokus kepada \textit{input element}.
+\item mmBroswser membuat tautan yang ditekan agar terbuka dalam \textit{browser} yang terpisah.
+\item mmCompletion akan menyediakan \textit{checkbox} yang menunjukkan status aktivitas.
+\item mmExternalContent akan menambahkan seluruh konten eksternal ke dalam antrian untuk diunduh.
+\item mmFile digunakan untuk menunjukkan daftar file yang dapat dibukan.
+\item mmFormatText akan memproses tulisan yang akan ditampilkan.
+\item mmIframe berguna untuk membantu membuka tautan di dalam \textit{iframe} yang bersifat \textit{relative} dan \textit{non-relative}.
+\item mmImageViewer berguna untuk membuat sebuah gambar menjadi responsive.
+\item mmLoading akan menggantikan konten dengan halaman \textit{loading} dari Moodle ketika Moodle mobile 2 sedang mengambil konten.
+\item mmNavigationBar akan menunjuukan bilah navigasi.
+\item mmNoInputValidation menonaktifkan validasi otomatis dari bidang \textit{input}.
+\item mmSplitView dan mmSplitViewLink memungkinkan Moodle mobile untuk menjalankan fiture \textit{split screen} pada ponsel atau tablet.
+\end{itemize}
+
+Moodle mobile 2 mengalami perubahan \textit{framework} menjadi Ionic 3 pada versi 3.5 \cite{Moodlemobile2:version:3.5}. Perubahan \textit{framework} ini membuat Moodle mobile 2 hanya berjalan pada perangkat bergerak dengan versi Android 4.4 atau iOS 8 dan seterusnya. Perangkat dengan versi OS yang telah disebutkan hanya dapat menjalankan Moodle mobile 2 dengan \textit{framework} Ionic 1. Versi Moodle mobile 2 tersebut kemudian dikategorikan oleh Moodle sebagai Moodle Classic App.
+
