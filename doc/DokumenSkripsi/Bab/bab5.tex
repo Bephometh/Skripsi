@@ -1,0 +1,41 @@
+\chapter{Implementasi dan Pengujian}
+
+\section{Lingkungan Pengembangan}
+Pada subbab ini akan dibahas lingkungan pengembangan yang digunakan dalam penilitian beserta dengan penyesuaian-penyesuainnya.
+\subsection{Penyesuaian Lingkungan Pengembangan}
+Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
+
+\begin{enumerate}
+	\item \textit{Browser} Chromium.
+	\item Git, dengan \textit{fork} yang mengarah kepada \textit{repository} resmi Moodle mobile.
+	\item Node.js versi 14.
+	\item \textit{Native build tools} Windows.
+\end{enumerate} 
+
+Penggunaan versi Node.js yang berstatus LTS sudah didukung pada \textit{branch integration} Moodle mobile. Dukungan untuk versi Node.js berstatus LTS dilakukan oleh Moodle karena Node.js versi 11 sudah tidak berstatus LTS. Perbaruan tersebut belum terintegrasi dalam \textit{branch master} Moodle mobile, karena akan dirilis pada Moodle mobile versi 4. \cite{MoodleTracker:Node11+} 
+
+Menjalankan \texttt{npm run setup} dengan Node.js 14 akan menghasilkan \textit{error} karena file \texttt{package.json} milik Moodle app memiliki aturan seperti pada \mbox{Kode \ref{lst:package-lock:rule}} yang menyatakan bahwa versi node yang dibutuhkan secara ketat adalah Node.js versi 11. Menghapus atau mengubah bagian tersebut akan memungkinkan menjalankan \texttt{npm run setup} dengan versi 14 Node.js. 
+
+\begin{lstlisting}[frame=single, label ={lst:package-lock:rule}, caption = Aturan pada \texttt{package-lock.json} ]
+	"engines": {
+    	"node": "11.x"
+  	}
+\end{lstlisting}
+
+Menggunakan Node.js versi 14 menyebabkan \textit{error} terjadi saat menjalankan Moodle app. Pesan \textit{error} yang muncul adalah \texttt{Module '"E:/Gabriel/Development/Skripsi/moodleapp/node \textunderscore modules/cordova-plugin-wkuserscript/types/index"' has no exported member "WKUserS \\ criptInjectionTime"}. \textit{Error} tersebut terjadi karena pada \textit{commit aa77d0f}\cite{moodleapp:git:wkuserscript}, sehingga menyebabkan Node.js 14 menghentikan proses eksekusi aplikasi karena dianggap adanya \textit{unhandled promise}. Moodle telah mengeluarkan perbaikan untuk masalah ini pada \textit{commit b39c5ef}\cite{moodleapp:git:wkuserscriptfix}. Implementasi fix tersebut dapat dilakukan pada \textit{branch} yang digunakan dengan mengubah kode file \texttt{package-lock.json} menjadi seperti pada \mbox{Kode \ref{lst:package-lock}} dan file \texttt{src/providers/utils/iframe.ts} pada bagian \textit{import} menjadi seperti pada \mbox{Kode \ref{lst:iframe}} dan pada fungsi \texttt{win.WKUserScript.addScript()} menjadi seperti \mbox{Kode \ref{lst:addScript}}.
+
+\begin{lstlisting}[frame=single, label ={lst:package-lock}, caption = Perbaikan pada \texttt{package-lock.json} ]
+	"version": "git+https://github.com/moodlemobile/cordova-plugin-wkuserscript.git#1ad47e75a1811cec0a944d3b8b8544b3d5e052ca",
+\end{lstlisting}
+ 
+\begin{lstlisting}[frame=single, label={lst:iframe}, caption = Perbaikan pada bagian \textit{import} file \texttt{iframe.ts}]
+	import { WKUserScriptWindow } from 'cordova-plugin-wkuserscript';
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single, label={lst:addScript}, caption = Perbaikan pada bagian fungsi \texttt{win.WKUserScript.addScript()} file \texttt{iframe.ts}]
+	        	win.WKUserScript.addScript({
+                    id: 'CoreIframeUtilsRecaptchaScript',
+                    file: recaptchaPath,
+                    injectionTime: win.WKUserScript.InjectionTime.END,
+                });
+\end{lstlisting}

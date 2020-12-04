@@ -5,7 +5,7 @@
 \section{Lingkungan Pengembangan}
  Subbab ini akan membahas spesifkasi yang dibutuhkan untuk lingkungan pengembangan Moodle mobile, menyiapkan lingkungan pengembangan, beserta spesifikasi lingkungan pengembangan yang digunakan dalam penelitian.
 
-\subsection{Rekomendasi Lingkungan Pengembangan}
+\subsection{Lingkungan Pengembangan Berdasarkan Dokumentasi Moodle}
 Kustomisasi Moodle mobile dimulai dengan menyiapkan lingkungan pengembangan agar pengembang dapat mengubah \textit{source code}, melakukan pengujian menggunakan \textit{browser} pada mesin, dan \textit{deploy} aplikasi ke pergangkat seluler. Kebutuhan yang diperlukan untuk menyiapkan lingkungan pengembangan Moodle mobile adalah sebagai berikut : \cite{moodle:dev}
 
 
@@ -19,11 +19,11 @@ Kustomisasi Moodle mobile dimulai dengan menyiapkan lingkungan pengembangan agar
 \end{enumerate}
 
 
-Dokumentasi Moodle app menyarankan untuk menggunakan \textit{branch} dengan nama \textit{integration} \cite{moodle:dev}. Karena \textit{branch integration} adalah \textit{branch} pengembangan dan \textit{branch} dimana perbaikan-perbaikan terabaru diimplementasikan.
+Dokumentasi Moodle app menyarankan untuk menggunakan \textit{branch} dengan nama \textit{integration} \cite{moodle:dev}. \textit{Branch integration} digunakan karena dalam \textit{branch} tersebut pengembangan dan \textit{branch} dimana perbaikan-perbaikan terabaru diimplementasikan.
 
 Node yang disarankan oleh dokumentasi Moodle mobile adalah Node.js dengan versi 11\cite{moodle:dev}, namun versi 11 dari Node.js tidak termasuk dalam status LTS atau \textit{Long Term Support}\cite{nodejs:status}. Sehingga pada penelitian ini akan dilakukan pengembangan dengan versi Node.js yang berstatus LTS.
 
-Menyiapkan lingkungan pengembangan untuk Moodle app dimulai dengan menginstall Gulp untuk automasi pengembangan tugas, menginstall Ionic, kemudian menjalankan \texttt{npm run setup}, \textit{command} tersebut menjalankan \texttt{npm install}, \texttt{npx cordova prepare}, dan \texttt{npx gulp} yang masing-masing akan menginstall \textit{dependency} npm, menyiapkan cordova, dan menjalankan tugas dasar gulp. Setelah itu jalnakan \texttt{npm start} pada folde utama Moodle mobile untuk menjalankan Moodle mobile dalam \textit{browser}.
+Menyiapkan lingkungan pengembangan untuk Moodle app dimulai dengan menginstall Gulp untuk automasi pengembangan tugas, menginstall Ionic, kemudian menjalankan \texttt{npm run setup}, \textit{command} tersebut menjalankan \texttt{npm install}, \texttt{npx cordova prepare}, dan \texttt{npx gulp} yang masing-masing akan menginstall \textit{dependency} npm, menyiapkan cordova, dan menjalankan tugas dasar gulp. Setelah itu jalankan \texttt{npm start} pada folder utama Moodle mobile untuk menjalankan Moodle mobile dalam \textit{browser}.
 
 Uji coba Moodle mobile dengan menggunakan perangkat seluler dapat dilakukan dengan \textit{command} \texttt{npm run dev:android} untuk Android dan \texttt{npm run dev:ios} untuk iOS. Kedua \textit{command} tersebut dijalankan dengan menggunakan Cordova, yang memiliki kebutuhan masing-masing untuk setiap platform. Cordova untuk Android akan membutuhkan Java Development Kit, Gradle, dan Android SDK\cite{cordova:android}. Cordova untuk iOS akan membutuhkan Xcode dan ios-deploy \cite{cordova:iOS}.
 
@@ -84,7 +84,7 @@ context.optimizeJs = [
 \end{lstlisting}
 Setelah modifikasi kedua file tersebut berhasil jalankan \textit{command} \texttt{npm run ionic:build -- --prod} untuk kompilasi. Untuk menginstall pada platform jalankan \textit{command} \texttt{npx cordova run android} untuk Android dan \texttt{npx cordova build ios} untuk iOS.
 
-\subsection{Lingkungan Pengembangan Peneliti}
+\subsection{Penyesuaian Lingkungan Pengembangan}
 Spesifikasi ingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
 
 \begin{enumerate}
@@ -95,3 +95,5 @@ Spesifikasi ingkungan pengembangan yang digunakan oleh peneliti adalah sebagai b
 \end{enumerate} 
 
 Dengan spesifikasi diatas
+
+\section{Penggunaan Node.js berstatus LTS}
