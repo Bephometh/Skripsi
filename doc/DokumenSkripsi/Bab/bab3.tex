@@ -1,95 +1,56 @@
 \chapter{Analisis}
 \label{chap:analsa}
 
+\section{Kondisi IDE UNPAR}
 
-\section{Lingkungan Pengembangan}
- Subbab ini akan membahas spesifkasi yang dibutuhkan untuk lingkungan pengembangan Moodle mobile, menyiapkan lingkungan pengembangan, beserta spesifikasi lingkungan pengembangan yang digunakan dalam penelitian.
+IDE UNPAR sudah mengalami perubahan dan penyesuaian agar dapat digunakan, perubahan dan penyesuaian tersebut yang harus diterapkan juga didalam Moodle mobile. Perubahan dan penyesuain yang dimaksud adalah perbedaan dari tampilan dan fitur IDE UNPAR yang tidak ada dalam situs Moodle standar dan dapat dilihat oleh peneliti. Perubahan dan penyesuaian  terhadap IDE UNPAR adalah : \cite{IDEUNPAR}
 
-\subsection{Lingkungan Pengembangan Berdasarkan Dokumentasi Moodle}
-Kustomisasi Moodle mobile dimulai dengan menyiapkan lingkungan pengembangan agar pengembang dapat mengubah \textit{source code}, melakukan pengujian menggunakan \textit{browser} pada mesin, dan \textit{deploy} aplikasi ke pergangkat seluler. Kebutuhan yang diperlukan untuk menyiapkan lingkungan pengembangan Moodle mobile adalah sebagai berikut : \cite{moodle:dev}
+\begin{itemize}
+\item Penggunaan tema Snap Moodle. perubahan ini terlihat ketika memeriksa elemen dari IDE UNPAR pada baigan HTML \textit{tag}.
+\item Mata kuliah dan peserta mata kuliah.
+\item \textit{Banner} pada halaman utama.
+\item Bagian panduan digital.
+\item Video YouTube tersemat.
+\item Branding UNPAR
+\item SSO
+\end{itemize}
 
+Perubahan dan penyesuaian diatas tidak semua dapat diterapkan ke dalam Moodle mobile. Penggunaan tema Snap dapat dilakukan dikarenakan Moodle mobile sudah tidak lagi mengukung penggunaan tema. Sehingga tampilan pada Moodle mobile akan diubah dengan mengubah \textit{source code}. \textit{Banner} pada halaman utama, bagian panduan digital dan branding UNPAR juga akan dilakukan dengan mengubah \textit{source code}, karena pada situs IDE UNPAR perubahan dan penyesuaian tersebut dilakukan pada tema yang digunakan. SSO juga tidak akan digunakan karena peneliti tidak memiliki akses SSO UNPAR.
 
-\begin{enumerate}
-	\item Adanya \textit{browser} untuk pengembangan.
-	\item Git untuk \textit{source control} aplikasi dan \textit{clone} Moodle mobile.
-	\item Node.js untuk menjalankan \textit{script} JavaScript tanpa \textit{browser}.
-	\item Mesin yang menggunakan sistem operasi Windows akan membutuhkan alat \textit{native build}.
-	\item Cocoapods pada Mac untuk mengelola \textit{dependency}.
-	\item libsecret untuk sistem operasi linux agar dapat melakukan \textit{push} URL \textit{diff} atau perbedaan antar file dalam \textit{repository} lokal dan \textit{remote}.
-\end{enumerate}
+Moodle mobile memungkinkan untuk mengatur \textit{URL preset} agar saat Moodle mobile dijalnkan, akan langsung diahlikan ke \textit{URL} tersebut. Namun ketika \textit{URL} IDE UNPAR digunakan terdapat \textit{error} dimana variable \texttt{\$urlscheme} memiliki nilai variable yang sudah diubah, dimana seharusnya variable tersebut berisi \texttt{moodlemobile://token=...} melainkan berisi \texttt{ide.unpar.ac.id://token=....}. Mengubah variable \texttt{urlscheme} pada Moodle mobile tetap tidak memungkinkan  IDE UNPAR diakses melalui Moodle mobile. Karena  adanya konfigurasi yang tidak dapat diakses untuk menghubungkan IDE UNPAR maka situs demo akan digunakan.
+%tidak dapat digunakannya akses ke IDE UNPAR maka penilitian ini akan menggunakan sebuah situs demo yang dibuat dengan Moodle atau Moodle demo.
 
-Langkah pertama menyiapkan kebutuhan lingkungan pengembangan adalah dengan menginstall Node.js. Node yang disarankan oleh dokumentasi Moodle mobile adalah Node.js dengan versi 11\cite{moodle:dev}, namun versi 11 dari Node.js tidak termasuk dalam status LTS atau \textit{Long Term Support}\cite{nodejs:status}. Sehingga pada penelitian ini akan dilakukan pengembangan dengan versi Node.js yang berstatus LTS. Langkah kedua adalah dengan menginstall kebutuhan spesifik yang dibutuhkan oleh Moodle mobile sesuai dengan sistem operasi yang digunakan. Kebutuhan yang dimaksud adalah \textit{Windows native build tools} untuk Windows, \textit{cocoapods} untuk Mac, dan \textit{libsecret} untuk Linux. Langkah ketiga yang harus dilakukan adalah dengan melakukan \textit{clone} dari \textit{branch} Moodle mobile milik Moodle. Dokumentasi Moodle app menyarankan untuk menggunakan \textit{branch} dengan nama \textit{integration}\cite{moodle:dev}. \textit{Branch integration} digunakan karena dalam \textit{branch} tersebut pengembangan dan \textit{branch} dimana perbaikan-perbaikan terabaru diimplementasikan. Sehingga setelah melakukan \textit{clone} lakukan \textit{checkout} ke \textit{branch Integration}.
+\section{Moodle demo}
 
+Moodle demo dengan \textit{URL} \url{https://moodledemo.pascal.id} adalah situs demo yang akan digunakan. Moodle demo akan berfungsi sebagai \textit{web service} yang diakses oleh Moodle mobile. Sehingga Moodle demo akan menyimpan data mahasiswa, dosen, mata kuliah dan \textit{plugin} yang  ada pada IDE UNPAR untuk digunakan di dalam Moodle mobile. 
+\subsection{Mata kuliah dan peserta mata kuliah}
 
-Menyiapkan lingkungan pengembangan untuk Moodle app dimulai dengan menginstall Gulp untuk automasi pengembangan tugas, menginstall Ionic, kemudian menjalankan \texttt{npm run setup}, \textit{command} tersebut menjalankan \texttt{npm install}, \texttt{npx cordova prepare}, dan \texttt{npx gulp} yang masing-masing akan menginstall \textit{dependency} npm, menyiapkan cordova, dan menjalankan tugas dasar gulp. Setelah itu jalankan \texttt{npm start} pada folder utama Moodle mobile untuk menjalankan Moodle mobile dalam \textit{browser}.
+Data yang berada pada Moodle demo berasal dari mata kuliah yang ada di IDE UNPAR diberikan oleh pembimbing, sehingga pada data mata kuliah tersebut terdapat bahan dan tugas. Peserta dari mata kuliah tersebut dibuat dengan sendiri mengikuti format penamaan yang berada di IDE UNPAR dan ada tiga peserta yang diikutkan dalam mata kuliah tersebut dengan tiga role yang berbeda yaitu \textit{teacher} yang dianggap seabagai dosen, \textit{non-editing teacher} dianggap sebagai asisten dosen dan \textit{student} dianggap sebagai mahasiswa.
 
-Uji coba Moodle mobile dengan menggunakan perangkat seluler dapat dilakukan dengan \textit{command} \texttt{npm run dev:android} untuk Android dan \texttt{npm run dev:ios} untuk iOS. Kedua \textit{command} tersebut dijalankan dengan menggunakan Cordova, yang memiliki kebutuhan masing-masing untuk setiap platform. Cordova untuk Android akan membutuhkan Java Development Kit, Gradle, dan Android SDK\cite{cordova:android}. Cordova untuk iOS akan membutuhkan Xcode dan ios-deploy \cite{cordova:iOS}.
+\subsection{\textit{Plugin} dan tema}
 
-Membangun versi produksi aplikasi akan membutuhkan kompilasi dengan AOT (\textit{ahead-of-time}) dari Angular. Untuk melakukan kompilasi AOT ada bebrapa file yang harus dimodifikasi. File yang pertama adalah \url{node_modules/@angular/platform-browser-dynamic/esm5/platform-browser-dynamic.js }, dalam file tersebut variable \texttt{\_NO\_RESOURCE\_LOADER} yang memiliki fungsi \texttt{get} dengan baris seperti pada \mbox{Kode \ref{lst:noresourceloader}} yang akan diubah menjadi seperti pada \mbox{Kode \ref{lst:noresourceloaderreplace}}.
+\textit{Plugin} yang digunakan oleh Moodle demo adalah plugin standar Moodle karena pada IDE UNPAR tidak ditemukannya \textit{plugin} tambahan selain tema yang digunakan. \textit{Plugin} tema tidak harus digunakan karena tidak mempengaruhi Moodle mobile, namun dengan tujuan mengimitasi IDE UNPAR tema akan tetap digunakan karena peletakan \textit{banner}, video YouTube tersemat dan bagian panduan digital bergantung pada tema yang digunakan oleh IDE UNPAR. Tema pada situs moodle dapat dipasang dengan memasukkan file tema yang diambil dari situs \url{https://moodle.org/plugins/} ke dalam folder \texttt{/moodle/theme}. Setelah file berada dalam folder tersebut maka pada situs Moodle dibagian \textit{themes} akan muncul opsi tema yang baru saja dimasukkan.
 
-\begin{lstlisting}[frame=single, label={lst:noresourceloader}, language=PHP, caption=Fungsi \texttt{get} pada \textunderscore NO\textunderscore RESOURCE\textunderscore LOADER]
-throw new Error("No ResourceLoader implementation has been provided. Can't read the url \"" + url + "\"");
-\end{lstlisting}
+Korsel pada untuk Moodle demo dapat dipasang dengan mengakses halaman menu tema. Pada halaman tersebut pilih opsi \textit{Cover display}, dalam opsi tersebut akan ada bagian untuk mengaktifkan dan memasang korsel untuk situs Moodle. Jumlah maksimal koresel yang dapat dipasang adalah 3 korsel. Korsel pada moodle demo ini bertujuan untuk mengimitasi \textit{banner} yang berada pada IDE UNPAR.
 
-\begin{lstlisting}[frame=single, label={lst:noresourceloaderreplace}, language=PHP, caption=Kode pengganti untuk fungsi \texttt{get}]
-url = 'templates/' + url;
+Bagian panduan digital pada IDE UNPAR adalah bagian \textit{featured course} yang diubah judulnya menjadi "panduan digital". Menggunakan fitur ini pada Moodle demo dapat dilakukan dengan mengakses halaman menu tema, dan memilih opsi \textit{featured course} pada halaman tersebut. Jumlah \textit{course} maksimal yang dapat ditampilkan adalah 8. Karena peniliti tidak memiliki akses untuk \textit{course} panduan digital IDE, maka \textit{course} yang ditampilkan adalah \textit{course} yang sudah dimasukkan.
 
-        var resolve;
-        var reject;
-        var promise = new Promise(function (res, rej) {
-            resolve = res;
-            reject = rej;
-        });
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.responseType = 'text';
-        xhr.onload = function () {
-            // responseText is the old-school way of retrieving response (supported by IE8 & 9)
-            // response/responseType properties were introduced in ResourceLoader Level2 spec (supported by IE10)
-            var response = xhr.response || xhr.responseText;
-            // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
-            var status = xhr.status === 1223 ? 204 : xhr.status;
-            // fix status code when it is 0 (0 status is undocumented).
-            // Occurs when accessing file resources or on Android 4.1 stock browser
-            // while retrieving files from application cache.
-            if (status === 0) {
-                status = response ? 200 : 0;
-            }
-            if (200 <= status && status <= 300) {
-                resolve(response);
-            }
-            else {
-                reject("Failed to load " + url);
-            }
-        };
-        xhr.onerror = function () { reject("Failed to load " + url); };
-        xhr.send();
-        return promise;
-\end{lstlisting}
+Menambahkan sematan video YouTube dapat dikaukan dengan menekan tombol ikon roda gigi, kemudian memilih opsi \textit{turn editing on}. Dalam mode pengeditan tekan ikon kertas dan pensil seperti pada Gambar \ref{fig:editingmode}. Pada halaman edit, masukkan tag \textit{iframe} HTML dengan link video untuk menyematkannya.
 
-File kedua yang harus dimodifikasi adalah \url{node_modules/@ionic/app-scripts/dist/util/config.js}, pada bagian \texttt{optimizejs} modifikasi sehingga terlihat seperti pada \mbox{\ref{optimizejs}} dengan menghapus \texttt{context.isProd}.
-\\
-\\
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{demo-edit-mode.png}  
+	\caption[Mode pengeditan] {Mode pengeditan} 
+	\label{fig:editingmode} 
+\end{figure} 
 
-\begin{lstlisting}[frame=single, label={optimizejs}, language=PHP, caption= \texttt{optimizejs} setelah modifikasi]
-context.optimizeJs = [
-        context.optimizeJs,
-        hasArg('--optimizeJs')
-    ].find(function (val) { return typeof val === 'boolean'; });
-\end{lstlisting}
-Setelah modifikasi kedua file tersebut berhasil jalankan \textit{command} \texttt{npm run ionic:build -- --prod} untuk kompilasi. Untuk menginstall pada platform jalankan \textit{command} \texttt{npx cordova run android} untuk Android dan \texttt{npx cordova build ios} untuk iOS.
+\section{Lisensi Moodel mobile}
 
-\subsection{Penyesuaian Lingkungan Pengembangan}
-Spesifikasi ingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
-
-\begin{enumerate}
-	\item \textit{Browser} Chromium.
-	\item Git, dengan \textit{fork} yang mengarah kepada \textit{branch master} Moodle mobile.
-	\item Node.js versi 14.
-	\item \textit{Native build tools} Windows.
-\end{enumerate} 
-
-Dengan spesifikasi diatas
-
-\section{Penggunaan Node.js berstatus LTS}
-
+Moodle mobile dilisensikan dengan lisensi \textit{Apache 2.0}\cite{Moodlemobile:license}. Lisensi tersebut mengizinkan untuk melakukan reproduksi dari Moodle mobile dengan atau tanpa modifikasi. Seperti yang disebut pada poin 4 lisesnsi dengan judul \textit{"Redistribution"}, hal-hal tersebut dapat dilakukan apabila memenuhi syarat-syarat yang tertera. Syarat-syarat yang dimaksud adalah :
+\begin{itemize}
+\item Aplikasi yang dibuat harus disertakan dengan salinan lisensi \textit{Apcahe 2.0}.
+\item Seluruh file yang dimodifikasi harus menyertakan pemberitahuan yang jelas bahwa file tersebut sudah dimodifikasi.
+\item Seluruh paten, \textit{trademark}, \textit{copyright} dan pemberitahuan atribusi harus disimpan dalam bentuk sumber untuk seluruh aplikasi yang akan didistrubusikan.
+\item Apabila aplikasi sumber menyertakan file teks dengan judul \textit{\textbf{NOTICES}}, maka selurh aplikasi yang akan didistribusikan harus menyertakan salinan yang dapat dibaca.
+\end{itemize}
+Gagal memenuhi syarat-syarat di atas akan mengakibatkan lisensi untuk aplikasi yang telah dimodifikasi dan didistribusikan berrsifat tidak sah.

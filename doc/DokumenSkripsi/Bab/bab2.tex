@@ -78,7 +78,6 @@ Moodle mobile dikembangkan menggunakan Ionic karena Ionic memungkinkan pengemban
 
 Ionic memungkinkan Moodle mobile untuk bekerja seperti aplikasi \textit{native} karena Ionic menggunakan Cordova. Cordova adalah sebuah \textit{framework} pengembangan aplikasi mobile yang bersifat \textit{open source}. Cordova memungkinkan pengembangan aplikasi mobile dengan menggunakan teknologi standar web. Aplikasi yang dikembangkan dengan menggunakan Cordova akan bergantung kepada binding API yang sesuai standar untuk mengakses kemampuan setiap perangkat seperti sensor, data, status jaringan dan lain-lain\cite{cordova:overview}. Ionic juga dapat dikembangkan dengan integrasi bersama \textit{framework} lain seperti Angular atau React. Moodle mobile versi 3.5 dikembangkan menggunakan Ionic versi 3 \cite{moodle:dev}. Ionic versi 3 masih menggunakan Angular secara langsung, sehingga Moodle mobile dikembangkan dengan Ionic yang diintegrasikan dengan Angular \cite{moodle:dev}.
 
-Moodle mobile dilisensikan dengan lisensi \textit{Apache 2.0}\cite{Moodlemobile:license}. Lisensi tersebut merupakan lisensi yang bersifat \textit{open source}, sehingga memungkinkan distribusi Moodle mobile secara gratis dan diperbolehkannya modifikasi terhadap Moodle mobile. Dengan begitu Moodle mobile dapat dianggap sebagai suatu proyek atau aplikasi \textit{open source}.
 
 Moodle mobile bersifat modular seperti Moodle berbasis web yang berarti Moodle mobile juga mendukung \textit{themes} dan \textit{plugins}. \textit{Plugin} akan membantu pengembang menambahkan fitur dengan mudah ke dalam aplikasi Moodle mobile. \textit{Themes} memungkinkan pengembang Moodle mobile untuk mengubah gaya dan layout dari aplikasi Moodle mobile sesuai dengan keinginannya. Pada subbab-subbab berikut akan dibahas mengenai fitur-fitur, \textit{plugin}, dan \textit{theme} dari Moodle mobile.
 \subsection{\textit{Themes} dan \textit{Plugins}}
@@ -310,3 +309,81 @@ Moodle mobile 2 menyediakan \textit{directives} bawaan yang dapat digunakan untu
 
 Moodle mobile 2 mengalami perubahan \textit{framework} menjadi Ionic 3 pada versi 3.5 \cite{moodle:dev}. Perubahan \textit{framework} ini membuat Moodle mobile 2 hanya berjalan pada perangkat bergerak dengan versi Android 4.4 atau iOS 8 dan seterusnya. Perangkat dengan versi OS yang telah disebutkan hanya dapat menjalankan Moodle mobile 2 dengan \textit{framework} Ionic 1. Versi Moodle mobile 2 tersebut kemudian dikategorikan oleh Moodle sebagai Moodle Classic App.
 
+
+
+\section{Lingkungan Pengembangan}
+ Subbab ini akan membahas spesifkasi yang dibutuhkan untuk lingkungan pengembangan Moodle mobile, menyiapkan lingkungan pengembangan, beserta spesifikasi lingkungan pengembangan yang digunakan dalam penelitian.
+
+\subsection{Lingkungan Pengembangan Berdasarkan Dokumentasi Moodle}
+Kustomisasi Moodle mobile dimulai dengan menyiapkan lingkungan pengembangan agar pengembang dapat mengubah \textit{source code}, melakukan pengujian menggunakan \textit{browser} pada mesin, dan \textit{deploy} aplikasi ke pergangkat seluler. Kebutuhan yang diperlukan untuk menyiapkan lingkungan pengembangan Moodle mobile adalah sebagai berikut : \cite{moodle:dev}
+
+
+\begin{enumerate}
+	\item Adanya \textit{browser} untuk pengembangan.
+	\item Git untuk \textit{source control} aplikasi dan \textit{clone} Moodle mobile.
+	\item Node.js untuk menjalankan \textit{script} JavaScript tanpa \textit{browser}.
+	\item Mesin yang menggunakan sistem operasi Windows akan membutuhkan alat \textit{native build}.
+	\item Cocoapods pada Mac untuk mengelola \textit{dependency}.
+	\item libsecret untuk sistem operasi linux agar dapat melakukan \textit{push} URL \textit{diff} atau perbedaan antar file dalam \textit{repository} lokal dan \textit{remote}.
+\end{enumerate}
+
+Langkah pertama menyiapkan kebutuhan lingkungan pengembangan adalah dengan menginstall Node.js. Node yang disarankan oleh dokumentasi Moodle mobile adalah Node.js dengan versi 11\cite{moodle:dev}, namun versi 11 dari Node.js tidak termasuk dalam status LTS atau \textit{Long Term Support}\cite{nodejs:status}. Sehingga pada penelitian ini akan dilakukan pengembangan dengan versi Node.js yang berstatus LTS. Langkah kedua adalah dengan menginstall kebutuhan spesifik yang dibutuhkan oleh Moodle mobile sesuai dengan sistem operasi yang digunakan. Kebutuhan yang dimaksud adalah \textit{Windows native build tools} untuk Windows, \textit{cocoapods} untuk Mac, dan \textit{libsecret} untuk Linux. Langkah ketiga yang harus dilakukan adalah dengan melakukan \textit{clone} dari \textit{branch} Moodle mobile milik Moodle. Dokumentasi Moodle app menyarankan untuk menggunakan \textit{branch} dengan nama \textit{integration}\cite{moodle:dev}. \textit{Branch integration} digunakan karena dalam \textit{branch} tersebut pengembangan dan \textit{branch} dimana perbaikan-perbaikan terabaru diimplementasikan. Sehingga setelah melakukan \textit{clone} lakukan \textit{checkout} ke \textit{branch Integration}.
+
+
+Menyiapkan lingkungan pengembangan untuk Moodle app dimulai dengan menginstall Gulp untuk automasi pengembangan tugas, menginstall Ionic, kemudian menjalankan \texttt{npm run setup}, \textit{command} tersebut menjalankan \texttt{npm install}, \texttt{npx cordova prepare}, dan \texttt{npx gulp} yang masing-masing akan menginstall \textit{dependency} npm, menyiapkan cordova, dan menjalankan tugas dasar gulp. Setelah itu jalankan \texttt{npm start} pada folder utama Moodle mobile untuk menjalankan Moodle mobile dalam \textit{browser}.
+
+Uji coba Moodle mobile dengan menggunakan perangkat seluler dapat dilakukan dengan \textit{command} \texttt{npm run dev:android} untuk Android dan \texttt{npm run dev:ios} untuk iOS. Kedua \textit{command} tersebut dijalankan dengan menggunakan Cordova, yang memiliki kebutuhan masing-masing untuk setiap platform. Cordova untuk Android akan membutuhkan Java Development Kit, Gradle, dan Android SDK\cite{cordova:android}. Cordova untuk iOS akan membutuhkan Xcode dan ios-deploy \cite{cordova:iOS}.
+
+Membangun versi produksi aplikasi akan membutuhkan kompilasi dengan AOT (\textit{ahead-of-time}) dari Angular. Untuk melakukan kompilasi AOT ada bebrapa file yang harus dimodifikasi. File yang pertama adalah \url{node_modules/@angular/platform-browser-dynamic/esm5/platform-browser-dynamic.js }, dalam file tersebut variable \texttt{\_NO\_RESOURCE\_LOADER} yang memiliki fungsi \texttt{get} dengan baris seperti pada \mbox{Kode \ref{lst:noresourceloader}} yang akan diubah menjadi seperti pada \mbox{Kode \ref{lst:noresourceloaderreplace}}.
+
+\begin{lstlisting}[frame=single, label={lst:noresourceloader}, language=PHP, caption=Fungsi \texttt{get} pada \textunderscore NO\textunderscore RESOURCE\textunderscore LOADER]
+throw new Error("No ResourceLoader implementation has been provided. Can't read the url \"" + url + "\"");
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single, label={lst:noresourceloaderreplace}, language=PHP, caption=Kode pengganti untuk fungsi \texttt{get}]
+url = 'templates/' + url;
+
+        var resolve;
+        var reject;
+        var promise = new Promise(function (res, rej) {
+            resolve = res;
+            reject = rej;
+        });
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'text';
+        xhr.onload = function () {
+            // responseText is the old-school way of retrieving response (supported by IE8 & 9)
+            // response/responseType properties were introduced in ResourceLoader Level2 spec (supported by IE10)
+            var response = xhr.response || xhr.responseText;
+            // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
+            var status = xhr.status === 1223 ? 204 : xhr.status;
+            // fix status code when it is 0 (0 status is undocumented).
+            // Occurs when accessing file resources or on Android 4.1 stock browser
+            // while retrieving files from application cache.
+            if (status === 0) {
+                status = response ? 200 : 0;
+            }
+            if (200 <= status && status <= 300) {
+                resolve(response);
+            }
+            else {
+                reject("Failed to load " + url);
+            }
+        };
+        xhr.onerror = function () { reject("Failed to load " + url); };
+        xhr.send();
+        return promise;
+\end{lstlisting}
+
+File kedua yang harus dimodifikasi adalah \url{node_modules/@ionic/app-scripts/dist/util/config.js}, pada bagian \texttt{optimizejs} modifikasi sehingga terlihat seperti pada \mbox{\ref{optimizejs}} dengan menghapus \texttt{context.isProd}.
+\\
+\\
+
+\begin{lstlisting}[frame=single, label={optimizejs}, language=PHP, caption= \texttt{optimizejs} setelah modifikasi]
+context.optimizeJs = [
+        context.optimizeJs,
+        hasArg('--optimizeJs')
+    ].find(function (val) { return typeof val === 'boolean'; });
+\end{lstlisting}
+Setelah modifikasi kedua file tersebut berhasil jalankan \textit{command} \texttt{npm run ionic:build -- --prod} untuk kompilasi. Untuk menginstall pada platform jalankan \textit{command} \texttt{npx cordova run android} untuk Android dan \texttt{npx cordova build ios} untuk iOS.
