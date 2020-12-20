@@ -42,9 +42,11 @@ Menggunakan Node.js versi 14 menyebabkan \textit{error} terjadi saat menjalankan
 
 Solusi diatas memungkinkan menjalankan Moodle mobile pada \textit{branch master} dengan menggunakan versi Node.js berstatus LTS. Namun karena perbaikan dan pembaruan terbatu diimplementasikan pada \textit{branch Integration}, maka \textit{branch} tersebut yang akan digunakan. 
 
+Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. 
+
 Menjalankan Moodle mobile dengan Node.js versi 14 pada \textit{branch Integration} akan menyebabkan \textit{error} pada saat aplikasi sedang dalam proses \textit{build}. Masalah yang muncul memiliki pesan \texttt{Node Sass does not yet support your current environment: Windows 64-bit with Unsupported runtime (83)
 For more information on which environments are supported please see:
-\url{https://github.com/sass/node-sass/releases/tag/v4.13.1}} yang memberitahu kalau Windows 64-bit tidak dapat menjalankan node-sass dengan versi 4.13. Tetapi ketika memeriksa situs npm, ditunjukkan bahwa node-sass versi 4.13 tidak mendukung Node.js versi 14. Versi node-sass yang mendukung Node.js versi 14 adalah node-sass dengan versi 4.14\cite{node:sass}. Untuk mengatasi masalah tersebut cukup mengubah file \texttt{node\_modules/node-sass/package.json} menjadi seperti \mbox{Kode \ref{node:sass version}}.
+\url{https://github.com/sass/node-sass/releases/tag/v4.13.1}} yang memberitahu kalau Windows 64-bit tidak dapat menjalankan node-sass dengan versi 4.13. Tetapi ketika memeriksa situs npm, ditunjukkan bahwa node-sass versi 4.13 tidak mendukung Node.js versi 14. Versi node-sass yang mendukung Node.js versi 14 adalah node-sass dengan versi 4.14\cite{node:sass}. Menjalankan ulang \textit{npm run setup} juga tidak menyelesaikan masalah karena ketika node-sass akan diunduh kembali tautan yang digunakan tidak dianggap valid. Untuk mengatasi masalah tersebut cukup mengubah file \texttt{node\_modules/node-sass/package.json} menjadi seperti \mbox{Kode \ref{node:sass version}} dan menjalankan ulang  \textit{npm run setup}.
 
 \begin{lstlisting}[frame=single, label ={node:sass version}, caption = Perubahan versi node-sass pada \texttt{package-lock.json} ]
 	{
@@ -236,4 +238,20 @@ interface WKUserScript {
 
 export declare var WKUserScript: WKUserScript;
 
+\end{lstlisting}
+
+\section{Penyesuaian Tema}
+Tema bawaan Moodle mobile akan diubah untuk menyesuaiakna seperti apa yang sudah dibahas pada subbab \ref{sec:Kondisi IDE UNPAR}. Implementasi perubahan-perubahan tersebut akan dibahas pada subbab subbab berikut.
+
+\subsection{Penyesuaian skema warna}
+Skema warna yang digunakan oleh IDE UNPAR adalah warna putih dengan kode \texttt{\#ffffff}, abu-abu dengan kode \texttt{\#565656} dan hijau dengan kode \texttt{\#0d8722}.  Warna-warna tersebut adalah warna utama yang terlihat ketika membuka IDE UNPAR sebagai mahasiswa. Sehingga warna-warna tersebut akan menjadi fokus utama untuk pengubahan skema warna pada Moodle mobile.
+
+Mengubah warna yang digunakan oleh Moodle mobile dapat dilakukan dengan menambah dan mengganti variable warna yang berada pada \texttt{src/theme/variables.scss}. Karena Moodle mobile sudah menggunakan warna putih dan abu-abu, maka warna yang harus ditambahkan adalah warna hijau. Penambahan warna hijau IDE UNPAR dapat dilakukan dengan menambahkan vairable warna baru dan mengganti nilai variable \texttt{\$core-color} seperti pada \mbox{Kode \ref{variablse.scss}}.
+
+\begin{lstlisting}[frame=single, label ={variable.scss}, caption = Mengubah warna utama menjadi warna hijau ]
+$green :          #0d8722; // IDE Main color
+
+... 
+
+$core-color:          $green !default;
 \end{lstlisting}
