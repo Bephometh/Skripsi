@@ -14,39 +14,11 @@ Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai 
 
 Penggunaan versi Node.js yang berstatus LTS sudah didukung pada \textit{branch integration} Moodle mobile. Dukungan untuk versi Node.js berstatus LTS dilakukan oleh Moodle karena Node.js versi 11 sudah tidak berstatus LTS. Perbaruan tersebut belum terintegrasi dalam \textit{branch master} Moodle mobile, karena akan dirilis pada Moodle mobile versi 4. \cite{MoodleTracker:Node11+} 
 
-Menjalankan \texttt{npm run setup} dengan Node.js 14 akan menghasilkan \textit{error} karena file \texttt{package.json} milik Moodle app memiliki aturan seperti pada \mbox{Kode \ref{lst:package-lock:rule}} yang menyatakan bahwa versi node yang dibutuhkan secara ketat adalah Node.js versi 11. Menghapus atau mengubah bagian tersebut akan memungkinkan menjalankan \texttt{npm run setup} dengan versi 14 Node.js. 
-
-\begin{lstlisting}[frame=single, label ={lst:package-lock:rule}, caption = Aturan pada \texttt{package-lock.json} ]
-	"engines": {
-    	"node": "11.x"
-  	}
-\end{lstlisting}
-
-Menggunakan Node.js versi 14 menyebabkan \textit{error} terjadi saat menjalankan Moodle app. Pesan \textit{error} yang muncul adalah \texttt{Module '"E:/Gabriel/Development/Skripsi/moodleapp/node \textunderscore modules/cordova-plugin-wkuserscript/types/index"' has no exported member "WKUserS \\ criptInjectionTime"}. \textit{Error} tersebut terjadi karena pada \textit{commit aa77d0f} \texttt{WKUserScriptInjectionTime} telah dihapus\cite{moodleapp:git:wkuserscript}, sehingga menyebabkan Node.js 14 menghentikan proses eksekusi aplikasi karena dianggap adanya \textit{unhandled promise}. Moodle telah mengeluarkan perbaikan untuk masalah ini pada \textit{commit b39c5ef}\cite{moodleapp:git:wkuserscriptfix}. Implementasi fix tersebut dapat dilakukan pada \textit{branch} yang digunakan dengan mengubah kode file \texttt{package-lock.json} menjadi seperti pada \mbox{Kode \ref{lst:package-lock}} dan file \texttt{src/providers/utils/iframe.ts} pada bagian \textit{import} menjadi seperti pada \mbox{Kode \ref{lst:iframe}} dan pada fungsi \texttt{win.WKUserScript.addScript()} menjadi seperti \mbox{Kode \ref{lst:addScript}}.
-
-\begin{lstlisting}[frame=single, label ={lst:package-lock}, caption = Perbaikan pada \texttt{package-lock.json} ]
-	"version": "git+https://github.com/moodlemobile/cordova-plugin-wkuserscript.git#1ad47e75a1811cec0a944d3b8b8544b3d5e052ca",
-\end{lstlisting}
- 
-\begin{lstlisting}[frame=single, label={lst:iframe}, caption = Perbaikan pada bagian \textit{import} file \texttt{iframe.ts}]
-	import { WKUserScriptWindow } from 'cordova-plugin-wkuserscript';
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single, label={lst:addScript}, caption = Perbaikan pada bagian fungsi \texttt{win.WKUserScript.addScript()} file \texttt{iframe.ts}]
-	        	win.WKUserScript.addScript({
-                    id: 'CoreIframeUtilsRecaptchaScript',
-                    file: recaptchaPath,
-                    injectionTime: win.WKUserScript.InjectionTime.END,
-                });
-\end{lstlisting}
-
-Solusi diatas memungkinkan menjalankan Moodle mobile pada \textit{branch master} dengan menggunakan versi Node.js berstatus LTS. Namun karena perbaikan dan pembaruan terbatu diimplementasikan pada \textit{branch Integration}, maka \textit{branch} tersebut yang akan digunakan. 
-
 Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. 
 
 Menjalankan Moodle mobile dengan Node.js versi 14 pada \textit{branch Integration} akan menyebabkan \textit{error} pada saat aplikasi sedang dalam proses \textit{build}. Masalah yang muncul memiliki pesan \texttt{Node Sass does not yet support your current environment: Windows 64-bit with Unsupported runtime (83)
 For more information on which environments are supported please see:
-\url{https://github.com/sass/node-sass/releases/tag/v4.13.1}} yang memberitahu kalau Windows 64-bit tidak dapat menjalankan node-sass dengan versi 4.13. Tetapi ketika memeriksa situs npm, ditunjukkan bahwa node-sass versi 4.13 tidak mendukung Node.js versi 14. Versi node-sass yang mendukung Node.js versi 14 adalah node-sass dengan versi 4.14\cite{node:sass}. Menjalankan ulang \textit{npm run setup} juga tidak menyelesaikan masalah karena ketika node-sass akan diunduh kembali tautan yang digunakan tidak dianggap valid. Untuk mengatasi masalah tersebut cukup mengubah file \texttt{node\_modules/node-sass/package.json} menjadi seperti \mbox{Kode \ref{node:sass version}} dan menjalankan ulang  \textit{npm run setup}.
+\url{https://github.com/sass/node-sass/releases/tag/v4.13.1}} yang memberitahu kalau Windows 64-bit tidak dapat menjalankan node-sass dengan versi 4.13. Tetapi ketika memeriksa situs npm, ditunjukkan bahwa node-sass versi 4.13 tidak mendukung Node.js versi 14. Versi node-sass yang mendukung Node.js versi 14 adalah node-sass dengan versi 4.14\cite{node:sass}. Menjalankan ulang \textit{npm run setup} juga tidak menyelesaikan masalah karena ketika node-sass akan diunduh kembali tautan yang digunakan tidak dianggap valid. Untuk mengatasi masalah tersebut cukup mengubah file \texttt{node\_modules/node-sass/package.json} menjadi seperti \mbox{Kode \ref{node:sass version}} dan menjalankan ulang  \textit{npm run setup}. \\ \\
 
 \begin{lstlisting}[frame=single, label ={node:sass version}, caption = Perubahan versi node-sass pada \texttt{package-lock.json} ]
 	{
@@ -60,7 +32,8 @@ For more information on which environments are supported please see:
   "_from": "node-sass@4.14.0",
   "_id": "node-sass@4.14.0",
   "_inBundle": false,
-  "_integrity": "sha512-TTWFx+ZhyDx1Biiez2nB0L3YrCZ/8oHagaDalbuBSlqXgUPsdkUSzJsVxeDO9LtPB49+Fh3WQl3slABo6AotNw==",
+  "_integrity": "sha512-TTWFx+ZhyDx1Biiez2nB0L3YrCZ/8oHagaDalbu
+BSlqXgUPsdkUSzJsVxeDO9LtPB49+Fh3WQl3slABo6AotNw==",
   "_location": "/node-sass",
   "_phantomChildren": {
     "escape-string-regexp": "1.0.5",
@@ -82,7 +55,8 @@ For more information on which environments are supported please see:
   "_requiredBy": [
     "/@ionic/app-scripts"
   ],
-  "_resolved": "https://registry.npmjs.org/node-sass/-/node-sass-4.14.0.tgz",
+  "_resolved": "https://registry.npmjs.org/node-sass/
+-/node-sass-4.14.0.tgz",
   "_spec": "4.14.0",
   "_where": "D:\\gabri\\Development\\Skripsi\\moodleapp",
   "author": {
@@ -168,7 +142,8 @@ For more information on which environments are supported please see:
     "install": "node scripts/install.js",
     "lint": "eslint bin/node-sass lib scripts test",
     "postinstall": "node scripts/build.js",
-    "prepublish": "not-in-install && node scripts/prepublish.js || in-install",
+    "prepublish": "not-in-install && node scripts/prepublish.js 
+|| in-install",
     "test": "mocha test/{*,**/**}.js"
   },
   "version": "4.14.0"
@@ -193,7 +168,8 @@ export interface WKUserScriptWindow extends Window {
 export interface WKUserScriptData {
 
     /**
-     * An ID to identify the script, to prevent loading the same script twice.
+     * An ID to identify the script, 
+     * to prevent loading the same script twice.
      */
     id: string;
 

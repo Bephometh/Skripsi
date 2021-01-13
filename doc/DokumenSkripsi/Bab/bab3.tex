@@ -1,23 +1,50 @@
 \chapter{Analisis}
 \label{chap:analsa}
 
-\section{Kondisi IDE UNPAR}
+\section{Kondisi IDE UNPAR dibandingkan dengan Moodle Standar}
 \label{sec:Kondisi IDE UNPAR} 
-IDE UNPAR sudah mengalami perubahan dan penyesuaian agar dapat digunakan, perubahan dan penyesuaian tersebut yang harus diterapkan juga didalam Moodle mobile. Perubahan dan penyesuain yang dimaksud adalah perbedaan dari tampilan dan fitur IDE UNPAR yang tidak ada dalam situs Moodle standar dan dapat dilihat oleh peneliti. Perubahan dan penyesuaian  terhadap IDE UNPAR adalah : \cite{IDEUNPAR}
+IDE UNPAR sudah mengalami perubahan dan penyesuaian agar dapat digunakan, perubahan dan penyesuaian tersebut yang harus diterapkan juga didalam Moodle mobile. Perubahan dan penyesuain yang dimaksud adalah perbedaan dari tampilan dan fitur IDE UNPAR yang tidak ada dalam situs Moodle standar dan dapat dilihat oleh peneliti. Perubahan dan penyesuaian terhadap IDE UNPAR akan adalah sebagai berikut\cite{IDEUNPAR}.
 
-\begin{itemize}
-\item Penggunaan tema Snap Moodle. perubahan ini terlihat ketika memeriksa elemen dari IDE UNPAR pada baigan HTML \textit{tag}.
-\item Mata kuliah dan peserta mata kuliah.
-\item \textit{Banner} pada halaman utama.
-\item Bagian panduan digital.
-\item Video YouTube tersemat.
-\item Branding UNPAR
-\item SSO
-\end{itemize}
+\subsubsection {Penggunaan tema Snap Moodle}
+	Tampilan IDE UNPAR sudah berbeda dari tampilan standar milik Moodle. perubahan ini terlihat ketika memeriksa elemen dari IDE UNPAR pada baigan HTML \textit{tag}. Salah satu \textit{tag link} pada \textit{tag head} IDE UNPAR mengarahkan file \texttt{styles.php} pada direkotori bernama \textit{snap}. Ketika mencari Snap pada forum \textit{plugin} Moodle ditemukan tema dengan tampilan seperti Gambar \ref{fig:snap-personal} yang menyerupai tampilan IDE. Dengan beberapa perbedaan seperti pada warna dan \textit{progress bar} dibawah \textit{activity card}.
 
-Perubahan dan penyesuaian diatas tidak semua dapat diterapkan ke dalam Moodle mobile. Penggunaan tema Snap dapat dilakukan dikarenakan Moodle mobile sudah tidak lagi mengukung penggunaan tema. Sehingga tampilan pada Moodle mobile akan diubah dengan mengubah \textit{source code}. \textit{Banner} pada halaman utama, bagian panduan digital dan branding UNPAR juga akan dilakukan dengan mengubah \textit{source code}, karena pada situs IDE UNPAR perubahan dan penyesuaian tersebut dilakukan pada tema yang digunakan. SSO juga tidak akan digunakan karena peneliti tidak memiliki akses SSO UNPAR.
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.16]{snap-personalmenu.png}  
+	\caption[Halaman \textit{Featured Courses}] {Tampilan tema Snap} 
+	\label{fig:snap-personal} 
+\end{figure} 
+\subsubsection {Mata kuliah dan peserta mata kuliah}
+IDE UNPAR sudah digunakan dalam proses belajar mengajar selama perkuliahan di UNPAR, sehingga IDE UNPAR sudah terisi dengan data dosen-dosen dan mata kuliah yang mereka ajarkan. Beserta dengan data-data tersebut IDE UNPAR juga sudah terisi dengan data-data mahasiswa aktif di UNPAR.
+\subsubsection {\textit{Banner} pada halaman utama}
+IDE UNPAR menggunakan sebuah korsel untuk menunjukkan nama situs dan pengumuman seperti pada Gambar \ref{fig:korsel-unpar}. Korsel yang digunakan oleh IDE UNPAR adalah bawaan juga dari tema Snap yang digunakan.
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{korsel-unpar.png}  
+	\caption[Korsel pada halaman utama] {Korsel pada halaman utama IDE UNPAR} 
+	\label{fig:korsel-unpar} 
+\end{figure}
+\subsubsection {Bagian panduan digital}
+IDE UNPAR juga memiliki bagian untuk petunjuk dan panduan-panduan menggunakan IDE UNPAR, terlihat pada Gambar \ref{fig:panduan-digital}. Bagian ini berisi \textit{courses} Moodle yang terletak dibawah korsel pada halaman utama. Bagian panduan digital IDE UNPAR 
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{panduan-digital.png}  
+	\caption[Bagian panduan digital] {Bagian panduan digital pada halaman utama IDE UNPAR} 
+	\label{fig:panduan-digital} 
+\end{figure} 
+\subsubsection {Video YouTube tersemat}
+Halaman utama IDE memilik vidio YouTube yang tersemat berjudulkan "Tutorial IDE Mahasiswa".
+\subsubsection {Branding UNPAR}
+Branding yang dimaksud adalah penggunaan logo IDE UNPAR, nama IDE UNPAR dan skema warna yang berbeda dari skema warna milik Moodle dan skema warna bawaan tema Snap.
+\subsubsection {SSO}
+IDE UNPAR menggunakan SSO UNPAR untuk menangani pengguna yang ingin masuk ke dalam IDE UNPAR. Tombol \textit{login} pada halaman utama akan mengarahkan pengguna ke halaman SSO UNPAR seperti pada Gambar \ref{fig:sso-unpar} untuk memasukkan kredensial mereka.
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{sso-unpar.png}  
+	\caption[Halaman SSO UNPAR] {Halaman SSO UNPAR} 
+	\label{fig:sso-unpar} 
+\end{figure} 
 
-Moodle mobile memungkinkan untuk mengatur \textit{URL preset} agar saat Moodle mobile dijalnkan, akan langsung diahlikan ke \textit{URL} tersebut. Namun ketika \textit{URL} IDE UNPAR digunakan terdapat \textit{error} dimana variable \texttt{\$urlscheme} memiliki nilai variable yang sudah diubah, dimana seharusnya variable tersebut berisi \texttt{moodlemobile://token=...} melainkan berisi \texttt{ide.unpar.ac.id://token=....}. Mengubah variable \texttt{urlscheme} pada Moodle mobile tetap tidak memungkinkan  IDE UNPAR diakses melalui Moodle mobile. Karena  adanya konfigurasi yang tidak dapat diakses untuk menghubungkan IDE UNPAR maka situs demo akan digunakan.
 %tidak dapat digunakannya akses ke IDE UNPAR maka penilitian ini akan menggunakan sebuah situs demo yang dibuat dengan Moodle atau Moodle demo.
 
 \section{Moodle demo}
@@ -52,7 +79,13 @@ Menambahkan sematan video YouTube dapat dikaukan dengan menekan tombol ikon roda
 	\label{fig:editingmode} 
 \end{figure} 
 
-\section{Lisensi Moodel mobile}
+\section{Penyesuaian Moodle Mobile dengan IDE UNPAR}
+Perubahan dan penyesuaian yang dibahas di \ref{sec:Kondisi IDE UNPAR} tidak semua dapat diterapkan ke dalam Moodle mobile. Penggunaan tema Snap dapat dilakukan dikarenakan Moodle mobile sudah tidak lagi mengukung penggunaan tema. Sehingga tampilan pada Moodle mobile akan diubah dengan mengubah \textit{source code}. \textit{Banner} pada halaman utama, bagian panduan digital dan branding UNPAR juga akan dilakukan dengan mengubah \textit{source code}, karena pada situs IDE UNPAR perubahan dan penyesuaian tersebut dilakukan pada tema yang digunakan. SSO juga tidak akan digunakan karena peneliti tidak memiliki akses SSO UNPAR.
+
+Moodle mobile memungkinkan untuk mengatur \textit{URL preset} agar saat Moodle mobile dijalnkan, akan langsung diahlikan ke \textit{URL} tersebut. Namun ketika \textit{URL} IDE UNPAR digunakan terdapat \textit{error} dimana variable \texttt{\$urlscheme} memiliki nilai variable yang sudah diubah, dimana seharusnya variable tersebut berisi \texttt{moodlemobile://token=...} melainkan berisi \texttt{ide.unpar.ac.id://token=....}. Mengubah variable \texttt{urlscheme} pada Moodle mobile tetap tidak memungkinkan  IDE UNPAR diakses melalui Moodle mobile. Karena  adanya konfigurasi yang tidak dapat diakses untuk menghubungkan IDE UNPAR maka situs demo akan digunakan.
+
+
+\section{Lisensi Moodle mobile}
 
 Moodle mobile dilisensikan dengan lisensi \textit{Apache 2.0}\cite{Moodlemobile:license}. Lisensi tersebut mengizinkan untuk melakukan reproduksi dari Moodle mobile dengan atau tanpa modifikasi. Seperti yang disebut pada poin 4 lisesnsi dengan judul \textit{"Redistribution"}, hal-hal tersebut dapat dilakukan apabila memenuhi syarat-syarat yang tertera. Syarat-syarat yang dimaksud adalah :
 \begin{itemize}
