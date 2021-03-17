@@ -84,6 +84,16 @@ Perubahan dan penyesuaian yang dibahas di \ref{sec:Kondisi IDE UNPAR} tidak semu
 
 Moodle mobile memungkinkan untuk mengatur \textit{URL preset} agar saat Moodle mobile dijalnkan, akan langsung diahlikan ke \textit{URL} tersebut. Namun ketika \textit{URL} IDE UNPAR digunakan terdapat \textit{error} dimana variable \texttt{\$urlscheme} memiliki nilai variable yang sudah diubah, dimana seharusnya variable tersebut berisi \texttt{moodlemobile://token=...} melainkan berisi \texttt{ide.unpar.ac.id://token=....}. Mengubah variable \texttt{urlscheme} pada Moodle mobile tetap tidak memungkinkan  IDE UNPAR diakses melalui Moodle mobile. Karena  adanya konfigurasi yang tidak dapat diakses untuk menghubungkan IDE UNPAR maka situs demo akan digunakan.
 
+Pada tanggal 3 Maret 2021, Moodle mobile yang berada pada Google PlayStrore dapat dihubungkan dengan situs IDE UNPAR. Dengan pengetahuan tersebut penulis mencoba kembali untuk menghubungkan Moodle mobile yang berada dalam mesin penulis dengan situ IDE UNPAR menggunakan skema URL dengan nilai \texttt{idemobile}. Dengan pengaturan tersebut Moodle mobile pada mesin penulis dapat terhubung dengan IDE UNPAR, namun hanya dalam perangkat bergerak. Ketika dilakukan uji coba menghubungkan pada browser terdapat pesan \textit{error} seperti pada Gambar \ref{fig:protocolerror}. Sehingga pengujian aplikasi selama pengembangan akan dilakukan menggunakan perangkat bergerak.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.5]{scheme-has-no-handler.jpg}  
+	\caption[Pesan pada Console browser] {Pesan pada console browser} 
+	\label{fig:protocolerror} 
+\end{figure} 
+
+
 
 \section{Lisensi Moodle mobile}
 
