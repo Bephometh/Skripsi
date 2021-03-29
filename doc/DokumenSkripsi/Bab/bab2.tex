@@ -21,6 +21,7 @@ Fitur mnegelola kelas memungkinkan dosen untuk mengelompokkan mahasiswa peserta 
 	\centering  
 	\includegraphics[scale=0.5]{activity-group.png}  
 	\caption[Gambar aktivitas dalam IDE] {Gambar aktivitas dalam IDE} 
+			{Sumber : Cetakan 1 (2015) Intercative Digital Learning Enviroment. UNPAR PRESS}
 	\label{fig:groups} 
 \end{figure} 
 Fitur mengelola kelas juga meiliki fungsi laporan atau \textit{reports}. IDE UNPAR akan menyediakan laporan aktivitas apa saja yang dilakukan oleh mahasiswa dan dapat dilihat oleh dosen pengampu mata kuliah tersebut. Laporan yang disediakan oleh IDE UNPAR dapat membantu dosen untuk menentukan \textit{recourse} atau aktivitas mana saja yang lebih menarik untuk mahasiswa penempuh mata kuliah.
@@ -32,7 +33,8 @@ Fitur pesan atau \textit{messages} dari IDE UNPAR berbeda dengan fitru forum kar
 \begin{figure} [H]
 	\centering  
 	\includegraphics[scale=0.5]{messages-page}  
-	\caption[Halaman \textit{messages} dalam IDE] {Halaman \textit{messages} dalam IDE} 
+	\caption[Halaman \textit{messages} dalam IDE] {Halaman \textit{messages} dalam IDE}
+{Sumber : Cetakan 1 (2015) Intercative Digital Learning Enviroment. UNPAR PRESS} 
 	\label{fig:messages} 
 \end{figure} 
    
@@ -47,6 +49,7 @@ Nilai dari suatu tugas dalam IDE dapat dimasukkan dengan dua cara. Cara pertama 
 	\centering  
 	\includegraphics[scale=0.5]{assignment-grading.png}  
 	\caption[Halaman nilai tugas dalam IDE] {Halaman nilai tugas dalam IDE} 
+{Sumber : Cetakan 1 (2015) Intercative Digital Learning Enviroment. UNPAR PRESS}
 	\label{fig:grading} 
 \end{figure}
 \section{Moodle}
@@ -325,6 +328,7 @@ Kustomisasi Moodle mobile dimulai dengan menyiapkan lingkungan pengembangan agar
 	\item Mesin yang menggunakan sistem operasi Windows akan membutuhkan alat \textit{native build}.
 	\item Cocoapods pada Mac untuk mengelola \textit{dependency}.
 	\item libsecret untuk sistem operasi linux agar dapat melakukan \textit{push} URL \textit{diff} atau perbedaan antar file dalam \textit{repository} lokal dan \textit{remote}.
+	
 \end{enumerate}
 
 Langkah pertama menyiapkan kebutuhan lingkungan pengembangan adalah dengan menginstall Node.js. Node yang disarankan oleh dokumentasi Moodle mobile adalah Node.js dengan versi 11\cite{moodle:dev}, namun versi 11 dari Node.js tidak termasuk dalam status LTS atau \textit{Long Term Support}\cite{nodejs:status}. Sehingga pada penelitian ini akan dilakukan pengembangan dengan versi Node.js yang berstatus LTS. Langkah kedua adalah dengan menginstall kebutuhan spesifik yang dibutuhkan oleh Moodle mobile sesuai dengan sistem operasi yang digunakan. Kebutuhan yang dimaksud adalah \textit{Windows native build tools} untuk Windows, \textit{cocoapods} untuk Mac, dan \textit{libsecret} untuk Linux. Langkah ketiga yang harus dilakukan adalah dengan melakukan \textit{clone} dari \textit{branch} Moodle mobile milik Moodle. Dokumentasi Moodle app menyarankan untuk menggunakan \textit{branch} dengan nama \textit{integration}\cite{moodle:dev}. \textit{Branch integration} digunakan karena dalam \textit{branch} tersebut pengembangan dan \textit{branch} dimana perbaikan-perbaikan terabaru diimplementasikan. Sehingga setelah melakukan \textit{clone} lakukan \textit{checkout} ke \textit{branch Integration}.
@@ -334,7 +338,7 @@ Menyiapkan lingkungan pengembangan untuk Moodle app dimulai dengan menginstall G
 
 Uji coba Moodle mobile dengan menggunakan perangkat seluler dapat dilakukan dengan \textit{command} \texttt{npm run dev:android} untuk Android dan \texttt{npm run dev:ios} untuk iOS. Kedua \textit{command} tersebut dijalankan dengan menggunakan Cordova, yang memiliki kebutuhan masing-masing untuk setiap platform. Cordova untuk Android akan membutuhkan Java Development Kit, Gradle, dan Android SDK\cite{cordova:android}. Cordova untuk iOS akan membutuhkan Xcode dan ios-deploy \cite{cordova:iOS}.
 
-Membangun versi produksi aplikasi akan membutuhkan kompilasi dengan AOT (\textit{ahead-of-time}) dari Angular. Untuk melakukan kompilasi AOT ada bebrapa file yang harus dimodifikasi. File yang pertama adalah \texttt{node\_modules/@angular/platform-browser-dynamic/esm5/platform-browser-dynamic.js }, dalam file tersebut variable \texttt{\_NO\_RESOURCE\_LOADER} yang memiliki fungsi \texttt{get} dengan baris seperti pada \mbox{Kode \ref{lst:noresourceloader}} yang akan diubah menjadi seperti pada \mbox{Kode \ref{lst:noresourceloaderreplace}}.
+Membangun versi produksi aplikasi akan membutuhkan kompilasi dengan AOT (\textit{ahead-of-time}) dari Angular. Untuk melakukan kompilasi AOT ada bebrapa file yang harus dimodifikasi. Perubahan pada file-file berikut diperlukan karena kompilasi standar AOT angular menyebabkan masalah dengan aktivitas \textit{database} dan dukungan Moodle untuk \textit{plugins}.  File yang pertama adalah \texttt{node\_modules/@angular/platform-browser-dynamic/esm5/platform-browser-dynamic.js }, dalam file tersebut variable \texttt{\_NO\_RESOURCE\_LOADER} yang memiliki fungsi \texttt{get} dengan baris seperti pada \mbox{Kode \ref{lst:noresourceloader}} yang akan diubah menjadi seperti pada \mbox{Kode \ref{lst:noresourceloaderreplace}}.\cite{moodle:dev}
 
 \begin{lstlisting}[ frame=single, label={lst:noresourceloader}, language=PHP, caption=Fungsi \texttt{get} pada \textunderscore NO\textunderscore RESOURCE\textunderscore LOADER]
 throw new Error

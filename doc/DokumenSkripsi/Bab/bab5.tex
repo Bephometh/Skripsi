@@ -232,7 +232,31 @@ $green :          #0d8722; // IDE Main color
 $core-color:          $green !default;
 \end{lstlisting}
 
+Mengubah warna melalui file \texttt{variable.scss} tidak juga mengubah warna pada \textit{status bar} di Andorid. Untuk menyesuaikan warna \textit{status bar} Android perlu dilakukan dengan mengubah niali varable \texttt{statusbarbg} pada file \texttt{config.json} seperti pada \mbox{Kode \ref{status-bar-color}}. 
+
+\begin{lstlisting}[frame=single, label ={status-bar-color}, caption = Variable untuk mengubah warna dari \textit{status bar} pada config.json ]
+    "notificoncolor": "#0d8722",
+    "statusbarbg": "#0d8722",
+    "statusbarlighttext": "#0d8722",
+    "statusbarbgios": "#0d8722",
+    "statusbarlighttextios": "#0d8722",
+    "statusbarbgandroid": false,
+    "statusbarlighttextandroid": false,
+\end{lstlisting}
+
 \section{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
 
-Konfigurasi yang tidak tersebut dalam dokumentasi Moodle adalah ketika menajalnkan perintah \texttt{npm run dev:android} akan terjadi \textit{error} dengan pesan \texttt{> No matching client found for package name 'com.ide.mobile'}. Pesan tersebut dimunculkan karena pada file \texttt{config.json} dan \texttt{config.xml} identifikasi aplikasi atau \texttt{app\_id} pada \texttt{config.json} dan \texttt{id} pada \texttt{config.xml} telah diubah menjadi \textbf{com.ide.mobile}. Sehingga ketika \textit{script} dari perintah \texttt{npm run dev:android} dijalankan, \textit{script} tersebut akan melakukan perbandingan antara kedua file tersebut dengan file \texttt{google-service.json}. Karena pada dokumentasi tidak ada perintah untuk mengubah isi dari file \texttt{google-service.json} maka nilai dari variable \texttt{package\_name} tidak akan sesuai dengan identifikasi aplikasi yang sudah diubah. Perubahan dapat dilihat pada Gambar \textbf{PUT IMAGE HERE}.
+Konfigurasi yang tidak tersebut dalam dokumentasi Moodle adalah ketika menajalnkan perintah \texttt{npm run dev:android} akan terjadi \textit{error} dengan pesan \texttt{> No matching client found for package name 'com.ide.mobile'}. Pesan tersebut dimunculkan karena pada file \texttt{config.json} dan \texttt{config.xml} identifikasi aplikasi atau \texttt{app\_id} pada \texttt{config.json} dan \texttt{id} pada \texttt{config.xml} telah diubah menjadi \textbf{com.ide.mobile}. Sehingga ketika \textit{script} dari perintah \texttt{npm run dev:android} dijalankan, \textit{script} tersebut akan melakukan perbandingan antara kedua file tersebut dengan file \texttt{google-service.json}. Karena pada dokumentasi tidak ada perintah untuk mengubah isi dari file \texttt{google-service.json} maka nilai dari variable \texttt{package\_name} tidak akan sesuai dengan identifikasi aplikasi yang sudah diubah. Perubahan dapat dilihat pada \mbox{Kode \ref{google-service.json}}. 
+
+\vspace{1cm}
+
+\begin{lstlisting}[frame=single, label ={google-service.json}, caption = Menyesuaikan \texttt{package\_name} dengan \texttt{app\_id} pada \texttt{google-service.json} ]
+      "client_info": {
+        "mobilesdk_app_id": "1:111111111111:android:1111111111111111",
+        "android_client_info": {
+          "package_name": "id.ac.unpar.moodlemobile"
+        }
+      },
+      "oauth_client": 
+\end{lstlisting}
