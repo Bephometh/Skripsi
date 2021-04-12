@@ -6,13 +6,20 @@
 IDE UNPAR sudah mengalami perubahan dan penyesuaian agar dapat digunakan, perubahan dan penyesuaian tersebut yang harus diterapkan juga didalam Moodle mobile. Perubahan dan penyesuain yang dimaksud adalah perbedaan dari tampilan dan fitur IDE UNPAR yang tidak ada dalam situs Moodle standar dan dapat dilihat oleh peneliti. Perubahan dan penyesuaian terhadap IDE UNPAR akan adalah sebagai berikut\cite{IDEUNPAR}.
 
 \subsubsection {Penggunaan tema Snap Moodle}
-	Tampilan IDE UNPAR sudah berbeda dari tampilan standar milik Moodle. perubahan ini terlihat ketika memeriksa elemen dari IDE UNPAR pada baigan HTML \textit{tag}. Salah satu \textit{tag link} pada \textit{tag head} IDE UNPAR mengarahkan file \texttt{styles.php} pada direkotori bernama \textit{snap}. Ketika mencari Snap pada forum \textit{plugin} Moodle ditemukan tema dengan tampilan seperti Gambar \ref{fig:snap-personal} yang menyerupai tampilan IDE. Dengan beberapa perbedaan seperti pada warna dan \textit{progress bar} dibawah \textit{activity card}.
+	Tampilan IDE UNPAR sudah berbeda dari tampilan standar milik Moodle. perubahan ini terlihat ketika memeriksa elemen dari IDE UNPAR pada baigan HTML \textit{tag}. Salah satu \textit{tag link} pada \textit{tag head} IDE UNPAR mengarahkan file \texttt{styles.php} pada direkotori bernama \textit{snap}. Ketika mencari Snap pada forum \textit{plugin} Moodle ditemukan tema dengan tampilan seperti Gambar \ref{fig:snap-personal} yang menyerupai tampilan IDE. Dengan beberapa perbedaan seperti pada warna dan \textit{progress bar} dibawah \textit{activity card}. Kemiripan juga dapat dilihat dengan membandingkan Gambar \ref{fig:snap-personal} dengan Gambar \ref{fig:snap-ide}
 
 \begin{figure}[H] 
 	\centering  
 	\includegraphics[scale=0.16]{snap-personalmenu.png}  
-	\caption[Halaman \textit{Featured Courses}] {Tampilan tema Snap} 
+	\caption[Tampilan dashboard tema Snap] {Tampilan tema Snap} 
 	\label{fig:snap-personal} 
+\end{figure} 
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.3]{snap-ide.png}  
+	\caption[Tampilan dashboard IDE UNPAR] {Tampilan IDE UNPAR} 
+	\label{fig:snap-ide} 
 \end{figure} 
 \subsubsection {Mata kuliah dan peserta mata kuliah}
 IDE UNPAR sudah digunakan dalam proses belajar mengajar selama perkuliahan di UNPAR, sehingga IDE UNPAR sudah terisi dengan data dosen-dosen dan mata kuliah yang mereka ajarkan. Beserta dengan data-data tersebut IDE UNPAR juga sudah terisi dengan data-data mahasiswa aktif di UNPAR.
@@ -47,7 +54,9 @@ IDE UNPAR menggunakan SSO UNPAR untuk menangani pengguna yang ingin masuk ke dal
 
 %tidak dapat digunakannya akses ke IDE UNPAR maka penilitian ini akan menggunakan sebuah situs demo yang dibuat dengan Moodle atau Moodle demo.
 
-\section{Moodle demo}
+\section{Moodle demo (sementara)}
+
+Pada saat dimulainya penulisan skripsi, penulis tidak dapat menghubungkan Moodle mobile dengan IDE UNPAR. Kesulitan menghubungkan Moodle mobile dengan IDE UNPAR terjadi ketika pengguna aplikasi diharuskan \textit{login} ke dalam IDE UNPAR melalui Moodle mobile dengan menggunakan SSO UNPAR. Moodle mobile tidak dapa sama sekali mengakses halaman SSO UNPAR. Sehingga untuk mengatasi masalah tersebut dibuatlah situs untuk mensimulasikan IDE UNPAR dengan URL \url{https://moodledemo.pascal.id} yang akan disebut sebagai Moodle demo.
 
 Moodle demo dengan \textit{URL} \url{https://moodledemo.pascal.id} adalah situs demo yang akan digunakan. Moodle demo akan berfungsi sebagai \textit{web service} yang diakses oleh Moodle mobile. Sehingga Moodle demo akan menyimpan data mahasiswa, dosen, mata kuliah dan \textit{plugin} yang  ada pada IDE UNPAR untuk digunakan di dalam Moodle mobile. 
 \subsection{Mata kuliah dan peserta mata kuliah}
@@ -79,14 +88,14 @@ Menambahkan sematan video YouTube dapat dikaukan dengan menekan tombol ikon roda
 	\label{fig:editingmode} 
 \end{figure} 
 
-\section{Penyesuaian Moodle Mobile dengan IDE UNPAR}
+\subsection{Penyesuaian Moodle Mobile dengan IDE UNPAR}
 Perubahan dan penyesuaian yang dibahas di \ref{sec:Kondisi IDE UNPAR} tidak semua dapat diterapkan ke dalam Moodle mobile. Penggunaan tema Snap dapat dilakukan dikarenakan Moodle mobile sudah tidak lagi mengukung penggunaan tema. Sehingga tampilan pada Moodle mobile akan diubah dengan mengubah \textit{source code}. \textit{Banner} pada halaman utama, bagian panduan digital dan branding UNPAR juga akan dilakukan dengan mengubah \textit{source code}, karena pada situs IDE UNPAR perubahan dan penyesuaian tersebut dilakukan pada tema yang digunakan. SSO juga tidak akan digunakan karena peneliti tidak memiliki akses SSO UNPAR.
 
 Moodle mobile memungkinkan untuk mengatur \textit{URL preset} agar saat Moodle mobile dijalnkan, akan langsung diahlikan ke \textit{URL} tersebut. Namun ketika \textit{URL} IDE UNPAR digunakan terdapat \textit{error} dimana variable \texttt{\$urlscheme} memiliki nilai variable yang sudah diubah, dimana seharusnya variable tersebut berisi \texttt{moodlemobile://token=...} melainkan berisi \texttt{ide.unpar.ac.id://token=....}. Mengubah variable \texttt{urlscheme} pada Moodle mobile tetap tidak memungkinkan  IDE UNPAR diakses melalui Moodle mobile. Karena  adanya konfigurasi yang tidak dapat diakses untuk menghubungkan IDE UNPAR maka situs demo akan digunakan.
 
-\subsection{Terhubungnya Moodle Mobile dengan IDE UNPAR}
+\section{Terhubungnya Moodle Mobile dengan IDE UNPAR}
 
-Pada tanggal 3 Maret 2021, Moodle mobile yang berada pada Google PlayStore dapat dihubungkan dengan situs IDE UNPAR. Dengan pengetahuan tersebut penulis mencoba kembali untuk menghubungkan Moodle mobile yang berada dalam mesin penulis dengan situ IDE UNPAR menggunakan skema URL dengan nilai \texttt{idemobile}. Dengan pengaturan tersebut Moodle mobile pada mesin penulis dapat terhubung dengan IDE UNPAR, namun hanya dalam perangkat bergerak. Ketika dilakukan uji coba menghubungkan pada browser terdapat pesan \textit{error} seperti pada Gambar \ref{fig:protocolerror}. Sehingga pengujian aplikasi selama pengembangan akan dilakukan menggunakan perangkat bergerak.
+Pada tanggal 7 Maret 2021, Moodle mobile yang berada pada Google PlayStore dapat dihubungkan dengan situs IDE UNPAR. Dengan pengetahuan tersebut penulis mencoba kembali untuk menghubungkan Moodle mobile yang berada dalam mesin penulis dengan situs IDE UNPAR menggunakan skema URL dengan nilai \texttt{idemobile}. Dengan pengaturan tersebut Moodle mobile pada mesin penulis dapat terhubung dengan IDE UNPAR, namun hanya dalam perangkat bergerak. Ketika dilakukan uji coba menghubungkan pada browser terdapat pesan \textit{error} seperti pada Gambar \ref{fig:protocolerror}. Sehingga pengujian aplikasi selama pengembangan akan dilakukan menggunakan perangkat bergerak.
 
 \begin{figure}[H] 
 	\centering  
@@ -95,6 +104,7 @@ Pada tanggal 3 Maret 2021, Moodle mobile yang berada pada Google PlayStore dapat
 	\label{fig:protocolerror} 
 \end{figure} 
 
+Kemungkinan terjadinya masalah yang menyebabkan aplikasi Moodle mobile tidak dapat mengakses halam SSO UNPAR adalah karena adanya masalah dengan salah satu \textit{plugin} Cordova yang digunakan oleh Moodle seperti yang dijelaskan dalam website \url{https://tracker.moodle.org} dengan identifikasi \textit{issues} \textbf{MOBILE-3484} \cite{moodleTracker:3484}. Dalam halaman \textit{issue} tersebut Dani Palou, juga menyatakan bahwa adanya pelacakan \textit{issue} untuk mengatasi masalah yang sama dalam \textit{branch} integration Moodle mobile dengan identifikasi \textit{issue} \textbf{MOBILE-3471}\cite{moodleTracker:3471}. 
 
 
 \section{Lisensi Moodle mobile}
