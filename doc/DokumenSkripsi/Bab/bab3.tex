@@ -104,9 +104,6 @@ Pada tanggal 7 Maret 2021, Moodle mobile yang berada pada Google PlayStore dapat
 	\label{fig:protocolerror} 
 \end{figure} 
 
-Kemungkinan terjadinya masalah yang menyebabkan aplikasi Moodle mobile tidak dapat mengakses halam SSO UNPAR adalah karena adanya masalah dengan salah satu \textit{plugin} Cordova yang digunakan oleh Moodle seperti yang dijelaskan dalam website \url{https://tracker.moodle.org} dengan identifikasi \textit{issues} \textbf{MOBILE-3484} \cite{moodleTracker:3484}. Dalam halaman \textit{issue} tersebut Dani Palou, juga menyatakan bahwa adanya pelacakan \textit{issue} untuk mengatasi masalah yang sama dalam \textit{branch} integration Moodle mobile dengan identifikasi \textit{issue} \textbf{MOBILE-3471}\cite{moodleTracker:3471}. 
-
-
 \section{Lisensi Moodle mobile}
 
 Moodle mobile dilisensikan dengan lisensi \textit{Apache 2.0}\cite{Moodlemobile:license}. Lisensi tersebut mengizinkan untuk melakukan reproduksi dari Moodle mobile dengan atau tanpa modifikasi. Seperti yang disebut pada poin 4 lisesnsi dengan judul \textit{"Redistribution"}, hal-hal tersebut dapat dilakukan apabila memenuhi syarat-syarat yang tertera. Syarat-syarat yang dimaksud adalah :
@@ -118,9 +115,10 @@ Moodle mobile dilisensikan dengan lisensi \textit{Apache 2.0}\cite{Moodlemobile:
 \end{itemize}
 Gagal memenuhi syarat-syarat di atas akan mengakibatkan lisensi untuk aplikasi yang telah dimodifikasi dan didistribusikan berrsifat tidak sah.
 
-\section{Fitur-fitur yang dapat diimplementasi}
+\section{Saran fitu-fitur dari umpan balik}
+\label{feature feedback}
 
-Pada tanggal 25 Maret 2021 penguji membuat sebuah kuesioner yang dibagikan kepada warga UNPAR yang memiliki tautan untuk menguji coba aplikasi IDE UNPAR Mobile. Form tersebut berisi pertanyaan yang menyangkut bagaimana pengalaman penggunaan aplikasi dan fitur-fitur apa saja yang mereka inginkan untuk diimplementasi. Berikut adalah fitur-fitur yang diinginkan oleh penguji untuk diimplementasikan dan mungkin atau tidaknya untuk diimplementasikan.
+Pada tanggal 25 Maret 2021 penguji membuat sebuah kuesioner yang dibagikan kepada warga UNPAR yang memiliki tautan untuk menguji coba aplikasi IDE UNPAR Mobile. Form tersebut berisi pertanyaan yang menyangkut bagaimana pengalaman penggunaan aplikasi dan fitur-fitur apa saja yang mereka inginkan untuk diimplementasi. Tabel \ref{fitur yang diinginkan} adalah fitur-fitur yang diinginkan oleh penguji untuk diimplementasikan dan mungkin atau tidaknya untuk diimplementasikan.
 
 \begin{table}[ht]
 \caption{Hasil kuesioner untuk fitur apa yang diinginkan}
@@ -129,15 +127,55 @@ Pada tanggal 25 Maret 2021 penguji membuat sebuah kuesioner yang dibagikan kepad
 \hline
 \multicolumn{1}{|l|}{\multirow{2}{*}{Fitur yang ingin diimplementasikan}} & \multicolumn{2}{l|}{Dapat diimplementasikan?}                    \\ \cline{2-3} 
 \multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{Ya} & \multicolumn{1}{l|}{Tidak} \\ \hline
-Push notification & \checkmark & \\
+Push notification & & \checkmark \\
 Scanner untuk foto menjadi PDF  &  \checkmark & \\
 Sinkronisasi dengan google calendar & & \\
-Absensi melalui IDE UNPAR & &\checkmark \\
+Absensi melalui IDE UNPAR &  &\checkmark \\
 Fitur tambah file otomatis dari apps scanner & \checkmark & \\
 Jadwal Kuliah & &\checkmark \\
-Sign in SSO dalam app & & \\
-Dapat berpindah page dengan swipe horizontal & & \\
+Sign in SSO dalam app & &  \checkmark \\
+Dapat berpindah page dengan swipe horizontal & & \checkmark\\
+Fitur Pesan yang berupa message di IDE di konversi menjadi bentuk chat &  & \checkmark \\
+login langsung di aplikasi & & \checkmark \\
 \hline
 \end{tabular}
 \label{fitur yang diinginkan}
 \end{table}
+
+\subsection{Push notification}
+\label{push notif}
+Fitur ini ditandakan sebagai tidak dapat diimplementasikan karena fitur tersebut sudah ada didalam Moodle mobile. Pengguna sudah bisa mendapatkan notifikasi dari aplikasi Moodle mobile dan dapat mengaturnya dari aplikasi itu sendiri.
+
+\subsection{Scanner untuk foto menjadi PDF} 
+\label{PDF scanner}
+Fitur ini dapat diimplementasikan dengan bantuan dari \textit{plugin} Cordova \texttt{cordova-plugin-document-scanner}. Dengan plugin tersebut gambar yang ditangkap melalui kamera perangkat pengguna akan dimasukkan ke dalam format HTML yang kemudian akan dikonversi ke format PDF. Setelah dikonversi file PDF tersebut akan langsung diunggah ke dalam \textit{private files} atau submisi tugas.
+
+\subsection{Sinkronisasi dengan Google Calendar}
+
+\subsection{Absensi melalui IDE UNPAR} 
+\label{absesnsi IDE}
+Fitur ini tidak dapat diimplementasi karena absensi dilakukan melalui Student Portal UNPAR. Namun penulis akan menambahkan sebuah tombol pada halaman menu untuk membuka situs Student Portal.
+
+\subsection{Fitur tambah file otomatis dari apps scanner}
+\label{scanner app}
+Fitur ini serupa dan akan terimplementasi sama dengan yang dibahas di subbab \ref{PDF scanner}.
+
+\subsection{Jadwal Kuliah}
+Fitur ini tidak akan diimplementasikan, karena jadwal perkuliahan tidak diatur atau ditunjukkan ke dalam IDE UNPAR melainkan di dalam Student Portal.
+
+\subsection{Sign in SSO dalam app}
+\label{in app sign in}
+Fitur ini tidak dapat diimplementasikan karena moodle tidak dapat menampilkan SSO UNPAR di dalam aplikasinya sehingga SSO UNPAR tetap harus diakses melalui \textit{browser}. Fitur ini juga dirasakan tidak perlu karena Moodle mobile akan langsung mengarahkan kembali ke dalam aplikasi setalah berhasil login melalui \textit{browser}.
+
+\subsection{Dapat berpindah page dengan swipe horizontal}
+ \label{horizontal swipe}
+ Fitur ini tidak akan diimplementasikan karena tidak cukupnya waktu untuk mengimplementasi fitur.
+
+\subsection{Fitur Pesan yang berupa message di IDE di konversi menjadi bentuk chat }
+\label{chat}
+Fitur ini tidak diimplementasikan karena Moodle mobile sudah menunjukkan \textit{message} dalam bentuk \textit{chat}.
+
+\subsection{Login langsung di aplikasi}
+ \label{in app login}
+Fitur ini tidak akan diimplementasi dengan alasan sama dengan yang dibahas di subbab \ref{in app sign in}.
+

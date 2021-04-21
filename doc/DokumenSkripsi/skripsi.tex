@@ -69,7 +69,8 @@
 \usepackage[table]{xcolor}%untuk kode program
 \usepackage{pgffor}% untuk foreach
 \usepackage{multirow}
- 
+\usepackage{dirtree}
+
 \newcommand{\vtemplateauthor}{lionov}
 \newcommand{\dtext}[1]{{\color{lightgray} \lipsum[#1]}}%command untuk dummy text
 \newcommand{\rtext}[1]{{\color{red} \small #1}}%command untuk default text
@@ -243,7 +244,7 @@
 
 %isi dokumen
 \begin{document}
-	
+
 \raggedbottom
  
 \pagestyle{empty}%tidak ada nomor halaman
@@ -411,6 +412,18 @@
 \setpagewiselinenumbers  %supaya reset ke 1 di setiap halaman
  
 \pagestyle{fancy}%header 
+
+\definecolor{diffstart}{RGB}{169,169,169} %mendefinisikan warna abu-abu
+\definecolor{diffincl}{RGB}{0,128,0} %mendefinisikan warna hijau
+\definecolor{diffrem}{RGB}{255,0,0} %mendefinisikan warna merah
+
+\lstdefinelanguage{diff}{ %mendefinisikan bahasa baru
+	basicstyle=\ttfamily\small,
+	morecomment=[f][\color{diffstart}]{@@},
+	morecomment=[f][\color{diffincl}]{+\ },
+	morecomment=[f][\color{diffrem}]{-\ },
+	rulecolor=\color{black},
+}
 
 %include bab 
 \foreach \i in \vbab { \edef\vfile{Bab/bab\i} \IfFileExists{\vfile}{\include{\vfile}}} 
