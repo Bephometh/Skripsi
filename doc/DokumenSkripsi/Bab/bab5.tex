@@ -10,11 +10,12 @@ Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai 
 	\item Git, dengan \textit{fork} yang mengarah kepada \textit{repository} resmi Moodle mobile.
 	\item Node.js versi 14.
 	\item \textit{Native build tools} Windows.
+	\item Perangkat bergerak dengan sistem operasi Android
 \end{enumerate} 
 
-Penggunaan versi Node.js yang berstatus LTS sudah didukung pada \textit{branch integration} Moodle mobile. Dukungan untuk versi Node.js berstatus LTS dilakukan oleh Moodle karena Node.js versi 11 sudah tidak berstatus LTS. Perbaruan tersebut belum terintegrasi dalam \textit{branch master} Moodle mobile, karena akan dirilis pada Moodle mobile versi 4. \cite{MoodleTracker:Node11+} 
+Penggunaan versi Node.js versi 14 atau versi lainnya yang berstatus LTS sudah didukung pada \textit{branch integration} Moodle mobile. Dukungan untuk versi Node.js berstatus LTS dilakukan oleh Moodle karena Node.js versi 11 sudah tidak berstatus LTS. Perbaruan tersebut belum terintegrasi dalam \textit{branch master} Moodle mobile, karena akan dirilis pada Moodle mobile versi 4\cite{MoodleTracker:Node11+} . Dengan begitu penggunaan Node.js versi 14 tidak menjadi masalah walaupun berbeda dengan yang disarankan di dalam dokumentasi Moodle mobile. 
 
-Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. 
+Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. Setelah menajlankan kedua perintah tersebut Moodle mobile dapat diakses dengan memasukkan URL \url{http://localhost:8100} pada \textit{browser} Chromium. 
 
 
 \section{Penyesuaian Tema}
@@ -25,7 +26,7 @@ Skema warna yang digunakan oleh IDE UNPAR adalah warna putih dengan kode \texttt
 
 Mengubah warna yang digunakan oleh Moodle mobile dapat dilakukan dengan menambah dan mengganti variable warna yang berada pada \texttt{src/theme/variables.scss}. Karena Moodle mobile sudah menggunakan warna putih dan abu-abu, maka warna yang harus ditambahkan adalah warna hijau. Penambahan warna hijau IDE UNPAR dapat dilakukan dengan menambahkan vairable warna baru dan mengganti nilai variable \texttt{\$core-color}. Perubahan dapat dilihat pada \mbox{Kode \ref{variable-scss}}.
 
-\begin{lstlisting}[frame=single, label ={variable-scss}, caption = Mengubah warna utama menjadi warna hijau ]
+\begin{lstlisting}[language = diff, frame=single, label ={variable-scss}, caption = Mengubah warna utama menjadi warna hijau ]
 diff --git a/src/theme/variables.scss b/src/theme/variables.scss
 index 20a2d27e9a..7f3bac0f9d 100644
 --- a/src/theme/variables.scss
@@ -34,7 +35,7 @@ index 20a2d27e9a..7f3bac0f9d 100644
  $orange:          #f98012; // Accent (never text).
  $yellow:          #fbad1a; // Accent (never text).
  $purple:          #8e24aa; // Accent (never text).
-+$green :          #0d8722; // IDE Main color
++ $green :          #0d8722; // IDE Main color
  
  // Branded apps customization
  // --------------------------------------------------
@@ -42,15 +43,15 @@ index 20a2d27e9a..7f3bac0f9d 100644
  $yellow-light:    mix($yellow, white, 20%) !default;
  $yellow-dark:     mix($yellow, black, 40%) !default;
  
--$core-color:          $orange !default;
-+$core-color:          $green !default;
+- $core-color:          $orange !default;
++ $core-color:          $green !default;
  $core-color-light:    lighten($core-color, 10%) !default;
  $core-color-dark:     darken($core-color, 10%) !default;
 \end{lstlisting}
 
 Mengubah warna melalui file \texttt{variable.scss} tidak juga mengubah warna pada \textit{status bar} di Andorid. Untuk menyesuaikan warna \textit{status bar} Android perlu dilakukan dengan mengubah niali varable \texttt{statusbarbg} pada file \texttt{config.json}. Perubahan dapat dilihat pada \mbox{Kode \ref{status-bar-color}}. 
 
-\begin{lstlisting}[frame=single, label ={status-bar-color}, caption = Variable untuk mengubah warna dari \textit{status bar} pada config.json ]
+\begin{lstlisting}[language = diff, frame=single, label ={status-bar-color}, caption = Variable untuk mengubah warna dari \textit{status bar} pada config.json ]
 diff --git a/src/config.json b/src/config.json
 index 31402ee681..f2bb898b20 100644
 --- a/src/config.json
@@ -79,213 +80,242 @@ index 31402ee681..f2bb898b20 100644
 \end{lstlisting}
 
 \subsection{Penyesuaian ikon dan \textit{resource} lainnya}
-Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spalsh screen} dari aplikasi juga akan diganti. Ikon aplikasi akan menggunakan logo UNPAR dan \textit{splash screen} akan menggunakan logo IDE UNPAR. Langkah pertama yang harus dilakukan adalah menyeidkan file \texttt{icon.png} dan \texttt{spalsh.png} di dalam folder \texttt{resource}. Kemudia untuk menghasilkan ikon dan \textit{splash screen} untuk kedua platform Android dan iOS Cordova menyediakan perintah \texttt{npx ionic cordova resource}. Dengan menjalankan perintah tersebut Cordova akan menghasilkan \textit{resource} yang dibutuhkan. \textit{config.xml} juga akan diubah ketika menjalankan perintah tersebut. Perubahan dapat dilihat pada \mbox{Kode \ref{app-resource}}.
-
-\begin{lstlisting}[frame=single, label ={app-resource}, caption = Menggunakan \textit{resource} yang baru saja dihasilkan di dalam aplikasi ]
-diff --git a/config.xml b/config.xml
-index 01aeaa0c1a..0c2611b778 100644
---- a/config.xml
-+++ b/config.xml
-@@ -50,6 +50,7 @@
-     </feature>
-     <platform name="android">
-         <resource-file src="MainActivity.java" target="app/src/main
-		/java/com/moodle/moodlemobile/MainActivity.java" />
-+        <icon src="resources/icon.png" />
-         <resource-file src="google-services.json" 
-	target="app/google-services.json" />
-         <resource-file 
-	src="resources/android/icon/drawable-ldpi-smallicon.png"
-	target="app/src/main/res/mipmap-ldpi/smallicon.png" />
-         <resource-file 
-	src="resources/android/icon/drawable-mdpi-smallicon.png" 
-	target="app/src/main/res/mipmap-mdpi/smallicon.png" />
-@@ -222,9 +223,22 @@
-         <config-file parent="/*" target="AndroidManifest.xml">
-             <uses-feature 
-		android:name="android.hardware.bluetooth"
-		android:required="false" />
-         </config-file>
-+        <splash density="land-ldpi"
-	src="resources
-	/android/splash/drawable-land-ldpi-screen.png" />
-+        <splash density="land-mdpi"
-	src="resources
-	/android/splash/drawable-land-mdpi-screen.png" />
-+        <splash density="land-hdpi" 
-	src="resources
-	/android/splash/drawable-land-hdpi-screen.png" />
-+        <splash density="land-xhdpi" 
-	src="resources
-	/android/splash/drawable-land-xhdpi-screen.png" />
-+        <splash density="land-xxhdpi" 
-	src="resources
-	/android/splash/drawable-land-xxhdpi-screen.png" />
-+        <splash density="land-xxxhdpi" 
-	src="resources
-	/android/splash/drawable-land-xxxhdpi-screen.png" />
-+        <splash density="port-ldpi"
-	src="resources
-	/android/splash/drawable-port-ldpi-screen.png" />
-+        <splash density="port-mdpi" 
-	src="resources
-	/android/splash/drawable-port-mdpi-screen.png" />
-+        <splash density="port-hdpi" 
-	src="resources
-	/android/splash/drawable-port-hdpi-screen.png" />
-+        <splash density="port-xhdpi" 
-	src="resources
-	/android/splash/drawable-port-xhdpi-screen.png" />
-+        <splash density="port-xxhdpi" 
-	src="resources
-	/android/splash/drawable-port-xxhdpi-screen.png" />
-+        <splash density="port-xxxhdpi" 
-	src="resources
-	/android/splash/drawable-port-xxxhdpi-screen.png" />
-     </platform>
-     <platform name="ios">
-         <resource-file src="GoogleService-Info.plist" />
-+        <icon src="resources/icon.png" />
-         <edit-config file="*-Info.plist" 
-	mode="merge" target="NSLocationWhenInUseUsageDescription">
-             <string>We need your location so you 
-	can attach it as part of your submissions.</string>
-         </edit-config>
-@@ -647,5 +661,52 @@
-                 </dict>
-             </array>
-         </config-file>
-+        <icon height="57"
-		 src="resources/ios/icon/icon.png" width="57" />
-+        <icon height="114" 
-		src="resources/ios/icon/icon@2x.png" width="114" />
-+        <icon height="20" 
-		src="resources/ios/icon/icon-20.png" width="20" />
-+        <icon height="40"
-		 src="resources/ios/icon/icon-20@2x.png" width="40" />
-+        <icon height="60"
-		 src="resources/ios/icon/icon-20@3x.png" width="60" />
-+        <icon height="29" 
-		src="resources/ios/icon/icon-29.png" width="29" />
-+        <icon height="58" 
-		src="resources/ios/icon/icon-29@2x.png" width="58" />
-+        <icon height="87" 
-		src="resources/ios/icon/icon-29@3x.png" width="87" />
-+        <icon height="48" 
-		src="resources/ios/icon/icon-24@2x.png" width="48" />
-+        <icon height="55" 
-		src="resources/ios/icon/icon-27.5@2x.png" width="55" />
-+        <icon height="88" 
-		src="resources/ios/icon/icon-44@2x.png" width="88" />
-+        <icon height="172" 
-		src="resources/ios/icon/icon-86@2x.png" width="172" />
-+        <icon height="196" 
-		src="resources/ios/icon/icon-98@2x.png" width="196" />
-+        <icon height="216" 
-		src="resources/ios/icon/icon-108@2x.png" width="216" />
-+        <icon height="40"
-		 src="resources/ios/icon/icon-40.png" width="40" />
-+        <icon height="80" 
-		src="resources/ios/icon/icon-40@2x.png" width="80" />
-+        <icon height="120" 
-		src="resources/ios/icon/icon-40@3x.png" width="120" />
-+        <icon height="50" 
-		src="resources/ios/icon/icon-50.png" width="50" />
-+        <icon height="100"
-		 src="resources/ios/icon/icon-50@2x.png" width="100" />
-+        <icon height="60" 
-		src="resources/ios/icon/icon-60.png" width="60" />
-+        <icon height="120" 
-		src="resources/ios/icon/icon-60@2x.png" width="120" />
-+        <icon height="180" 
-		src="resources/ios/icon/icon-60@3x.png" width="180" />
-+        <icon height="72" 
-		src="resources/ios/icon/icon-72.png" width="72" />
-+        <icon height="144" 
-		src="resources/ios/icon/icon-72@2x.png" width="144" />
-+        <icon height="76" 
-		src="resources/ios/icon/icon-76.png" width="76" />
-+        <icon height="152" 
-		src="resources/ios/icon/icon-76@2x.png" width="152" />
-+        <icon height="167" 
-		src="resources/ios/icon/icon-83.5@2x.png" width="167" />
-+        <icon height="1024" 
-		src="resources/ios/icon/icon-1024.png" width="1024" />
-+        <splash height="1136" 
-	src="resources/ios/splash
-	/Default-568h@2x~iphone.png" width="640" />
-+        <splash height="1334" 
-	src="resources/ios/splash/Default-667h.png" width="750" />
-+        <splash height="2688" 
-	src="resources/ios/splash
-	/Default-2688h~iphone.png" width="1242" />
-+        <splash height="1242" 
-	src="resources/ios/splash
-	/Default-Landscape-2688h~iphone.png" width="2688" />
-+        <splash height="1792" 
-	src="resources/ios/splash
-	/Default-1792h~iphone.png" width="828" />
-+        <splash height="828"
-	src="resources/ios/splash
-	/Default-Landscape-1792h~iphone.png" width="1792" />
-+        <splash height="2436" 
-	src="resources/ios/splash
-	/Default-2436h.png" width="1125" />
-+        <splash height="1125" 
-	src="resources/ios/splash
-	/Default-Landscape-2436h.png" width="2436" />
-+        <splash height="2208" 
-	src="resources/ios/splash
-	/Default-736h.png" width="1242" />
-+        <splash height="1242" 
-	src="resources/ios/splash
-	/Default-Landscape-736h.png" width="2208" />
-+        <splash height="1536" 
-	src="resources/ios/splash
-	/Default-Landscape@2x~ipad.png" width="2048" />
-+        <splash height="2048" 
-	src="resources/ios/splash
-	/Default-Landscape@~ipadpro.png" width="2732" />
-+        <splash height="768" 
-	src="resources/ios/splash
-	/Default-Landscape~ipad.png" width="1024" />
-+        <splash height="2048"
-	src="resources/ios/splash
-	/Default-Portrait@2x~ipad.png" width="1536" />
-+        <splash height="2732" 
-	src="resources/ios/splash
-	/Default-Portrait@~ipadpro.png" width="2048" />
-+        <splash height="1024" 
-	src="resources/ios/splash
-	/Default-Portrait~ipad.png" width="768" />
-+        <splash height="960" 
-	src="resources/ios/splash
-	/Default@2x~iphone.png" width="640" />
-+        <splash height="480" 
-	src="resources/ios/splash
-	/Default~iphone.png" width="320" />
-+        <splash height="2732"
-	src="resources/ios/splash
-	/Default@2x~universal~anyany.png" width="2732" />
-     </platform>
- </widget>
-\end{lstlisting}
+Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spalsh screen} dari aplikasi juga akan diganti. Ikon aplikasi akan menggunakan logo UNPAR dan \textit{splash screen} akan menggunakan logo IDE UNPAR. Langkah pertama yang harus dilakukan adalah menyeidkan file \texttt{icon.png} dan \texttt{spalsh.png} di dalam folder \texttt{resource}. Kemudia untuk menghasilkan ikon dan \textit{splash screen} untuk kedua platform Android dan iOS Cordova menyediakan perintah \texttt{npx ionic cordova resource}. Dengan menjalankan perintah tersebut Cordova akan menghasilkan \textit{resource} yang dibutuhkan. \textit{config.xml} juga akan diubah ketika menjalankan perintah tersebut.
 
 Setelah perubahan tersebut diimplementasikan, dengan melakukan \textit{build} ulang aplikasi menggunakan \texttt{npx ionic cordova build Android} atau \texttt{npx ionic cordova run Android}, maka aplikasi akan menggunakan \textit{resource} yang baru saja dihasilkan.
 
 \section{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
 
-Konfigurasi yang tidak tersebut dalam dokumentasi Moodle adalah ketika menajalnkan perintah \texttt{npm run dev:android} akan terjadi \textit{error} dengan pesan \texttt{> No matching client found for package name 'com.ide.mobile'}. Pesan tersebut dimunculkan karena pada file \texttt{config.json} dan \texttt{config.xml} identifikasi aplikasi atau \texttt{app\_id} pada \texttt{config.json} dan \texttt{id} pada \texttt{config.xml} telah diubah menjadi \textbf{com.ide.mobile}. Sehingga ketika \textit{script} dari perintah \texttt{npm run dev:android} dijalankan, \textit{script} tersebut akan melakukan perbandingan antara kedua file tersebut dengan file \texttt{google-service.json}. Karena pada dokumentasi tidak ada perintah untuk mengubah isi dari file \texttt{google-service.json} maka nilai dari variable \texttt{package\_name} tidak akan sesuai dengan identifikasi aplikasi yang sudah diubah. Perubahan dapat dilihat pada \mbox{Kode \ref{google-service.json}}. 
+Konfigurasi yang tidak disebutkan di dalam dokumentasi Moodle adalah ketika melakukan uji coba pada perangkat bergerak akan terjadi \textit{error} dengan pesan \texttt{> No matching client found for package name 'id.ac.unpar.moodlemobile'}. Pesan tersebut dimunculkan karena pada file \texttt{config.json} dan \texttt{config.xml} identifikasi aplikasi atau \texttt{app\_id} pada \texttt{config.json} dan \texttt{id} pada \texttt{config.xml} telah diubah menjadi \textbf{id.ac.unpar.moodlemobile}. Sehingga ketika \textit{script} dari perintah \texttt{npm run dev:android} dijalankan, \textit{script} tersebut akan melakukan perbandingan antara kedua file tersebut dengan file \texttt{google-service.json}. Karena pada dokumentasi tidak ada perintah untuk mengubah isi dari file \texttt{google-service.json} maka nilai dari variable \texttt{package\_name} tidak akan sesuai dengan identifikasi aplikasi yang sudah diubah. Perubahan dapat dilihat pada \mbox{Kode \ref{google-service.json}}. Dengan melakukan perubahan tersebut maka aplikasi dapat dijalankan pada perangkat bergerak.
 
-\vspace{1cm}
-
-\begin{lstlisting}[frame=single, label ={google-service.json}, caption = Menyesuaikan \texttt{package\_name} dengan \texttt{app\_id} pada \texttt{google-service.json} ]
-      "client_info": {
-        "mobilesdk_app_id": "1:111111111111:android:1111111111111111",
-        "android_client_info": {
-          "package_name": "id.ac.unpar.moodlemobile"
-        }
-      },
-      "oauth_client": 
+\begin{lstlisting}[language = diff, frame=single, label ={google-service.json}, caption = Menyesuaikan \texttt{package\_name} dengan \texttt{app\_id} pada \texttt{google-service.json} ]
+diff --git a/google-services.json b/google-services.json
+index c1c3ad8bf25..921f8f80475 100644
+--- a/google-services.json
++++ b/google-services.json
+@@ -10,7 +10,7 @@
+       "client_info": {
+         "mobilesdk_app_id": "1:111111111111:android:1111111111111111",
+         "android_client_info": {
+-          "package_name": "com.moodle.moodlemobile"
++          "package_name": "id.ac.unpar.moodlemobile"
+         }
+       },
+       "oauth_client": [
 \end{lstlisting}
+
+Melakukan pengujian pada perangkat bergerak dilakukan dengan menguhubungkan perangkat bergerak dengan \textit{desktop} atau \textit{laptop} peneliti menggunakan koneksi USB. Setelah kedua perangkat tersebut terhubung, pada \textit{root} folder proyek jalankan perintah \texttt{npx ionic cordova run android}. Perintah tersebut berbeda dengan yang disebutkan di dalam dokumentasi karena ketika menjalankan perintah \texttt{npm run dev:android} akan terjadi \textit{error} seperti pada Gambar \ref{app:error:no-connection}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{no_connection-id.ac.unpar.moodlemobile.jpg}  
+	\caption[\textit{Application error} dengan perintah \texttt{npm run dev:android}] {\textit{Application error} dengan perintah \texttt{npm run dev:android}} 
+	\label{app:error:no-connection} 
+\end{figure} 
+
+Perintah \texttt{npx ionic cordova run android} akan menginstall \texttt{app-debug.apk} pada perangkat Android dan menajlankannya tanpa masalah. Ketika aplikasi berhasil berjalan pada perangkat bergerak, pengguna akan melalui halaman \textit{loading} seperti pada Gambar \ref{app:loading} kemudian diarahkan kehalaman \textit{login} di dalam aplikasi seperti pada Gambar \ref{app:login}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{spalsh_screen-id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{loading} aplikasi] {Halaman \textit{loading} aplikasi} 
+	\label{app:loading} 
+\end{figure}
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{login_screen-id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{login} aplikasi] {Halaman \textit{login} aplikasi} 
+	\label{app:login} 
+\end{figure}  
+
+Pengguna diharuskan menekan \textit{"OK"} pada \textit{pop-up} yang muncul untuk \textit{login} menggunakan SSO UNPAR. Ketika pengguna sudah berhasil \textit{login}. Pengguna akan diarahkan ke halaman \textit{Site Home} seperti pada Gambar \ref{app:site-home}, dimana isi halaman utama IDE UNPAR dapat diliahat. 
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{site_home-id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Site Home} aplikasi] {Halaman \textit{Site Home} aplikasi} 
+	\label{app:site-home} 
+\end{figure}  
+
+Untuk melihat matakuliah yang diambil oleh pengguna, pengguna dapat menekan tombol \textit{"Dashboard"}. Pada bagian atas halaman \textit{Dashboard} pengguna dapat melihat \textit{course} atau mata kuliah yang baru diakses. Di bawah bagian \textit{Recently accessed courses} pengguna dapat melihat seluruh mata kuliah yang sedang diikuti dalam bagian \textit{Course overview}. Bagian \textit{Course overview} juga dapat diurutkan berdasarakan nama mata kuliah atau yang terakhir kali diakses oleh pengguna. Di bawah bagian \textit{Course overview} pengguna dapat melihat juga acara yang akan datang dan linimasa dari mata kuliah yang sedang ditempuh. Halaman \textit{Dashboard} dapat dilihat pada Gambar \ref{app:dashboard}
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{dashboard-id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Dashboard} aplikasi] {Halaman \textit{Dashboard} aplikasi} 
+	\label{app:dashboard} 
+\end{figure}  
+
+\subsection{Halaman mata kuliah}
+
+Halaman mata kuliah terbagi menjadi beberapa halaman yang akan menampilkan konten, peserta, nilai, dan kompentensi dari suatu mata kuliah. 
+
+\subsubsection{Halaman konten mata kuliah}
+
+Halaman ini akan menunjukkan aktivitas yang terdapat didalam suatu mata kuliah yang telah disiapkan oleh dosen atau penyelenggara mata kuliah. Ketika pertama kali mengakses halaman ini, peserta akan dapat melihat seluruh konten, aktivitas, dan materi dari setiap topik mata kuliah yang dibuka seperti pada Gambar \ref{app:content}. Untuk melihat aktvitas berdasarakan setiap topik dari suatu mata kuliah pengguna dapat menekan tombol \textit{"All sections"} dan memilih topik yang ingin dilihat. Kemudian aplikasi akan memunculkan konten spesifik untuk topik mata kuliah yang dipilih seperti pada Gambar \ref{app:participants}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{course-content_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman konten mata kuliah aplikasi] {Halaman konten mata kuliah aplikasi} 
+	\label{app:content} 
+\end{figure}  
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.2]{course-content-detail_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman konten detail mata kuliah aplikasi] {Halaman konten detail mata kuliah aplikasi} 
+	\label{app:content:detail} 
+\end{figure}  
+
+\subsubsection{Halaman peserta mata kuliah}
+
+Halaman ini menunjukkan pengajar dan siswa yang mengikuti mata kuliah yang dipilih seperti pada Gambar \ref{app:participants}. Pada halaman ini pengguna juga dapat mencari nama peserta mata kuliah dan melihat profil dari peserta mata kuliah. Namun karena konfigurasi dari situs IDE UNPAR, pengguna hanya dapat melihat peserta dengan peran \textit{teacher} dan beberapa peserta dengan peserta \textit{student}. 
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{course-participant_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Participants} aplikasi] {Halaman \textit{Participants} aplikasi} 
+	\label{app:participants} 
+\end{figure}  
+
+\subsubsection{Halaman nilai matakuliah}
+Halaman ini akan menunjukkan nilai tugas dan nilai total mata kuliah pengguna. Halaman nilai dapat dilihat pada Gambar \ref{app:grades}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{course-grades_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Grades} aplikasi] {Halaman \textit{Grades} aplikasi} 
+	\label{app:grades} 
+\end{figure}  
+
+\subsubsection{Halaman kompentensi mata kuliah}
+Halaman ini menunjukkan kompentensi pengguna pada mata kuliah yang sedang diambil. Karena tidak ada kompentensi yang dihubungkan dari mata kuliah yang sedang ditempuh peneliti maka halaman \textit{Competencies} akan kosong. Halaman \textit{Competencies} dapat dilihat pada Gambar \ref{app:competencies}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{course-compentencies_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Competencies} aplikasi] {Halaman \textit{Competencies} aplikasi} 
+	\label{app:competencies} 
+\end{figure}  
+
+\subsection{Halaman \textit{Calendar events}}
+
+Halaman \textit{Calendar events} dapat diakses melalui \textit{navigation bar} dengan menekan ikon kalender. Pada halaman ini pengguna akan dapat melihat kapan saja tenggat waktu suatu tugas, kapan adanya kuis, dan aktivitas lain yang telah ditentukan oleh penyelenggara mata kuliah selama penyelenggara menetukan tanggal-tanggalnya. Halaman \textit{Calendar events} dapat dilihat pada Gambar \ref{app:calendar}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{Calendar_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Calendar events} aplikasi] {Halaman \textit{Calendar events} aplikasi} 
+	\label{app:calendar} 
+\end{figure}  
+
+\subsection{Halaman \textit{Messages}}
+
+Halaman \textit{Messages} dapat diakses dengan menekan ikon \textit{chat box} pada \textit{navigation bar} aplikasi. Ketika dibuka halaman ini akan menunjukkan menu kontak, bagian \textit{starred} untuk pesan yang ditandai dengan bintang, bagian \textit{group} untuk pesan dari kelompok dari mata kuliah yang diikuti, dan \textit{private} untuk pesan yang dikirim ke pengguna dari pengguna lain. Halaman \textit{Messages} dapat dilihat pada Gambar \ref{app:messages}.
+
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{message-private_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Messages} aplikasi] {Halaman \textit{Messages} aplikasi} 
+	\label{app:messages} 
+\end{figure}  
+
+Melihat kontak pengguna dapat dikases dengan menekan menu \textit{Contacts} pada halaman \textit{Messages}. Pada halaman \textit{Contacts} pengguna akan dapat melihat kontaknya yang terdaftar seperti pada Gambar \ref{app:messages:contact} dan melihat permintaan kontak dari pengguna lain seperti pada Gambar \ref{app:messages:request}.
+
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{messages-contact_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Contact} aplikasi] {Halaman \textit{Contact} aplikasi} 
+	\label{app:messages:contact} 
+\end{figure}  
+
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{messages-request_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman permintaan kontak aplikasi] {Halaman permintaan kontak aplikasi} 
+	\label{app:messages:request} 
+\end{figure}  
+
+\subsection{Halaman \textit{Notifications}}
+
+Halaman ini akan menunjukkan seluruh notifikasi yang diterima oleh pengguna, baik notfikassi tenggat waktu suatu tugas ataupun pesan dari pengguna lain. Halaman \textit{Notifications} dapat diakses dengan menekan ikon lonceng pada \textit{navgiation bar} aplikasi. Halaman \textit{Notification} dapat dilihat pada Gambar \ref{app:notifications}.
+
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{notifications_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman \textit{Notifications} aplikasi] {Halaman \textit{Notifications} aplikasi} 
+	\label{app:notifications} 
+\end{figure}  
+
+\subsection{Halaman menu}
+
+Halaman ini berisi menu-menu yang dapat digunakan pengguna untuk mengakses halama-halaman lain pada aplikasi. Halaman ini dapat dikases dengan menekan ikon tiga garis horisontal pada \textit{navigation bar} aplikasi. Tampilan halaman menu dapat dilihat pada Gambar \ref{app:menu}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{menu_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman menu aplikasi] {Halaman menu aplikasi} 
+	\label{app:menu} 
+\end{figure}  
+
+\subsubsection{Menu \textit{Grades}}
+
+Menu \textit{Grades} akan mengarahkan pengguna menuju halaman \textit{Grades} yang akan menunjukkan mata kuliah yang diambil oleh pengguna beserta dengan total nilainya. Ketika satu nama mata kuliah dipilih, maka pengguna akan diarahkan ke halaman detail niali dari mata kuliah tersebut. Halaman \textit{Grades} dapat dilihat pada Gambar \ref{app:menu:grades}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{menu-grades_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman menu \textit{Grades} aplikasi] {Halaman menu \textit{Grades} aplikasi} 
+	\label{app:menu:grades} 
+\end{figure}  
+
+\subsubsection{Menu \textit{Files}}
+
+Menu ini akan mengarahkan pengguna ke halaman \textit{Files}. Ketika halaman tersebut pertama kali dibuka, pengguna dapat melihat file-file pribadinya yang tersimpan pada server IDE UNPAR. Dapat dilihat pada Gambar \ref{private}. Dari halaman tersebut pengguna dapat menambahkan file-file dengan menekan tombol dengan ikon tanda tambah.
+
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{menu-files-private_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman menu \textit{Files} aplikasi] {Halaman menu \textit{Files} aplikasi} 
+	\label{app:menu:files:private} 
+\end{figure}  
+
+ Pengguna juga dapat melihat file-file public dengan menekan \textit{dropdown} yang berada dibawah \textit{header} dan memilih site files. Halaman \textit{Site files} dapat dilihat pada Gambar \ref{app:menu:files:site}
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{menu-files-site_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman menu \textit{Site files} aplikasi] {Halaman menu \textit{Site files} aplikasi} 
+	\label{app:menu:files:site} 
+\end{figure}  
+
+\subsubsection{Menu \textit{Scan QR}}
+
+Menu ini akan membuka kamera dari perangkat pengguna untuk memindai kode QR dari Moodle.
+
+\subsubsection{Menu Website}
+
+Menu ini akan mengarahkan pengguna ke situs IDE UNPAR, dengan membuka halaman tersebut pada \textit{browser} perangkat pengguna.
+
+\subsubsection{Menu Student Portal UNPAR}
+Menu ini akan mengarahkan pengguna ke situs Student Portal UNPAR, dengan membuka halaman tersebut pada \textit{browser} perangkat pengguna.
+
+\subsubsection{Menu \textit{Help}}
+Menu ini akan mengarahkan pengguna ke tautan \url{http://docs.moodle.org/38/en/Moodle\_app}. Tautan tersebut berisi bantuan cara penggunaan aplikasi Moodle mobile.
+
+\subsubsection{Menu \textit{Perferences}}
+Menu ini akan mengarahkan pengguna ke halaman \textit{Perferences} yang berisi pengaturan untuk fitur \textit{messages} dan \textit{notifications}. Selain itu di halaman \textit{Perferences} pengguna dapat membebaskan tempat penyimpanan yang digunakan oleh aplikasi dan mensinkronisasikan aplikasi dengan situs IDE UNPAR.
+
+\subsubsection{Menu \textit{App settings}}
+Menu ini akan mengarahkan pengguna ke halaman \textit{App settings}, dimana pengguna dapat mengatur pengaturan umum aplikasi, pengguna ruang penyimpanan aplikasi, sinkronisasi aplikasi, dan melihat informasi tentang aplikasi.
+
+
+
