@@ -277,6 +277,7 @@ Menu \textit{Grades} akan mengarahkan pengguna menuju halaman \textit{Grades} ya
 \end{figure}  
 
 \subsubsection{Menu \textit{Files}}
+\label{menu-files}
 
 Menu ini akan mengarahkan pengguna ke halaman \textit{Files}. Ketika halaman tersebut pertama kali dibuka, pengguna dapat melihat file-file pribadinya yang tersimpan pada server IDE UNPAR. Dapat dilihat pada Gambar \ref{private}. Dari halaman tersebut pengguna dapat menambahkan file-file dengan menekan tombol dengan ikon tanda tambah.
 
@@ -317,5 +318,48 @@ Menu ini akan mengarahkan pengguna ke halaman \textit{Perferences} yang berisi p
 \subsubsection{Menu \textit{App settings}}
 Menu ini akan mengarahkan pengguna ke halaman \textit{App settings}, dimana pengguna dapat mengatur pengaturan umum aplikasi, pengguna ruang penyimpanan aplikasi, sinkronisasi aplikasi, dan melihat informasi tentang aplikasi.
 
+\section{Uji Coba Fitur \textit{Scan PDF}}
 
+Fitur \textit{Scan PDF} dapat dikases melalui menu kemudian dengan memilih \textit{Files}. Dari halaman \textit{Files}, pengguna dapat menekan tombol dengan ikon tanda tambah untuk melihat pilihan cara mengunggah file seperti pada Gambar \ref{app:menu:files:options}. 
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{scan-PDF-options_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Pilihan cara menggunggah file] {Pilihan cara menggunggah file} 
+	\label{app:menu:files:options} 
+\end{figure}  
+
+Memilih pilihan \textit{Scan PDF} akan langsung mengarahkan pengguna ke kamera perangkat pengguna. Setelah pengguna mengambil gambar menggunakan kameranya. Pengguna akan diminta untuk menekan ikon tanda centang untuk mengkonfirmasi hasil pengambilan gambarnya, seperti pada Gambar \ref{app:scanPDF:confirm}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{scan-PDF-confirm_com.huawei.camera.jpg}  
+	\caption[Konfirmasi hasil pengambilan gambar] {Konfirmasi hasil pengambilan gambar} 
+	\label{app:scanPDF:confirm} 
+\end{figure}  
+
+Setelah mengkonfirmasi gambar yang telah diambil, aplikasi akan langsung memproses gambar menjadi sebuah file PDF. Pengguna akan mendapat konfirmasi kalau aplikasi telah berhasil memproses gambar dan mengunggahnya ke dalam \textit{private files} seperti pada Gambar \ref{app:scanPDF:success}. File yang akan dihasilakn akan diberi nama \texttt{my-pdf<date.getTime()>}. Untuk melihat file yang telah dihasilkan, pengguna harus mengunduhnya terlebih dahulu.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{scan-PDF-success_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Pemberitahuan bahwa file berhasil diproses dan diunggah] {Pemberitahuan bahwa file berhasil diproses dan diunggah} 
+	\label{app:scanPDF:success} 
+\end{figure}  
+
+Pengguna juga dapat menggunakan fitur \textit{Scan PDF} untuk mengumpulkan tugas. Untuk melakukan hal tersebut, pengguna harus membuka tugas yang diinginkan seperti pada Gambar \ref{app:scanPDF:submission}. Kemudia menekan tombol \textit{ADD FILE} untuk memunculkan pilihan menggungah file seperti pada Gambar \ref{app:scanPDF:submission:options}. Setelah itu pengguna dapat menekan tombol \textit{save} untuk memfinalisasi submisi.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{scan-PDF-submission_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Halaman submisi tugas] {Halaman submisi tugas} 
+	\label{app:scanPDF:submission} 
+\end{figure}  
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.15]{scan-PDF-submission-options_id.ac.unpar.moodlemobile.jpg}  
+	\caption[Pilihan submisi tugas] {Pilihan submisi tugas} 
+	\label{app:scanPDF:submission:options} 
+\end{figure}  
 
