@@ -82,8 +82,88 @@ Karena direktori ini mengandung \textit{source code} utama dari aplikasi, seluru
 
 Dalam folder \texttt{src/core} setiap fungsi dari Moodle mobile juga dipisah ke dalam direktori masing-masing. Setiap direktori dari fungsi-fungsi tersebut akan memiliki \textit{handler} dan \textit{helper}. \textit{Handler} dari sebuah fungsi bersifat seperti \textit{controller} dari pola desain MVC (\textit{Model-view-controller} perangkat lunak. Sehingga perubahan yang akan dilakukan pada file \textit{handler} adalah perubahan yang bersifat menerima dan memberi data dari dan untuk \textit{view}. Sedangkan \textit{helper} bersifat seperti \textit{model} pada pola desain MVS, sehingga perubahan-perubahan pada \textit{helper} Moodle mobile akan bersifat untuk mengolah dan mengembalikan data.
 
+\section{Menghubungkan IDE UNPAR Mobile dengan Situs IDE UNPAR}
 
-\section{Penerapan fitur-fitur tambahan dari umpan balik}
+Menghubungkan IDE UNPAR mobile dengan situs IDE UNPAR dapat dilakukan dengan melakukan perubahan pada file \texttt{config.json}.  Perubahan yang harus dilakukan adalah menambahkan \textit{key} \textit{"siteurl"} dengan nilai URL yang diinginkan, dalam kasus ini URL yang akan digunakan adalah \url{https://ide.unpar.ac.id}. Dengan adanya \textit{key "siteurl"} aplikasi saaat dijalankan akan langsung melakukan koneksi dengan nilai dari \textit{key} tersebut. Sehingga ketika aplikasi IDE UNPAR Mobile dijalankan, aplikasi akan langsung meminta pengguna \textit{login} dengan tautan \url{https://ide.unpar.ac.id}. Perubahan pada file \texttt{config.json} dapat dilihat pada \mbox{Kode \ref{auto-redirect}}. 
+
+\begin{lstlisting}[language=diff, frame=single, label ={auto-redirect}, caption = Perubahan pada file \texttt{config.json} ]
+
+diff --git a/src/config.json b/src/config.json
+index 919869fe652..daaf2aef5c5 100644
+--- a/src/config.json
++++ b/src/config.json
+@@ -68,10 +68,10 @@
+         75.89,
+         93.75
+     ],
+     "demo_sites" :[] ,
+     "customurlscheme": "moodlemobile",
+-    "siteurl": "https://moodledemo.pascal.id/",
++    "siteurl": "https://ide.unpar.ac.id/",
+     "sitename": "",
+     "multisitesdisplay": "",
+     "sitefindersettings": {},
+\end{lstlisting} 
+
+Karena IDE UNPAR menggunakan SSO UNPAR untuk \textit{login} maka aplikasi IDE UNPAR Mobile akan mengarahkan pengguna ke \textit{browser} yang berada pada perangkatnya untuk \textit{login} menggunakan SSO UNPAR. Ketika pengguna telah berhasil \textit{login} agar \textit{browser} pada perangkat pengguna tahu aplikasi apa yang harus dibuka maka \texttt{customurlscheme} pada aplikasi IDE UNPAR Mobile harus diubah. Perubahan untuk \texttt{customurlscheme} dilakukan pada \texttt{config.xml} dapat dilihat di dalam \mbox{Kode \ref{config.xml-scheme}},  \texttt{package.json} dapat dilihat di dalam \mbox{Kode \ref{package.json-scheme}},  dan \texttt{src/config.json} dapat dilihat di dalam \mbox{Kode \ref{config.xml-scheme}}. Dengan perubahan tersebut pengguna akan diarahkan ke dalam aplikasi IDE UNPAR Mobile setelah berhasil \textit{login} menggunakan SSO UNPAR.
+
+
+\begin{lstlisting}[language=diff, frame=single, label ={config.xml-scheme}, caption = Perubahan pada \texttt{customurlscheme} file \texttt{config.xml} ]
+
+diff --git a/config.xml b/config.xml
+index 2e4f35a92ce..67f8cf25744 100644
+--- a/config.xml
+@@ -648,4 +648,5 @@
+             </array>
+         </config-file>
+     </platform>
++    <variable name="URL_SCHEME" value="idemobile" />
+\end{lstlisting} 
+
+\begin{lstlisting}[language=diff, frame=single, label ={package.json-scheme}, caption = Perubahan pada \texttt{customurlscheme} file \texttt{package.json} ]
+
+diff --git a/package.json b/package.json
+index a4f73ed0d6d..521d7b943d3 100644
+--- a/package.json
++++ b/package.json
+@@ -188,7 +189,7 @@
+       "cordova-plugin-badge": {},
+       "cordova-plugin-camera": {},
+       "cordova-plugin-customurlscheme": {
+-        "URL_SCHEME": "moodlemobile"
++        "URL_SCHEME": "idemobile"
+       },
+       "cordova-plugin-device": {},
+       "cordova-plugin-file": {},
+@@ -255,7 +256,7 @@
+       {
+         "name": "Moodle Mobile URL",
+         "schemes": [
+-          "moodlemobile"
++          "idemobile"
+         ],
+         "role": "Viewer"
+       }
+\end{lstlisting}
+
+\begin{lstlisting}[language=diff, frame=single, label ={config.json-scheme}, caption = Perubahan pada \texttt{customurlscheme} file \texttt{src/config.json} ]
+
+diff --git a/src/config.json b/src/config.json
+index daaf2aef5c5..31402ee6812 100644
+--- a/src/config.json
++++ b/src/config.json
+@@ -70,7 +70,7 @@
+     ],
+     "presets" : {"url" :"https://ide.unpar.ac.id/"},
+     "demo_sites" :[] ,
+-    "customurlscheme": "moodlemobile",
++    "customurlscheme": "idemobile",
+     "siteurl": "https://ide.unpar.ac.id/",
+     "sitename": "",
+     "multisitesdisplay": "",
+\end{lstlisting} 
+
+\section{Penerapan Fitur-Fitur Tambahan dari Umpan Balik}
 
 Berdasarkan yang dibahas pada subbab \ref{feature feedback} beberapa saran fitur akan diimplementasikan pada aplikasi IDE UNPAR. Fitur-fitur tersebut adalah PDF \textit{scanner} dan .
 
