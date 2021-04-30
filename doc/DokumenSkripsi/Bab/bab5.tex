@@ -1,8 +1,6 @@
 \chapter{Implementasi dan Pengujian}
 
-\section{Lingkungan Pengembangan}
-Pada subbab ini akan dibahas lingkungan pengembangan yang digunakan dalam penilitian beserta dengan penyesuaian-penyesuainnya.
-\subsection{Penyesuaian lingkungan pengembangan}
+\section{Implementasi Lingkungan Pengembangan}
 Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
 
 \begin{enumerate}
@@ -18,7 +16,7 @@ Penggunaan versi Node.js versi 14 atau versi lainnya yang berstatus LTS sudah di
 Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. Setelah menajlankan kedua perintah tersebut Moodle mobile dapat diakses dengan memasukkan URL \url{http://localhost:8100} pada \textit{browser} Chromium. 
 
 
-\section{Penyesuaian Tema}
+\section{Implementasi Penyesuaian Tema}
 Tema bawaan Moodle mobile akan diubah untuk menyesuaiakna seperti apa yang sudah dibahas pada subbab \ref{sec:Kondisi IDE UNPAR}. Implementasi perubahan-perubahan tersebut akan dibahas pada subbab subbab berikut.
 
 \subsection{Penyesuaian skema warna}
@@ -80,7 +78,24 @@ index 31402ee681..f2bb898b20 100644
 \end{lstlisting}
 
 \subsection{Penyesuaian ikon dan \textit{resource} lainnya}
-Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spalsh screen} dari aplikasi juga akan diganti. Ikon aplikasi akan menggunakan logo UNPAR dan \textit{splash screen} akan menggunakan logo IDE UNPAR. Langkah pertama yang harus dilakukan adalah menyeidkan file \texttt{icon.png} dan \texttt{spalsh.png} di dalam folder \texttt{resource}. Kemudia untuk menghasilkan ikon dan \textit{splash screen} untuk kedua platform Android dan iOS Cordova menyediakan perintah \texttt{npx ionic cordova resource}. Dengan menjalankan perintah tersebut Cordova akan menghasilkan \textit{resource} yang dibutuhkan. \textit{config.xml} juga akan diubah ketika menjalankan perintah tersebut.
+Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spalsh screen} dari aplikasi juga akan diganti. Ikon aplikasi akan menggunakan logo UNPAR dan \textit{splash screen} akan menggunakan logo IDE UNPAR. Langkah pertama yang harus dilakukan adalah menyeidkan file \texttt{icon.png} seperti pada Gambar \ref{app:icon} dan \texttt{spalsh.png} seperti pada Gambar \ref{app:splash} di dalam folder \texttt{resource}. Kemudia untuk menghasilkan ikon dan \textit{splash screen} untuk kedua platform Android dan iOS Cordova menyediakan perintah \texttt{npx ionic cordova resource}. Dengan menjalankan perintah tersebut Cordova akan menghasilkan \textit{resource} yang dibutuhkan. \textit{config.xml} juga akan diubah ketika menjalankan perintah tersebut.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.3]{icon.png}  
+	\caption[Logo  UNPAR] {Logo  UNPAR} 
+	\label{app:icon} 
+\end{figure} 
+
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.1]{splash.png}  
+	\caption[Logo IDE UNPAR] {Logo IDE UNPAR} 
+	\label{app:splash} 
+\end{figure} 
+
+
 
 Setelah perubahan tersebut diimplementasikan, dengan melakukan \textit{build} ulang aplikasi menggunakan \texttt{npx ionic cordova build Android} atau \texttt{npx ionic cordova run Android}, maka aplikasi akan menggunakan \textit{resource} yang baru saja dihasilkan.
 

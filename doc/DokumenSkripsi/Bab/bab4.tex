@@ -5,48 +5,60 @@
 \label{struktur proyek}
 
 Proyek Moodle Mobile terdiri dari kumpulan file-file dan direktori-direktori utama yang mengandung fungsi dan \textit{source code} untuk aplikasi Moodle Mobile, platform Android dan iOS, alat untuk mebangun perangkat lunak, dan konfigurasi. Struktur dapat dilihat di bawah.
+\\
 
+\dirtree{%
+.1 config.
+.1 desktop.
+.1 gulp.
+.1 hooks.
+.1 node\_modules.
+.1 platforms.
+.1 plugins.
+.1 resources. 
+.1 scripts.
+.1 src.
+.2 addon.
+.2 app.
+.2 assets.
+.2 classes.
+.2 compontens.
+.2 config.json.
+.2 configconstants.ts.
+.2 core.
+.2 directives.
+.2 index.html.
+.2 lang.
+.2 pipes.
+.2 providers.
+.2 singletons.
+.2 theme.
+.1 www.
+.1 .dockerignore.
+.1 .gitattributes.
+.1 .gitignore.
+.1 .npmrc.
+.1 .travis.yml.
+.1 config.xml.
+.1 Dockerfile.
+.1 google-services.json.
+.1 gulpfile.js.
+.1 ionic.config.json.
+.1 LICENSE.
+.1 licenses.json.
+.1 MainActivity.java.
+.1 NOTICE.
+.1 packgae-lock.json.
+.1 PACKAGE\_PROBLEMS.md.
+.1 README.md.
+.1 tsconfig.json.
+.1 tslint.json.
+.1 upgrade.txt.
+}
 
-\begin{center}
-\begin{minipage}{.6\textwidth}
-config/                      \\                                         
-desktop/                      \\                                        
-gulp/                                                                 \\
-hooks/                                     \\                           
-node\_modules/                      \\                                   
-platforms/                               \\                             
-plugins/                                     \\                         
-resources/                               \\                             
-scripts/                                       \\                       
-src/                                                 \\                 
-www/                                             \\                    
-.dockerignore                                      \\                  
-.gitattributes                                  \\                     
-.gitignore                                           \\                
-.npmrc                                               \\                
-.travis.yml                                          \\                
-config.xml                                               \\  
-Dockerfile                                               \\
-google-services.json                            \\                     
-GoogleService-Info.plist                        \\                     
-gulpfile.js                                            \\              
-ionic.config.json                                       \\             
-LICENSE                                                  \\            
-licenses.json                                              \\          
-MainActivity.java                                       \\             
-NOTICE                                                         \\      
-package-lock.json                                     \\               
-package.json                                            \\             
-PACKAGE\_PROBLEMS.md                        \\                          
-README.md                                        \\                                                                     
-tsconfig.json                                           \\             
-tslint.json                                             \\             
-upgrade.txt                                     \\
-\end{minipage}                                                          
-\end{center}
-Perubahan pada proyek akan sering dilakukan pada direktori \texttt{src}, dan \texttt{config.xml}. Direktori \texttt{src} berisi kode-kode utama dari aplikasi Moodle mobile dan konfigurasinya. Konfigurasi dari Moodle mobile sendiri diatur oleh file \texttt{config.json} di dalam folder \texttt{src}. File \texttt{Config.xml} berfungsi untuk mengatur konfigurasi dari aplikasi Cordova. Dikarenakan Moodle mobile menggunakan Cordova maka pengaturan saat melakukan \textit{build} untuk perangkat bergerak akan diambil dari file \texttt{config.xml}. 
+Perubahan pada aplikasi akan sering dilakukan pada direktori \texttt{src}, dan \texttt{config.xml}. Direktori \texttt{src} berisi kode-kode utama dari aplikasi Moodle mobile dan konfigurasinya. Konfigurasi dari Moodle mobile sendiri diatur oleh file \texttt{config.json} di dalam folder \texttt{src}. File \texttt{Config.xml} berfungsi untuk mengatur konfigurasi dari aplikasi Cordova. Dikarenakan Moodle mobile menggunakan Cordova maka pengaturan saat melakukan \textit{build} untuk perangkat bergerak akan diambil dari file \texttt{config.xml}. 
 
-Perubahan juga akan terjadi pada direktori \texttt{resources} dan file \texttt{ionic.config.json}. Direktori \texttt{resource} menyimpan sumber untuk ikon dan \textit{splashscreen} yang akan digunakan oleh aplikasi ketika di-\textit{build} untuk platform Android maupun iOS. File \texttt{ionic.config.json} adalah file konfigurasi yang digunakan oleh  Ionic CLI (\textit{Comman Line Interface}), dimana nama aplikasi dan identifikasi aplikasi akan disimpan disana dan dirujuk oleh Ionic CLI ketika digunakan.
+Perubahan juga akan terjadi pada direktori \texttt{resources} dan file \texttt{ionic.config.json}. Direktori \texttt{resource} menyimpan sumber untuk ikon dan \textit{splashscreen} yang akan digunakan oleh aplikasi ketika di-\textit{build} untuk platform Android maupun iOS. File \texttt{ionic.config.json} adalah file konfigurasi yang digunakan oleh  Ionic CLI (\textit{Command Line Interface}), dimana nama aplikasi dan identifikasi aplikasi akan disimpan disana dan dirujuk oleh Ionic CLI ketika digunakan.
 
 Direktori \texttt{node\_modules} juga akan mengalami perubahan namun jarang dilakukan perubahan secara langsung. Dikarenakan direktori tersebut menyimpan \textit{packages} yang dikelola oleh npm. Perubahan yang akan terjadi pada folder \texttt{node\_modules} adalah perubahan seperti yang dibahas di subbab \ref{moodle docs:env}.
 
@@ -69,6 +81,7 @@ Perubahan yang dilakukan di dalam file ini adalah sebagai berikut :
 Karena direktori ini mengandung \textit{source code} utama dari aplikasi, seluruh perubahan yang bersifat menambah, mengubah ataupun mengahpus fungsi di dalam aplikasi akan terjadi di dalam direktori \texttt{src}. Seluruh fungsi utama aplikasi terletak pada direktori \texttt{src/core}. Untuk pengaturan tema dari aplikasi terletak pada direktori \texttt{src/theme}. Dan folder \texttt{src/app} mengandung \textit{source code} yang akan dijalankan secara \textit{native} pada platform Android dan iOS seperti mengatur warna dari \textit{status bar}.	
 
 Dalam folder \texttt{src/core} setiap fungsi dari Moodle mobile juga dipisah ke dalam direktori masing-masing. Setiap direktori dari fungsi-fungsi tersebut akan memiliki \textit{handler} dan \textit{helper}. \textit{Handler} dari sebuah fungsi bersifat seperti \textit{controller} dari pola desain MVC (\textit{Model-view-controller} perangkat lunak. Sehingga perubahan yang akan dilakukan pada file \textit{handler} adalah perubahan yang bersifat menerima dan memberi data dari dan untuk \textit{view}. Sedangkan \textit{helper} bersifat seperti \textit{model} pada pola desain MVS, sehingga perubahan-perubahan pada \textit{helper} Moodle mobile akan bersifat untuk mengolah dan mengembalikan data.
+
 
 \section{Penerapan fitur-fitur tambahan dari umpan balik}
 
@@ -305,7 +318,7 @@ index 22d14df4a11..f0b31d17abf 100644
  }
 \end{lstlisting} 
 
-\subsection{Link menuju Student Portal UNPAR}
+\subsection{Tautan menuju Student Portal UNPAR}
 Seperti yang dibahas pada \ref{absesnsi IDE} akan diimplementasikan sebuah tautan pada menu aplikasi IDE UNPAR yang akan mengarahkan pengguna ke \url{https://studentportal.unpar.ac.id}. Selain menambahkan tautan, pilihan \texttt{change site} pada menu aplikasi akan dihapus karena dirasa pengguna tidak membutuhkan pilihan tersebut.
 
 Perubahan yang harus dilakukan adalah menambahkan sebuah tag HTML \texttt{<a>} yang akan mengarahkan pengguna ke \url{https://sutdentportal.unpar.ac.id} pada \texttt{src/core/mainmenu\\/pages/more/more.html}. Dalam tag HTML \texttt{<a>} tersebut ditambahkan atribut \texttt{(click)} dengan nilai fungsi yang akan dipanggil dari \textit{component} Angular ketika elemen tersebut ditekan. Perubahan pada file \texttt{src/core/mainmenu\\/pages/more/more.html} dapat dilihat pada \mbox{Kode \ref{more-view}}.
