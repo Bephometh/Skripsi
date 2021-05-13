@@ -500,3 +500,19 @@ index 2abd385d7a6..e155ef93a01 100644
    "core.maxsizeandattachments": "moodle",
    "core.min": "moodle",
 \end{lstlisting} 
+
+\section{Meluncurkan Aplikasi ke dalam Google Play}
+
+Aplikasi akan diluncurkan ke dalam Goog Play yang dikelola oleh FTIS UNPAR. Untuk meluncurkan aplikasi ke dalam Google Play ada beberapa langkah yang harus dilakukan terlebih dahulu. Langkah-langkah tersebut akan dibahas di subsubbab-subsubbab berikut.
+
+\subsection{Membuat apk \textit{release}}
+
+Aplikasi IDE UNPAR Mobile harus dibangun terlebih dahulu dengan pengaturan \textit{production} dan \textit{release}. Membuat \textit{build} dengan pengaturan \textit{release} dapat dilakukan dengan menggunakan perintah \texttt{npx ionic cordova build android --prod --release}. Perintah tersebut akan menghasilkan sebuah apk di \texttt{/moodleapp/platforms/android/app/build/outputs/apk/release} dengan nama \texttt{app-release-unsigned.apk}. Namun, hanya dengan apk tersebut aplikasi tidak akan bisa dimasukkan ke dalam Google Play.
+
+\subsection{Menandai aplikasi secara digital}
+Google Play mengharuskan aplikasi yang akan diluncurkan untuk ditandari secara digital. Untuk melakukan hal tersebut diperlukannya sebuah \textit{keystore} yang dapat dibuat dengan \textit{keytool} yang disediakan oleh Java. Membuat \textit{keystore} dengan \textit{keytool} dapat dilakukan dengan perintah \texttt{keytool -genkey -v -keystore idemobile-release-key.keystore -alias ide-unpar-mobile -keyalg RSA \\ -keysize 2048 -validity 100000}, dengan menjalankan perintah tersebut maka sebuah file \textit{keystore} akan dihasilkan dengan nama \texttt{idemobile-release-key.keystore}.
+
+Adanya file \textit{keystore} akan memungkinkan untuk menandai apk \textit{release} yang telah dibuat. Menandai apk dengan file \textit{keystore} dapat dilakukan dengan menggunakan jarsigner yang disediakan oleh Java. Menandai apk dengan jarsigner dilakukan dengan menjalankan perintah \texttt{jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore idemobile-keystore-key.keystore \\ app-release-unsigned.apk}. 
+
+
+
