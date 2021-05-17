@@ -83,7 +83,7 @@ Karena direktori ini mengandung \textit{source code} utama dari aplikasi, seluru
 Dalam folder \texttt{src/core} setiap fungsi dari Moodle mobile juga dipisah ke dalam direktori masing-masing. Setiap direktori dari fungsi-fungsi tersebut akan memiliki \textit{handler} dan \textit{helper}. \textit{Handler} dari sebuah fungsi bersifat seperti \textit{controller} dari pola desain MVC (\textit{Model-view-controller} perangkat lunak. Sehingga perubahan yang akan dilakukan pada file \textit{handler} adalah perubahan yang bersifat menerima dan memberi data dari dan untuk \textit{view}. Sedangkan \textit{helper} bersifat seperti \textit{model} pada pola desain MVS, sehingga perubahan-perubahan pada \textit{helper} Moodle mobile akan bersifat untuk mengolah dan mengembalikan data.
 
 \section{Menghubungkan IDE UNPAR Mobile dengan Situs IDE UNPAR}
-
+\label{mobile:connect}
 Menghubungkan IDE UNPAR mobile dengan situs IDE UNPAR dapat dilakukan dengan melakukan perubahan pada file \texttt{config.json}.  Perubahan yang harus dilakukan adalah menambahkan \textit{key} \textit{"siteurl"} dengan nilai URL yang diinginkan, dalam kasus ini URL yang akan digunakan adalah \url{https://ide.unpar.ac.id}. Dengan adanya \textit{key "siteurl"} aplikasi saaat dijalankan akan langsung melakukan koneksi dengan nilai dari \textit{key} tersebut. Sehingga ketika aplikasi IDE UNPAR Mobile dijalankan, aplikasi akan langsung meminta pengguna \textit{login} dengan tautan \url{https://ide.unpar.ac.id}. Perubahan pada file \texttt{config.json} dapat dilihat pada \mbox{Kode \ref{auto-redirect}}. 
 
 \begin{lstlisting}[language=diff, frame=single, label ={auto-redirect}, caption = Perubahan pada file \texttt{config.json} ]
@@ -168,6 +168,7 @@ index daaf2aef5c5..31402ee6812 100644
 Berdasarkan yang dibahas pada subbab \ref{feature feedback} beberapa saran fitur akan diimplementasikan pada aplikasi IDE UNPAR. Fitur-fitur tersebut adalah PDF \textit{scanner} dan .
 
 \subsection{PDF \textit{scanner}}
+\label{feat:pdfscan}
 Implementasi fitur ini akan dilakukan dengan bantuan \textit{plugin} Cordova \texttt{cordova-pdf-scanner}. \textit{Plugin} ini dipilih karena memiliki pengaturan paling sederhana. \textit{Plugin} bekerja dengan mengubah HTML mentah ataupun URL menjadi PDF. \textit{Plugin} ini juga dapat mengembalikan hasil pengubahan URL atau HTML mentah ke dalam bentuk base64 agar dapat diunggah kedalam server IDE UNPAR. 
 
 Implementasi fitur PDF \textit{scanner} ini akan dilakukan di direktori \texttt{src/core/fileuploader/}. Dimana \textit{handler} untuk fitur akan disimpan di \texttt{src/core/fileuploader/providers/scanner-handler.ts}. Untuk fungsi memindai gambar untuk diubah menjadi PDF sendiri akan disimpan di \\ \texttt{src/core/fileuploader/providers/helper.ts}. Dengan mengimplementasikan fitur ini pada direktori tersebut, maka fitur ini akan dapat digunakan untuk mengunggah file PDF ke dalam file pribadi pengguna di dalam server IDE UNPAR atau mengungghanya langsung sebagai bentuk submisi tugas atau quiz.\textit{Flow chart} untuk fitur dapat dilihat pada Gambar \ref{fig:scan:flowchart}. 
@@ -399,6 +400,7 @@ index 22d14df4a11..f0b31d17abf 100644
 \end{lstlisting} 
 
 \subsection{Tautan menuju Student Portal UNPAR}
+\label{feat:menu:link}
 Seperti yang dibahas pada \ref{absesnsi IDE} akan diimplementasikan sebuah tautan pada menu aplikasi IDE UNPAR yang akan mengarahkan pengguna ke \url{https://studentportal.unpar.ac.id}. Selain menambahkan tautan, pilihan \texttt{change site} pada menu aplikasi akan dihapus karena dirasa pengguna tidak membutuhkan pilihan tersebut.
 
 Perubahan yang harus dilakukan adalah menambahkan sebuah tag HTML \texttt{<a>} yang akan mengarahkan pengguna ke \url{https://sutdentportal.unpar.ac.id} pada \texttt{src/core/mainmenu\\/pages/more/more.html}. Dalam tag HTML \texttt{<a>} tersebut ditambahkan atribut \texttt{(click)} dengan nilai fungsi yang akan dipanggil dari \textit{component} Angular ketika elemen tersebut ditekan. Perubahan pada file \texttt{src/core/mainmenu\\/pages/more/more.html} dapat dilihat pada \mbox{Kode \ref{more-view}}.
@@ -512,10 +514,35 @@ Aplikasi IDE UNPAR Mobile harus dibangun terlebih dahulu dengan pengaturan \text
 \subsection{Menandai aplikasi secara digital}
 Google Play mengharuskan aplikasi yang akan diluncurkan untuk ditandai secara digital. Untuk melakukan hal tersebut diperlukannya sebuah \textit{keystore} yang dapat dibuat dengan \textit{keytool} yang disediakan oleh Java. Membuat \textit{keystore} dengan \textit{keytool} dapat dilakukan dengan perintah \texttt{keytool -genkey -v -keystore idemobile-release-key.keystore -alias ide-unpar-mobile -keyalg RSA \\ -keysize 2048 -validity 100000}, dengan menjalankan perintah tersebut maka sebuah file \textit{keystore} akan dihasilkan dengan nama \texttt{idemobile-release-key.keystore}.
 
-Adanya file \textit{keystore} akan memungkinkan untuk menandai apk \textit{release} yang telah dibuat. Menandai apk dengan file \textit{keystore} dapat dilakukan dengan menggunakan jarsigner yang disediakan oleh Java. Menandai apk dengan jarsigner dilakukan dengan menjalankan perintah \texttt{jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore idemobile-keystore-key.keystore \\ app-release-unsigned.apk}. 
+Adanya file \textit{keystore} akan memungkinkan untuk menandai apk \textit{release} yang telah dibuat. Menandai apk dengan file \textit{keystore} dapat dilakukan dengan menggunakan jarsigner yang disediakan oleh Java. Menandai apk dengan jarsigner dilakukan dengan menjalankan perintah \texttt{jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore idemobile-release-key.keystore \\ app-release-unsigned.apk ide-unpar-mobile}. 
 
-\subsection{Optimasi apk}
+\subsection{Finalisasi apk}
 Optimasi yang dilakukan adalah menjalankan zipalign kepada apk yang telah ditandai secara digital. Karena pembanguna aplikasi tidak menggunakan Android Studio maka file apk harus di-zipalign secara manual. Zipalign dapat dijalankan dengan perintah \texttt{C:/Users/gabri/AppData/Local/Android/Sdk\\/build-tools/29.0.2/zipalign -v 4 app-release-unsigned.apk ideunparmobile.apk}. Perintah tersebut akan menghasilkan apk yang telah dikompresi dengan nama \texttt{ideunparmobile.apk}. Apk tersebut yang akan diunggah ke dalam Google Play.
 
+\subsection{Mengunggah dan meluncurkan apk}
+Apk dari aplikasi IDE UNPAR mobile akan diunggah dengan status \textit{open testing} ke dalam Google Play. Apk akan diunggah melalui Google Play Console. Untuk mengunggha aplikasi dengan status \textit{open testing}, pada menu Google Play Console pilih bagina \textit{Testing} dan kemudian \textit{Open Testing}. Ketika menu tersebut dipilih Google Play Console akan membukakan halaman \textit{Open Testing} seperti pada Gambar \ref{fig:play:open:test}. 
 
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.5]{play-console-menu.png}  
+	\caption[Halaman \textit{Open Testing}] {Halaman \textit{Open Testing}} 
+	\label{fig:play:open:test} 
+\end{figure} 
 
+Langkah selanjutnya adalah menekan tombol \textit{Create new release}. Menekan tombol tersebut akan membuka halaman \textit{Create open testing release} sepert pada Gambar \ref{fig:play:open:test:create}. Pada halaman tersebut apk akan diunggah dan detil dari \textit{release} akan diisi.  
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.35]{play-create-open-test.png}  
+	\caption[Halaman \textit{Create open testing release}] {Halaman \textit{Create open testing release}} 
+	\label{fig:play:open:test:create} 
+\end{figure} 
+
+Sebelum dapat meluncurkan aplikasi ke dalam Google Play, \textit{release} yang baru saja dibuat harus simpan dan direview terlebih dahulu dengan menekan tombol \textit{Save} kemudian tombol \textit{Review release}. Menekan tombol \textit{Review release} akan membuka halam review seperti pada Gambar \ref{fig:play:open:test:review}. Apabila \textit{release} sudah direview \textit{release} dapat luncurkan dengan menekan tombol \textit{Start rollout to Open testing}.
+
+\begin{figure}[H] 
+	\centering  
+	\includegraphics[scale=0.35]{play-review-release.png}  
+	\caption[Halaman review \textit{Create open testing release}] {Halaman review \textit{Create open testing release}} 
+	\label{fig:play:open:test:review} 
+\end{figure} 

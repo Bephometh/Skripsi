@@ -1,20 +1,71 @@
 \chapter{Implementasi dan Pengujian}
 
 \section{Implementasi Lingkungan Pengembangan}
-Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
+Pengembangan akan dilakuakn di dalam dua lingkungan, yaitu \textit{desktop} dan perangkat bergerak. Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
 
 \begin{enumerate}
-	\item \textit{Browser} Chromium.
-	\item Git, dengan \textit{fork} yang mengarah kepada \textit{repository} resmi Moodle mobile.
-	\item Node.js versi 14.
-	\item \textit{Native build tools} Windows.
-	\item Perangkat bergerak dengan sistem operasi Android
-\end{enumerate} 
+\item Perangkat keras \textit{desktop} lingkungan pengembangan ditujunkkan pada Tabel \ref{spec:hardware:desktop}. 
+
+\begin{table}[ht]
+\caption{Spefikasi perangkat keras lingkungan pengembangan}
+\centering
+\begin{tabular}{|l | l |}
+\hline
+\textbf{Parameter} & \textbf{Nilai} \\  \hline
+\textit{Processor}  &  \textit{Intel Core i7-2600k } \\ \hline
+\textit{Graphic Processing Unit} & \textit{Nvidia GeForce GTX 550 Ti} \\ \hline
+\textit{Random Access Memory}&  \textit{32.00 GB DDR3} \\ \hline
+\textit{Storage} & \textit{2 TB Hard Drive} \\ 
+\hline
+\end{tabular}
+\label{spec:hardware:desktop}
+\end{table}
+
+\item Perangkat lunak yang digunakan di dalam lingkungan pengembangan dapat dilihat pada Tabel \ref{spec:software}.
+
+\begin{table}[ht]
+\caption{Spefikasi perangkat lunak lingkungan pengembangan}
+\centering
+\begin{tabular}{|l | l |}
+\hline
+\textbf{Parameter} & \textbf{Nilai} \\ \hline
+Sistem Operasi  &  Window 10 \textit{Home 64-bit} \\ \hline
+Bahasa Pemrograman & TypeScript, HTML, JavaScript, SCSS, PHP, CSS \\ \hline
+\textit{Text Editor} &  Visual Studio Code \\ \hline
+\textit{Framework} & Ionic, Angular \\ \hline
+\multirow{4}{*}{Perangkat Lunak Pendukung} &  Node.js v.14 \\ & \textit{Windows Native build tools}\\ &  Git \\ & Google Chrome dengan pengaturan \textit{unsafe} \\ 
+\hline
+\end{tabular}
+\label{spec:software}
+\end{table}
+
+\item Spesifikasi dari perangkat bergerak yang digunakan dapat dilihat pada Tabel \ref{spec:mobile}.
+
+\begin{table}[ht]
+\caption{Spefikasi perangkat bergerak lingkungan pengembangan}
+\centering
+\begin{tabular}{|l | l |}
+\hline
+\textbf{Parameter} & \textbf{Nilai} \\  \hline
+Model & Huawei P20 EML-L29 \\ \hline
+\textit{Processor}  &  HiSilicon \textit{Kirin} 970 \\ \hline
+\textit{Storage} & \textit{128 GB} \\ \hline
+Sistem Operasi & Android 10 \\
+\hline
+\end{tabular}
+\label{spec:mobile}
+\end{table}
+
+\end{enumerate}
+
+Git akan digunakan untuk melakukan \textit{fork} terhadap repositori \texttt{moodlehq/moodleapp} ke repositori penilit. Setelah \textit{fork} dilakukan \textit{branch} dasar yang akan digunakan adalah \textit{branch integration}, maka dilakukan \textit{checkout} menuju \textit{branch} tersebut. Git juga akan digunakan untuk membuat \textit{branch} untuk setiap implementasi fitur, penyesuaian tema, dan penyesuain pengaturan. Dari \textit{branch-branch} tersebut akan dibuatkan \textit{pull request} untuk melakukan \textit{merge} dari setiap \textit{branch} ke dalam \textit{branch integration}.
 
 Penggunaan versi Node.js versi 14 atau versi lainnya yang berstatus LTS sudah didukung pada \textit{branch integration} Moodle mobile. Dukungan untuk versi Node.js berstatus LTS dilakukan oleh Moodle karena Node.js versi 11 sudah tidak berstatus LTS. Perbaruan tersebut belum terintegrasi dalam \textit{branch master} Moodle mobile, karena akan dirilis pada Moodle mobile versi 4\cite{MoodleTracker:Node11+} . Dengan begitu penggunaan Node.js versi 14 tidak menjadi masalah walaupun berbeda dengan yang disarankan di dalam dokumentasi Moodle mobile. 
 
-Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. Setelah menajlankan kedua perintah tersebut Moodle mobile dapat diakses dengan memasukkan URL \url{http://localhost:8100} pada \textit{browser} Chromium. 
+Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. Setelah menajlankan kedua perintah tersebut Moodle mobile dapat diakses dengan memasukkan URL \url{http://localhost:8100} pada \textit{browser} Google Chrome, namun tidak dapat masuk ke dalam IDE UNPAR dikarekanakan \textit{error} yang dibahas pada subbab \ref{mobile:to:ide}. 
 
+\section{Implementasi Menghubungkan dengan Situs IDE UNPAR}
+Perubahan yang dilakukan untuk menghubungkan aplikasi IDE UNPAR mobile dengan situs IDE UNPAR dapat dilihat pada subba \ref{mobile:connect}. Perubahan tersebut akan langsung mengarahkan pengguna untuk masuk ke dalam IDE UNPAR menggunakan SSO UNPAR. Namun masuk ke dalam IDE UNPAR melalui aplikasi tidak dapat dilakukan karena masalah yang terjadi pada subbab \ref{mobile:to:ide}, tetapi aplikasi akan tetap mengarahkan ke pengguna untuk masuk menggunakan SSO UNPAR.
 
 \section{Implementasi Penyesuaian Tema}
 Tema bawaan Moodle mobile akan diubah untuk menyesuaiakna seperti apa yang sudah dibahas pada subbab \ref{sec:Kondisi IDE UNPAR}. Implementasi perubahan-perubahan tersebut akan dibahas pada subbab subbab berikut.
@@ -98,6 +149,10 @@ Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spa
 
 
 Setelah perubahan tersebut diimplementasikan, dengan melakukan \textit{build} ulang aplikasi menggunakan \texttt{npx ionic cordova build Android} atau \texttt{npx ionic cordova run Android}, maka aplikasi akan menggunakan \textit{resource} yang baru saja dihasilkan.
+
+\section{Implementasi Fitur-fitur}
+Fitur-fitur yang akan diimplementasikan adalah fitur \textit{PDF scanner} dan menu yang mengarahkan pengguna ke situs \url{https://studentportal.unpar.ac.id}. Perubahan yang dilakukan untuk fitur \textit{PDF Scanner} dapat dilihat pada subbab \ref{feat:pdfscan}. Dan perubahan yang dilakukan untuk fitur menu yang mengarahkan ke \url{https://studentportal.unpar.ac.id} dapat dilihat pada subbab \ref{feat:menu:link}.
+
 
 \section{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
@@ -333,7 +388,7 @@ Menu ini akan mengarahkan pengguna ke halaman \textit{Perferences} yang berisi p
 \subsubsection{Menu \textit{App settings}}
 Menu ini akan mengarahkan pengguna ke halaman \textit{App settings}, dimana pengguna dapat mengatur pengaturan umum aplikasi, pengguna ruang penyimpanan aplikasi, sinkronisasi aplikasi, dan melihat informasi tentang aplikasi.
 
-\section{Uji Coba Fitur \textit{Scan PDF}}
+\section{Pengujian Fitur \textit{Scan PDF}}
 
 Fitur \textit{Scan PDF} dapat dikases melalui menu kemudian dengan memilih \textit{Files}. Dari halaman \textit{Files}, pengguna dapat menekan tombol dengan ikon tanda tambah untuk melihat pilihan cara mengunggah file seperti pada Gambar \ref{app:menu:files:options}. 
 
