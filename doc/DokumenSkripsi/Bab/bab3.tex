@@ -116,27 +116,28 @@ Moodle mobile dilisensikan dengan lisensi \textit{Apache 2.0}\cite{Moodlemobile:
 \end{itemize}
 Gagal memenuhi syarat-syarat di atas akan mengakibatkan lisensi untuk aplikasi yang telah dimodifikasi dan didistribusikan berrsifat tidak sah.
 
-\section{Saran fitu-fitur dari umpan balik}
+\section{Saran Fitur-fitur dari Umpan Balik}
 \label{feature feedback}
 
-Pada tanggal 25 Maret 2021 penguji membuat sebuah kuesioner yang dibagikan kepada warga UNPAR yang memiliki tautan untuk menguji coba aplikasi IDE UNPAR Mobile. Form tersebut berisi pertanyaan yang menyangkut bagaimana pengalaman penggunaan aplikasi dan fitur-fitur apa saja yang mereka inginkan untuk diimplementasi. Tabel \ref{fitur yang diinginkan} adalah fitur-fitur yang diinginkan oleh penguji untuk diimplementasikan dan mungkin atau tidaknya untuk diimplementasikan.
+Pada tanggal 25 Maret 2021 penguji membuat sebuah kuesioner yang dibagikan kepada warga UNPAR yang memiliki tautan untuk menguji coba aplikasi IDE UNPAR Mobile, kuesioner dapat dilihat pada \hyperref[lamp:B]{Lampiran B}. Form tersebut berisi pertanyaan yang menyangkut bagaimana pengalaman penggunaan aplikasi dan fitur-fitur apa saja yang mereka inginkan untuk diimplementasi. Tabel \ref{fitur yang diinginkan} adalah fitur-fitur yang diinginkan oleh penguji untuk diimplementasikan dan mungkin atau tidaknya untuk diimplementasikan.
 
 \begin{table}[ht]
 \caption{Hasil kuesioner untuk fitur apa yang diinginkan}
 \centering
-\begin{tabular}{|c | c | c|}
+\begin{tabular}{|l | c | c|}
 \hline
 \multicolumn{1}{|l|}{\multirow{2}{*}{Fitur yang ingin diimplementasikan}} & \multicolumn{2}{l|}{Dapat diimplementasikan?}                    \\ \cline{2-3} 
 \multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{Ya} & \multicolumn{1}{l|}{Tidak} \\ \hline
-Push notification & & \checkmark \\
-Scanner untuk foto menjadi PDF  &  \checkmark & \\
-Sinkronisasi dengan google calendar & & \\
-Absensi melalui IDE UNPAR &  &\checkmark \\
-Fitur tambah file otomatis dari apps scanner & \checkmark & \\
-Jadwal Kuliah & &\checkmark \\
-Sign in SSO dalam app & &  \checkmark \\
-Dapat berpindah page dengan swipe horizontal & & \checkmark\\
-Fitur Pesan yang berupa message di IDE di konversi menjadi bentuk chat &  & \checkmark \\
+Push notification & & \checkmark \\ \hline
+Scanner untuk foto menjadi PDF  &  \checkmark & \\ \hline
+Sinkronisasi dengan google calendar & & \checkmark \\ \hline
+Melihat file-file seperti PDF dan PPT di IDE UNPAR & & \checkmark \\ \hline
+Absensi melalui IDE UNPAR &  &\checkmark \\ \hline
+Fitur tambah file otomatis dari apps scanner & \checkmark & \\ \hline
+Jadwal Kuliah & &\checkmark \\ \hline
+Sign in SSO dalam app & &  \checkmark \\ \hline 
+Dapat berpindah page dengan swipe horizontal & & \checkmark\\ \hline
+Fitur Pesan yang berupa message di IDE di konversi menjadi bentuk chat &  & \checkmark \\ \hline
 login langsung di aplikasi & & \checkmark \\
 \hline
 \end{tabular}
@@ -152,6 +153,10 @@ Fitur ini ditandakan sebagai tidak dapat diimplementasikan karena fitur tersebut
 Fitur ini dapat diimplementasikan dengan bantuan dari \textit{plugin} Cordova \texttt{cordova-plugin-document-scanner}. Dengan plugin tersebut gambar yang ditangkap melalui kamera perangkat pengguna akan dimasukkan ke dalam format HTML yang kemudian akan dikonversi ke format PDF. Setelah dikonversi file PDF tersebut akan langsung diunggah ke dalam \textit{private files} atau submisi tugas.
 
 \subsection{Sinkronisasi dengan Google Calendar}
+Fitur ini tidak dapat diimplementasikan karena renggang waktu yang tidak cukup, sehingga tidak ditemukannya cara yang optimal untuk menghubungkan kalender IDE UNPAR dengan kalender Google melalui aplikasi IDE UNPAR mobile.
+
+\subsection{Melihat file-file seperti PDF dan PPT di IDE UNPAR}
+Fitur ini tidak dapat diimplementasikan karena dirasa menu \textit{File} yang telah disediakan oleh Moodle mobile dapat memenuhi kegunaan tersebut. Pengguna juga sudah bisa mengakses file-file yang disediakan di dalam mata kuliah untuk diunduh.
 
 \subsection{Absensi melalui IDE UNPAR} 
 \label{absesnsi IDE}
