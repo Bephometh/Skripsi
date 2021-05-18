@@ -65,8 +65,29 @@ Penggunaan versi Node.js versi 14 atau versi lainnya yang berstatus LTS sudah di
 Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. Setelah menajlankan kedua perintah tersebut Moodle mobile dapat diakses dengan memasukkan URL \url{http://localhost:8100} pada \textit{browser} Google Chrome, namun tidak dapat masuk ke dalam IDE UNPAR dikarekanakan \textit{error} yang dibahas pada subbab \ref{mobile:to:ide}. 
 
 \section{Implementasi Menghubungkan dengan Situs IDE UNPAR}
-Perubahan yang dilakukan untuk menghubungkan aplikasi IDE UNPAR mobile dengan situs IDE UNPAR dapat dilihat pada subba \ref{mobile:connect}. Perubahan tersebut akan langsung mengarahkan pengguna untuk masuk ke dalam IDE UNPAR menggunakan SSO UNPAR. Namun masuk ke dalam IDE UNPAR melalui aplikasi tidak dapat dilakukan karena masalah yang terjadi pada subbab \ref{mobile:to:ide}, tetapi aplikasi akan tetap mengarahkan ke pengguna untuk masuk menggunakan SSO UNPAR.
+%Perubahan yang dilakukan untuk menghubungkan aplikasi IDE UNPAR mobile dengan situs IDE UNPAR dapat dilihat pada subba \ref{mobile:connect}. Perubahan tersebut akan langsung mengarahkan pengguna untuk masuk ke dalam IDE UNPAR menggunakan SSO UNPAR. Namun masuk ke dalam IDE UNPAR melalui aplikasi tidak dapat dilakukan karena masalah yang terjadi pada subbab \ref{mobile:to:ide}, tetapi aplikasi akan tetap mengarahkan ke pengguna untuk masuk menggunakan SSO UNPAR.
 
+Perubahan yang harus dilakukan untuk menghubungkan IDE UNPAR mobile dengan situs IDE UNPAR telah dibahas pada subbab \ref{mobile:connect}.  Implementasi perubahan tersebut akan memungkinkan aplikasi langsung terhubung dengan situs IDE UNPAR ketika aplikasi dijalankan. Perubahan pada kode dapat dilihat pada  \mbox{Kode \ref{auto-redirect}}. 
+
+
+\begin{lstlisting}[language=diff, frame=single, label ={auto-redirect}, caption = Perubahan pada file \texttt{config.json} ]
+
+diff --git a/src/config.json b/src/config.json
+index 919869fe652..daaf2aef5c5 100644
+--- a/src/config.json
++++ b/src/config.json
+@@ -68,10 +68,10 @@
+         75.89,
+         93.75
+     ],
+     "demo_sites" :[] ,
+     "customurlscheme": "moodlemobile",
+-    "siteurl": "https://moodledemo.pascal.id/",
++    "siteurl": "https://ide.unpar.ac.id/",
+     "sitename": "",
+     "multisitesdisplay": "",
+     "sitefindersettings": {},
+\end{lstlisting} 
 \section{Implementasi Penyesuaian Tema}
 Tema bawaan Moodle mobile akan diubah untuk menyesuaiakna seperti apa yang sudah dibahas pada subbab \ref{sec:Kondisi IDE UNPAR}. Implementasi perubahan-perubahan tersebut akan dibahas pada subbab subbab berikut.
 
@@ -142,7 +163,7 @@ Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spa
 \begin{figure}[H] 
 	\centering  
 	\includegraphics[scale=0.1]{splash.png}  
-	\caption[Logo IDE UNPAR] {Logo IDE UNPAR} 
+	\caption[Logo IDE UNPAR untuk \textit{splash screen}] {Logo IDE UNPAR \textit{splash screen}} 
 	\label{app:splash} 
 \end{figure} 
 
@@ -151,8 +172,241 @@ Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spa
 Setelah perubahan tersebut diimplementasikan, dengan melakukan \textit{build} ulang aplikasi menggunakan \texttt{npx ionic cordova build Android} atau \texttt{npx ionic cordova run Android}, maka aplikasi akan menggunakan \textit{resource} yang baru saja dihasilkan.
 
 \section{Implementasi Fitur-fitur}
-Fitur-fitur yang akan diimplementasikan adalah fitur \textit{PDF scanner} dan menu yang mengarahkan pengguna ke situs \url{https://studentportal.unpar.ac.id}. Perubahan yang dilakukan untuk fitur \textit{PDF Scanner} dapat dilihat pada subbab \ref{feat:pdfscan}. Dan perubahan yang dilakukan untuk fitur menu yang mengarahkan ke \url{https://studentportal.unpar.ac.id} dapat dilihat pada subbab \ref{feat:menu:link}.
+Fitur-fitur yang akan diimplementasikan adalah fitur \textit{PDF scanner} dan menu yang mengarahkan pengguna ke situs \url{https://studentportal.unpar.ac.id} seperti yang dibahas pada subbab \ref{feat:feedback}.% Perubahan yang dilakukan untuk fitur \textit{PDF Scanner} dapat dilihat pada subbab \ref{feat:pdfscan}. Dan perubahan yang dilakukan untuk fitur menu yang mengarahkan ke \url{https://studentportal.unpar.ac.id} dapat dilihat pada subbab \ref{feat:menu:link}.
 
+\subsection{Impelementasi PDF \textit{Scanner}}
+Perubahan yang harus dilakukan telah dibahas pada subbab \ref{feat:pdfscan}. Perubahan pada \texttt{src/core/fileuploader/providers/helper.ts} dapat dilihat pada \mbox{Kode \ref{fileuploader-helper}}. Dan kode program \texttt{src/core/fileuploader/providers/scanner-handler.ts} dapat dilihat pada \hyperref[lamp:A]{Lampiran A}.
+
+\begin{lstlisting}[language=diff, frame=single, label ={fileuploader-helper}, caption = Perubahan pada \texttt{src/core/fileuploader/providers/helper.ts} ]
+diff --git a/src/core/fileuploader/providers/helper.ts 
+b/src/core/fileuploader/providers/helper.ts
+index fe28bcb3e4..e69ee619aa 100644
+--- a/src/core/fileuploader/providers/helper.ts
++++ b/src/core/fileuploader/providers/helper.ts
++    /**
++     * 
++     * @param maxSize Max size of the upload. -1 for no max size.
++     * @param upload True if file should be uploaded,
++     *  false to return to picked file.
++     * @param mimetypes List of supported mimetypes.  
++     * @return Promise solved when done.
++     */
++    scanImage(maxSize : number,
++    upload?:boolean, mimetypes?: string[]): Promise<any>{
++
++        const camOpts: CameraOptions = {
++            quality: 50,
++            destinationType: this.camera.DestinationType.FILE_URI,
++            correctOrientation: true
++        };
++
++            // Determine the mediaType based on the mimetypes.
++            if (imageSupported && !videoSupported) {
++                camOpts.mediaType = this.camera.MediaType.PICTURE;
++            } else if (!imageSupported && videoSupported) {
++                camOpts.mediaType = this.camera.MediaType.VIDEO;
++            } else if (CoreApp.instance.isIOS()) {
++                // Only get all media in iOS 
++	       //because in Android using this option 
++	      //allows uploading any kind of file.
++                camOpts.mediaType = this.camera.MediaType.ALLMEDIA;
++            }
++        }
++
++        return this.fileUploaderProvider
++	.getPicture(camOpts).then((path) => {
++            const error = this.fileUploaderProvider
++	    .isInvalidMimetype(mimetypes, path); 
++	     // Verify that the mimetype is supported.
++            if (error) {
++                return Promise.reject(error);
++            }
++                const html = '<html> <img src="'+ path +
++	        '" style="width: 100%; height 100%"> </html>';
++                this.logger.debug(html);
++ 	        var currentDate = new Date().getTime();
++                return cordova.plugins.pdf.fromData(html,{
++                    fileName : 'my-pdf'+currentDate,
++                    landscape : "portrait",
++                    type : "base64" 
++		//Using this type because the document 
++		//will be uploaded right away.
++                }).then((base64)=>{   
++                    //converting to blob
++                    const blob = this.base64ToBlob(base64);
++                    
++                    const contentType = 'application/pdf'
++                    const folderPath = "Download/my-pdf"
++ 		+currentDate+".pdf";
++                    return this.fileProvider.writeFile(folderPath, blob)
++		.then((fileEntry)=>{
++                        const options = this.fileUploaderProvider
++			.getFileUploadOptions(fileEntry.nativeURL, +	
++			'mypdf'+currentDate.getTime()+'.pdf',  
++			contentType, true);
++                        if(upload){;
++                            this.logger.debug("uploaded");
++                           return this.uploadFileEntry(fileEntry, true, 
++ 		        -1, upload, false, fileEntry.name);
++                        } else {
++                            // Copy or move the file 
++			to our temporary folder.
++                            this.logger.debug("Copy to temp");
++                            return this.copyToTmpFolder
++ 		         (fileEntry.nativeURL, 
++ 		         false, maxSize, 'pdf', options);
++                        }
++                    
++                    },
++                    (error) => {
++                        this.logger.error(error);
++                    });
++                },(error) => {
++                    const defaultError = 'core.fileuploader
++		.errorcapturingimage';
++                    console.error(error);
++                    return this.treatImageError(error, defaultError);
++                });
++        });
++    
++    }
++
+\end{lstlisting}
+
+
+Setelah melakukan perubahan-perubahan diatas. Fungsi PDF \textit{scanner} akan muncul pada menu aplikasi IDE UNPAR. Namun nama fungsi akan muncul sebagai \texttt{core.fileuploader.scanner} seperti yang terlihat di fungsi \texttt{getData()} pada \mbox{Kode \ref{scanner-handler}}. Untuk mengubah nama fungsi pada menu dierplukan perubahan pada \texttt{src/core/fileuploader/lang/en.json} dan pada \texttt{scripts/langindex.json}. Perubahan-perubahan pada file tersebut dilakukan dengan tujuna agar Moodle mobile dapat mengenali \textit{title} \texttt{core.fileuploader.scanner} dan menterjemahkan ke dalam bahasa yang sesuai.  Perubahan pada \texttt{scripts/langindex.json} dapat dilihat pada \mbox{Kode \ref{langindex.json}} dan perubahan pada \texttt{src/core/fileuploader/lang/en.json} dapat dilihat pada\mbox{Kode \ref{fileuploader-lang-eng}}.
+
+\begin{lstlisting}[language=diff, frame=single, label ={langindex.json}, caption = Perubahan pada file \texttt{langindex.json} ]
+diff --git a/scripts/langindex.json b/scripts/langindex.json
+index 0a3a21d16d2..2abd385d7a6 100644
+--- a/scripts/langindex.json
++++ b/scripts/langindex.json
+@@ -1600,6 +1600,7 @@
+   "core.fileuploader.uploading": "local_moodlemobileapp",
+   "core.fileuploader.uploadingperc": "local_moodlemobileapp",
+   "core.fileuploader.video": "local_moodlemobileapp",
++  "core.fileuploader.scanner" : "local_moodlemobileapp",
+   "core.filter": "moodle",
+   "core.folder": "moodle",
+   "core.forcepasswordchangenotice": "moodle",
+\end{lstlisting} 
+
+\begin{lstlisting}[language=diff, frame=single, label ={fileuploader-lang-eng}, caption = Perubahan pada file \texttt{src/core/fileuploader/lang/en.json} ]
+diff --git a/src/core/fileuploader/lang/en.json
+ b/src/core/fileuploader/lang/en.json
+index 22d14df4a11..f0b31d17abf 100644
+--- a/src/core/fileuploader/lang/en.json
++++ b/src/core/fileuploader/lang/en.json
+@@ -25,5 +25,6 @@
+     "uploadafile": "Upload a file",
+     "uploading": "Uploading",
+     "uploadingperc": "Uploading: {{$a}}%",
+-    "video": "Video"
++    "video": "Video",
++    "scanner" : "Scan PDF"
+ }
+\end{lstlisting} 
+
+\subsection{Impelementasi tautan menuju Student Portal Unpar}
+Seperti pada subbab \ref{feat:menu:link}, perubahan pertama yang harus dilakukan adalah membuat sebuah menu baru untuk mengakses tauta \url{https://studentportal.unpar.ac.id}. Membuat menu tersebut dilakukan dengan menambahkan tag HTML \texttt{<a>} dengan variabel \texttt{(click)} seperti pada \mbox{Kode \ref{more-view}}, agar ketika menu tersebut ditekan memanggil fungsi \texttt{openStudentPortal()} yang ditambahkan pada \texttt{src/core/mainmenu/pages/more/more.ts} yang dapat dilihat pada \mbox{Kode \ref{more-component}}.
+
+\begin{lstlisting}[language=diff, frame=single, label ={more-view}, caption = Perubahan pada file \texttt{src/core/mainmenu/pages/more/more.html} ]
+diff --git a/src/core/mainmenu/pages/more/more.html
+ b/src/core/mainmenu/pages/more/more.html
+index 4b2949e7a04..30c80e2e5d0 100644
+--- a/src/core/mainmenu/pages/more/more.html
++++ b/src/core/mainmenu/pages/more/more.html
+@@ -39,6 +39,10 @@ <h2>{{ 'core.scanqr' | translate }}</h2>
+             <ion-icon name="globe" item-start aria-hidden="true">
+	</ion-icon>
+             <h2>{{ 'core.mainmenu.website' | translate }}</h2>
+         </a>
++        <a *ngIf="showWeb" ion-item (click)="openStudentPortal()" 
++ 	core-link autoLogin="yes" 
++ 	title="{{ 'core.mainmenu.studentportal' | translate }}">
++            <ion-icon name="md-school" item-start aria-hidden="true">
++ 	</ion-icon>
++            <h2>{{ 'core.mainmenu.studentportal' | translate }}</h2>
++        </a>
+         <a *ngIf="showHelp" ion-item [href]="docsUrl" 
+	core-link autoLogin="no" 
+	title="{{ 'core.mainmenu.help' | translate }}">
+             <ion-icon name="help-buoy" item-start aria-hidden="true">
+	</ion-icon>
+             <h2>{{ 'core.mainmenu.help' | translate }}</h2>
+@@ -46,10 +50,6 @@ <h2>{{ 'core.mainmenu.help' | translate }}</h2>
+         <a ion-item (click)="openSitePreferences()" 
+	title="{{ 'core.settings.preferences' | translate }}">
+             <core-icon name="fa-wrench" item-start></core-icon>
+             <h2>{{ 'core.settings.preferences' | translate }}</h2>
+        </a>
+-            <a ion-item (click)="logout()" 
+- 	   title="{{ logoutLabel | translate }}">
+-            <ion-icon name="log-out" item-start aria-hidden="true">
+- 	 </ion-icon>
+-            <h2>{{ logoutLabel | translate }}</h2>
+-         </a>
+         <ion-item-divider></ion-item-divider>
+         <a ion-item (click)="openAppSettings()" 
+	title="{{ 'core.settings.appsettings' | translate }}">
+ }
+\end{lstlisting} 
+
+\begin{lstlisting}[language=diff, frame=single, label ={more-component}, caption = Perubahan pada file \texttt{src/core/mainmenu/pages/more/more.ts} ]
+diff --git a/src/core/mainmenu/pages/more/more.ts
+b/src/core/mainmenu/pages/more/more.ts
+index a3b786c0717..aa700ff2f08 100644
+--- a/src/core/mainmenu/pages/more/more.ts
++++ b/src/core/mainmenu/pages/more/more.ts
+@@ -207,4 +207,11 @@ export class CoreMainMenuMorePage implements 
+OnDestroy {
+     logout(): void {
+         this.sitesProvider.logout();
+     }
++
++    /**
++     * Open https://studentportal.unpar.ac.id
++     */
++    openStudentPortal() : void{
++        this.utils.openInBrowser( "https://studentportal.unpar.ac.id" );
++    }
+ }
+\end{lstlisting} 
+
+Menu dengan tautan menuju \url{https://studentportal.unpar.ac.id} sekarang akan muncul, namun dengan nama \texttt{core.mainmenu.studentportal} karena aplikasi tidak mengetahui harus diterjemahkan sebagai kalimat apa. Untuk mengatasi masalah tersebut perlu ditambahkannya \texttt{core.mainmenu.studentportal} di dalam \texttt{src/core/mainmenu/lang/en.json} seperti pada \mbox{Kode \ref{stupor-index}}. Dan menambahkannya juga ke dalam \texttt{scripts/langindex.json} yang ditunjukkan pada  \mbox{Kode \ref{stupor-index-script}}.
+
+\begin{lstlisting}[language=diff, frame=single, label ={stupor-index}, caption = Menambahkan \texttt{core.mainmenu.studentportal} pada file  \texttt{src/core/mainmenu/lang/en.json} ]
+diff --git a/src/core/mainmenu/lang/en.json 
+b/src/core/mainmenu/lang/en.json
+index 4ff96fbf7b4..cfbdfb5ac3a 100644
+--- a/src/core/mainmenu/lang/en.json
++++ b/src/core/mainmenu/lang/en.json
+@@ -2,5 +2,6 @@
+     "changesite": "Change site",
+     "help": "Help",
+     "logout": "Log out",
+-    "website": "Website"
++    "website": "Website", 
++    "studentportal": "Student portal UNPAR"
+ }
+\end{lstlisting} 
+
+\begin{lstlisting}[language=diff, frame=single, label ={stupor-index-script}, caption = Menambahkan \texttt{core.mainmenu.studentportal} pada file  \texttt{scripts/langindex.json} ]
+diff --git a/scripts/langindex.json b/scripts/langindex.json
+index 2abd385d7a6..e155ef93a01 100644
+--- a/scripts/langindex.json
++++ b/scripts/langindex.json
+@@ -1862,6 +1862,7 @@
+   "core.mainmenu.help": "moodle",
+   "core.mainmenu.logout": "moodle",
+   "core.mainmenu.website": "local_moodlemobileapp",
++  "core.mainmenu.studentportal" : "local_moodlemobileapp",
+   "core.maxfilesize": "moodle",
+   "core.maxsizeandattachments": "moodle",
+   "core.min": "moodle",
+\end{lstlisting} 
+
+Perubahan selanjutnya adalah mengahapus menu \textit{change site}. Untuk menghapus menu tersebut dilakukan dengan menghapus bagian kode yang memanggil fungsi \texttt{logout()}. Penghapusan bagian ini diketahui dengan menganalisa kode dan mencari bagian kode mana yang berfungsi untuk mengeluarkan pengguna dari situs yang terhubung sekarang. Perubahan pada kode dapat dilihat pada \mbox{Kode \ref{more-view}}.
 
 \section{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
