@@ -153,19 +153,20 @@ index 31402ee681..f2bb898b20 100644
 Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spalsh screen} dari aplikasi juga akan diganti. Ikon aplikasi akan menggunakan logo UNPAR dan \textit{splash screen} akan menggunakan logo IDE UNPAR. Langkah pertama yang harus dilakukan adalah menyeidkan file \texttt{icon.png} seperti pada Gambar \ref{app:icon} dan \texttt{spalsh.png} seperti pada Gambar \ref{app:splash} di dalam folder \texttt{resource}. Kemudia untuk menghasilkan ikon dan \textit{splash screen} untuk kedua platform Android dan iOS Cordova menyediakan perintah \texttt{npx ionic cordova resource}. Dengan menjalankan perintah tersebut Cordova akan menghasilkan \textit{resource} yang dibutuhkan. \textit{config.xml} juga akan diubah ketika menjalankan perintah tersebut.
 
 \begin{figure}[H] 
+\begin{minipage}{.5\textwidth}
 	\centering  
 	\includegraphics[scale=0.3]{icon.png}  
 	\caption[Logo  UNPAR] {Logo  UNPAR} 
-	\label{app:icon} 
-\end{figure} 
-
-
-\begin{figure}[H] 
+	\label{app:icon}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
 	\centering  
 	\includegraphics[scale=0.1]{splash.png}  
-	\caption[Logo IDE UNPAR untuk \textit{splash screen}] {Logo IDE UNPAR \textit{splash screen}} 
+	\caption[Logo IDE UNPAR untuk \textit{splash screen}] {Logo IDE UNPAR untuk \textit{splash screen}} 
 	\label{app:splash} 
+\end{minipage}
 \end{figure} 
+
 
 
 
@@ -440,19 +441,21 @@ Melakukan pengujian pada perangkat bergerak dilakukan dengan menguhubungkan pera
 
 Perintah \texttt{npx ionic cordova run android} akan menginstall \texttt{app-debug.apk} pada perangkat Android dan menajlankannya tanpa masalah. Ketika aplikasi berhasil berjalan pada perangkat bergerak, pengguna akan melalui halaman \textit{loading} seperti pada Gambar \ref{app:loading} kemudian diarahkan kehalaman \textit{login} di dalam aplikasi seperti pada Gambar \ref{app:login}.
 
-\begin{figure}[H] 
+
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth} 
 	\centering  
-	\includegraphics[scale=0.2]{spalsh_screen-id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.15]{spalsh_screen-id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman \textit{loading} aplikasi] {Halaman \textit{loading} aplikasi} 
 	\label{app:loading} 
-\end{figure}
-
-\begin{figure}[H] 
+\end{minipage}
+\begin{minipage}{.5\textwidth}
 	\centering  
-	\includegraphics[scale=0.2]{login_screen-id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.15]{login_screen-id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman \textit{login} aplikasi] {Halaman \textit{login} aplikasi} 
 	\label{app:login} 
-\end{figure}  
+\end{minipage}
+\end{figure}
 
 Pengguna diharuskan menekan \textit{"OK"} pada \textit{pop-up} yang muncul untuk \textit{login} menggunakan SSO UNPAR. Ketika pengguna sudah berhasil \textit{login}. Pengguna akan diarahkan ke halaman \textit{Site Home} seperti pada Gambar \ref{app:site-home}, dimana isi halaman utama IDE UNPAR dapat diliahat. 
 
@@ -465,9 +468,26 @@ Pengguna diharuskan menekan \textit{"OK"} pada \textit{pop-up} yang muncul untuk
 
 Untuk melihat matakuliah yang diambil oleh pengguna, pengguna dapat menekan tombol \textit{"Dashboard"}. Pada bagian atas halaman \textit{Dashboard} pengguna dapat melihat \textit{course} atau mata kuliah yang baru diakses. Di bawah bagian \textit{Recently accessed courses} pengguna dapat melihat seluruh mata kuliah yang sedang diikuti dalam bagian \textit{Course overview}. Bagian \textit{Course overview} juga dapat diurutkan berdasarakan nama mata kuliah atau yang terakhir kali diakses oleh pengguna. Di bawah bagian \textit{Course overview} pengguna dapat melihat juga acara yang akan datang dan linimasa dari mata kuliah yang sedang ditempuh. Halaman \textit{Dashboard} dapat dilihat pada Gambar \ref{app:dashboard}
 
-\begin{figure}[H] 
+\begin{figure}[H]
 	\centering  
-	\includegraphics[scale=0.2]{dashboard-id.ac.unpar.moodlemobile.jpg}  
+	\begin{subfigure}[ht]{.3\textwidth}
+	\centering
+	\includegraphics[scale=0.2]{dashboard-id.ac.unpar.moodlemobile-1.jpg} 
+	\caption{Halaman \textit{Dashboard} sebelum di-\textit{scroll}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[ht]{.3\textwidth}
+	\centering
+	\includegraphics[scale=0.2]{dashboard-id.ac.unpar.moodlemobile-2.jpg} 
+	\caption{Halaman \textit{Dashboard} setelah di-\textit{scroll}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[ht]{.3\textwidth}
+	\centering
+	\includegraphics[scale=0.2]{dashboard-id.ac.unpar.moodlemobile-3.jpg} 
+	\caption{Halaman \textit{Dashboard} setelah di-\textit{scroll}}
+	\end{subfigure}
+
 	\caption[Halaman \textit{Dashboard} aplikasi] {Halaman \textit{Dashboard} aplikasi} 
 	\label{app:dashboard} 
 \end{figure}  
@@ -478,18 +498,34 @@ Halaman mata kuliah terbagi menjadi beberapa halaman yang akan menampilkan konte
 
 \subsubsection{Halaman konten mata kuliah}
 
-Halaman ini akan menunjukkan aktivitas yang terdapat didalam suatu mata kuliah yang telah disiapkan oleh dosen atau penyelenggara mata kuliah. Ketika pertama kali mengakses halaman ini, peserta akan dapat melihat seluruh konten, aktivitas, dan materi dari setiap topik mata kuliah yang dibuka seperti pada Gambar \ref{app:content}. Untuk melihat aktvitas berdasarakan setiap topik dari suatu mata kuliah pengguna dapat menekan tombol \textit{"All sections"} dan memilih topik yang ingin dilihat. Kemudian aplikasi akan memunculkan konten spesifik untuk topik mata kuliah yang dipilih seperti pada Gambar \ref{app:participants}.
+Halaman ini akan menunjukkan aktivitas yang terdapat didalam suatu mata kuliah yang telah disiapkan oleh dosen atau penyelenggara mata kuliah. Ketika pertama kali mengakses halaman ini, peserta akan dapat melihat seluruh konten, aktivitas, dan materi dari setiap topik mata kuliah yang dibuka seperti pada Gambar \ref{app:content}. Untuk melihat aktvitas berdasarakan setiap topik dari suatu mata kuliah pengguna dapat menekan tombol \textit{"All sections"} dan memilih topik yang ingin dilihat. Kemudian aplikasi akan memunculkan konten spesifik untuk topik mata kuliah yang dipilih seperti pada Gambar \ref{app:content:detail}.
 
 \begin{figure}[H] 
-	\centering  
-	\includegraphics[scale=0.2]{course-content_id.ac.unpar.moodlemobile.jpg}  
-	\caption[Halaman konten mata kuliah aplikasi] {Halaman konten mata kuliah aplikasi} 
+	\centering 
+	\begin{subfigure}[ht]{.3\textwidth}
+	\centering
+	\includegraphics[scale=0.2]{course-content_id.ac.unpar.moodlemobile-1.jpg}  
+	\caption{Halaman konten detail mata kuliah sebelum di-\textit{scroll}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[ht]{.3\textwidth}
+	\centering
+	\includegraphics[scale=0.2]{course-content_id.ac.unpar.moodlemobile-2.jpg}  
+	\caption{Halaman konten detail mata kuliah setelah di-\textit{scroll}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[ht]{.3\textwidth}
+	\centering
+	\includegraphics[scale=0.2]{course-content_id.ac.unpar.moodlemobile-3.jpg}  
+	\caption{Halamankonten detail mata kuliah setelah di-\textit{scroll}}
+	\end{subfigure} 
+	\caption[Halaman konten detail mata kuliah aplikasi] {Halaman konten detail mata kuliah aplikasi} 
 	\label{app:content} 
 \end{figure}  
 
 \begin{figure}[H] 
 	\centering  
-	\includegraphics[scale=0.2]{course-content-detail_id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.15]{course-content-detail_id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman konten detail mata kuliah aplikasi] {Halaman konten detail mata kuliah aplikasi} 
 	\label{app:content:detail} 
 \end{figure}  
@@ -550,21 +586,22 @@ Halaman \textit{Messages} dapat diakses dengan menekan ikon \textit{chat box} pa
 
 Melihat kontak pengguna dapat dikases dengan menekan menu \textit{Contacts} pada halaman \textit{Messages}. Pada halaman \textit{Contacts} pengguna akan dapat melihat kontaknya yang terdaftar seperti pada Gambar \ref{app:messages:contact} dan melihat permintaan kontak dari pengguna lain seperti pada Gambar \ref{app:messages:request}.
 
-
-\begin{figure}[H] 
+\begin{figure}[H]
+\centering
+\begin{minipage}{.3\textwidth} 
 	\centering  
-	\includegraphics[scale=0.15]{messages-contact_id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.13]{messages-contact_id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman \textit{Contact} aplikasi] {Halaman \textit{Contact} aplikasi} 
 	\label{app:messages:contact} 
-\end{figure}  
-
-
-\begin{figure}[H] 
+\end{minipage}
+\hspace{.2\textwidth}
+\begin{minipage}{.3\textwidth}
 	\centering  
-	\includegraphics[scale=0.15]{messages-request_id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.13]{messages-request_id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman permintaan kontak aplikasi] {Halaman permintaan kontak aplikasi} 
 	\label{app:messages:request} 
-\end{figure}  
+\end{minipage}
+\end{figure}
 
 \subsection{Halaman \textit{Notifications}}
 
@@ -673,17 +710,20 @@ Setelah mengkonfirmasi gambar yang telah diambil, aplikasi akan langsung mempros
 
 Pengguna juga dapat menggunakan fitur \textit{Scan PDF} untuk mengumpulkan tugas. Untuk melakukan hal tersebut, pengguna harus membuka tugas yang diinginkan seperti pada Gambar \ref{app:scanPDF:submission}. Kemudia menekan tombol \textit{ADD FILE} untuk memunculkan pilihan menggungah file seperti pada Gambar \ref{app:scanPDF:submission:options}. Setelah itu pengguna dapat menekan tombol \textit{save} untuk memfinalisasi submisi.
 
-\begin{figure}[H] 
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{.3\textwidth}
 	\centering  
-	\includegraphics[scale=0.15]{scan-PDF-submission_id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.13]{scan-PDF-submission_id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman submisi tugas] {Halaman submisi tugas} 
 	\label{app:scanPDF:submission} 
-\end{figure}  
-
-\begin{figure}[H] 
+	\end{minipage}
+	\hspace{.3\textwidth}
+	\begin{minipage}{.3\textwidth}
 	\centering  
-	\includegraphics[scale=0.15]{scan-PDF-submission-options_id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.13]{scan-PDF-submission-options_id.ac.unpar.moodlemobile.jpg}  
 	\caption[Pilihan submisi tugas] {Pilihan submisi tugas} 
 	\label{app:scanPDF:submission:options} 
-\end{figure}  
+	\end{minipage}
+\end{figure}
 
