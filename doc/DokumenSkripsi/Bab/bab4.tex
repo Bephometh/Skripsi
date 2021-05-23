@@ -4,61 +4,30 @@
 \section{Struktur Proyek Moodle Mobile}
 \label{struktur proyek}
 
-Proyek Moodle Mobile terdiri dari kumpulan file-file dan direktori-direktori utama yang mengandung fungsi dan \textit{source code} untuk aplikasi Moodle Mobile, platform Android dan iOS, alat untuk mebangun perangkat lunak, dan konfigurasi. Struktur dapat dilihat di bawah.
+Proyek Moodle Mobile terdiri dari kumpulan file-file dan direktori-direktori utama yang mengandung fungsi dan \textit{source code} untuk aplikasi Moodle Mobile, platform Android dan iOS, alat untuk mebangun perangkat lunak, dan konfigurasi. Struktur proyek yang akan mengalami perubahan dapat dilihat pada Gambar \ref{moodle:projectstructre}.
 \\
-
-\dirtree{%
-.1 config.
-.1 desktop.
-.1 gulp.
-.1 hooks.
-.1 node\_modules.
-.1 platforms.
-.1 plugins.
-.1 resources. 
-.1 scripts.
-.1 src.
-.2 addon.
-.2 app.
-.2 assets.
-.2 classes.
-.2 compontens.
-.2 config.json.
-.2 configconstants.ts.
-.2 core.
-.2 directives.
-.2 index.html.
-.2 lang.
-.2 pipes.
-.2 providers.
-.2 singletons.
-.2 theme.
-.1 www.
-.1 .dockerignore.
-.1 .gitattributes.
-.1 .gitignore.
-.1 .npmrc.
-.1 .travis.yml.
-.1 config.xml.
-.1 Dockerfile.
-.1 google-services.json.
-.1 gulpfile.js.
-.1 ionic.config.json.
-.1 LICENSE.
-.1 licenses.json.
-.1 MainActivity.java.
-.1 NOTICE.
-.1 packgae-lock.json.
-.1 PACKAGE\_PROBLEMS.md.
-.1 README.md.
-.1 tsconfig.json.
-.1 tslint.json.
-.1 upgrade.txt.
-}
+\begin{figure}[H]
+%\dirtree{%
+%.1 platforms/.
+%.1 resources/.
+%.1 node\_modules/.
+%.1 src/.
+%.2 app/.
+%.2 config.json.
+%.2 core/.
+%.2 theme/.
+%.1 config.xml.
+%.1 ionic.config.json.
+%}
+\centering
+\includegraphics[scale = 1.5]{project-structure.PNG}
+\caption{Struktur proyek moodleapp yang akan mengalami perubahan}
+\label{moodel:projectstructure}
+\end{figure}
 
 Perubahan pada aplikasi akan sering dilakukan pada direktori \texttt{src}, dan \texttt{config.xml}. Direktori \texttt{src} berisi kode-kode utama dari aplikasi Moodle mobile dan konfigurasinya. Konfigurasi dari Moodle mobile sendiri diatur oleh file \texttt{config.json} di dalam folder \texttt{src}. File \texttt{Config.xml} berfungsi untuk mengatur konfigurasi dari aplikasi Cordova. Dikarenakan Moodle mobile menggunakan Cordova maka pengaturan saat melakukan \textit{build} untuk perangkat bergerak akan diambil dari file \texttt{config.xml}. 
 
-Perubahan juga akan terjadi pada direktori \texttt{resources} dan file \texttt{ionic.config.json}. Direktori \texttt{resource} menyimpan sumber untuk ikon dan \textit{splashscreen} yang akan digunakan oleh aplikasi ketika di-\textit{build} untuk platform Android maupun iOS. File \texttt{ionic.config.json} adalah file konfigurasi yang digunakan oleh  Ionic CLI (\textit{Command Line Interface}), dimana nama aplikasi dan identifikasi aplikasi akan disimpan disana dan dirujuk oleh Ionic CLI ketika digunakan.
+Perubahan juga akan terjadi pada direktori \texttt{resources} dan file \texttt{ionic.config.json}. Direktori \texttt{resources} menyimpan sumber untuk ikon dan \textit{splashscreen} yang akan digunakan oleh aplikasi ketika di-\textit{build} untuk platform Android maupun iOS. File \texttt{ionic.config.json} adalah file konfigurasi yang digunakan oleh  Ionic CLI (\textit{Command Line Interface}), dimana nama aplikasi dan identifikasi aplikasi akan disimpan disana dan dirujuk oleh Ionic CLI ketika digunakan.
 
 Direktori \texttt{node\_modules} juga akan mengalami perubahan namun jarang dilakukan perubahan secara langsung. Dikarenakan direktori tersebut menyimpan \textit{packages} yang dikelola oleh npm. Perubahan yang akan terjadi pada folder \texttt{node\_modules} adalah perubahan seperti yang dibahas di subbab \ref{moodle docs:env}.
 
@@ -84,7 +53,7 @@ Dalam folder \texttt{src/core} setiap fungsi dari Moodle mobile juga dipisah ke 
 
 \section{Menghubungkan IDE UNPAR Mobile dengan Situs IDE UNPAR}
 \label{mobile:connect}
-Menghubungkan IDE UNPAR mobile dengan situs IDE UNPAR dapat dilakukan dengan melakukan perubahan pada file \texttt{config.json}.  Perubahan yang harus dilakukan adalah menambahkan \textit{key} \textit{"siteurl"} dengan nilai URL yang diinginkan, dalam kasus ini URL yang akan digunakan adalah \url{https://ide.unpar.ac.id}. Dengan adanya \textit{key "siteurl"} aplikasi saat dijalankan akan langsung melakukan koneksi dengan nilai dari \textit{key} tersebut. Sehingga ketika aplikasi IDE UNPAR mobile dijalankan, aplikasi akan langsung meminta pengguna \textit{login} dengan tautan \url{https://ide.unpar.ac.id}. 
+Menghubungkan IDE UNPAR mobile dengan situs IDE UNPAR dapat dilakukan dengan melakukan perubahan pada file \texttt{src/config.json}.  Perubahan yang harus dilakukan adalah menambahkan \textit{key} \textit{"siteurl"} dengan nilai URL yang diinginkan, dalam kasus ini URL yang akan digunakan adalah \url{https://ide.unpar.ac.id} dan mengkosongkan isi dari \textit{key "demo\_sites"}. Dengan adanya \textit{key "siteurl"} aplikasi saat dijalankan akan langsung melakukan koneksi dengan nilai dari \textit{key} tersebut. Sehingga ketika aplikasi IDE UNPAR mobile dijalankan, aplikasi akan langsung meminta pengguna \textit{login} dengan tautan \url{https://ide.unpar.ac.id}. 
 
 \section{Penerapan Fitur-Fitur Tambahan dari Umpan Balik}
 \label{feat:feedback}
