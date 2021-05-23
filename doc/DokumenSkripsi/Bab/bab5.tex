@@ -409,6 +409,43 @@ index 2abd385d7a6..e155ef93a01 100644
 
 Perubahan selanjutnya adalah mengahapus menu \textit{change site}. Untuk menghapus menu tersebut dilakukan dengan menghapus bagian kode yang memanggil fungsi \texttt{logout()}. Penghapusan bagian ini diketahui dengan menganalisa kode dan mencari bagian kode mana yang berfungsi untuk mengeluarkan pengguna dari situs yang terhubung sekarang. Perubahan pada kode dapat dilihat pada \mbox{Kode \ref{more-view}}.
 
+\section{Implementasi Meluncrukan apk \textit{Release}}
+Seperti apa yang telah dibahas pada subbab \ref{apk:release}, akan dibuat sebuah apk \textit{release} untuk diluncurkan ke dalam Google Play dengan status \textit{open testing}. 
+
+Selama masa penunlisan skripsi, dilakukan dua kali peluncuran aplikasi ke dalam Google Play dengan status \textit{open testing}. Peluncuran pertama dilakukan dengan detail yang ditunjukkan pada Tabel \ref{app:release:first}. Pada rilis aplikasi diluncurkan dengan fitur standar yang sudah ada pada Moodle mobile dengan tujuan dibagikan ke beberapa mahasiswa beserta sebuah kuesioner untuk meminta umpan baliknya atas fitur-fitur yang ingin diimplementasikan dan pengalaman menggunakan aplikasi.
+
+\begin{table}[ht]
+\caption{Detail peluncuran aplikasi peratama}
+\centering
+\begin{tabular}{|l | l |}
+\hline
+\textbf{Parameter} & \textbf{Nilai} \\  \hline
+\textit{Tanggal rilis}  &  25 Mar 2021 \\ \hline
+\textit{Target SDK} & 29 \\ \hline
+\textit{Version} &  11000(1.1.0) \\ \hline
+\textit{Release notes} & \textit{Initial release of IDE UNPAR mobile to begin testing} \\ 
+\hline
+\end{tabular}
+\label{app:release:first}
+\end{table}
+
+Rilis kedua kemudian diluncurkan setelah fitur-fitur telah dibahas pada subbab \ref{feature feedback} dari umpan balik pengguna aplikasi selesai diimplementasikan. Detail dari rilis kedua dapat dilihat pada Tabel \ref{app:release:second}. 
+
+\begin{table}[H]
+\caption{Detail peluncuran aplikasi peratama}
+\centering
+\begin{tabular}{|l | l |}
+\hline
+\textbf{Parameter} & \textbf{Nilai} \\  \hline
+\textit{Tanggal rilis}  &  17  Mei 2021 \\ \hline
+\textit{Target SDK} & 29 \\ \hline
+\textit{Version} &  20001(2.0.0) \\ \hline
+\multirow{3}{*}{\textit{Release notes}} &  \textit{Added new features:} \\ & \textit{- Scan an image to automatically attach to a generated pdf file}\\ &  \textit{- Link that leads to https://studentportal.unpar.ac.id in the menu} \\ 
+\hline
+\end{tabular}
+\label{app:release:second}
+\end{table}
+
 \section{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
 
@@ -434,7 +471,7 @@ Melakukan pengujian pada perangkat bergerak dilakukan dengan menguhubungkan pera
 
 \begin{figure}[H] 
 	\centering  
-	\includegraphics[scale=0.2]{no_connection-id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.15]{no_connection-id.ac.unpar.moodlemobile.jpg}  
 	\caption[\textit{Application error} dengan perintah \texttt{npm run dev:android}] {\textit{Application error} dengan perintah \texttt{npm run dev:android}} 
 	\label{app:error:no-connection} 
 \end{figure} 
