@@ -62,7 +62,7 @@ Berdasarkan yang dibahas pada subbab \ref{feature feedback} beberapa saran fitur
 
 \subsection{PDF \textit{scanner}}
 \label{feat:pdfscan}
-Implementasi fitur ini akan dilakukan dengan bantuan \textit{plugin} Cordova \texttt{cordova-pdf-scanner}. \textit{Plugin} ini dipilih karena memiliki pengaturan paling sederhana. \textit{Plugin} bekerja dengan mengubah HTML mentah ataupun URL menjadi PDF. \textit{Plugin} ini juga dapat mengembalikan hasil pengubahan URL atau HTML mentah ke dalam bentuk base64 agar dapat diunggah kedalam server IDE UNPAR. 
+Implementasi fitur ini akan dilakukan dengan bantuan \textit{plugin} Cordova \texttt{cordova-pdf-generator} yang dikembangkan oleh pengguna GitHub dengan \textit{username} \textbf{cesarvr}. \textit{Plugin} ini dipilih karena memiliki pengaturan paling sederhana. \textit{Plugin} bekerja dengan mengubah HTML mentah ataupun URL menjadi PDF. \textit{Plugin} ini juga dapat mengembalikan hasil pengubahan URL atau HTML mentah ke dalam bentuk base64 agar dapat diunggah kedalam server IDE UNPAR. 
 
 Implementasi fitur PDF \textit{scanner} ini akan dilakukan di direktori \texttt{src/core/fileuploader/}. Dimana \textit{handler} untuk fitur akan disimpan di \texttt{src/core/fileuploader/providers/scanner-handler.ts}. Untuk fungsi memindai gambar untuk diubah menjadi PDF sendiri akan disimpan di \\ \texttt{src/core/fileuploader/providers/helper.ts}. Dengan mengimplementasikan fitur ini pada direktori tersebut, maka fitur ini akan dapat digunakan untuk mengunggah file PDF ke dalam file pribadi pengguna di dalam server IDE UNPAR atau mengungghanya langsung sebagai bentuk submisi tugas atau quiz.\textit{Flow chart} untuk fitur dapat dilihat pada Gambar \ref{fig:scan:flowchart}. 
 
