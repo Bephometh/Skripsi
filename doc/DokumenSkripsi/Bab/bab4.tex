@@ -4,7 +4,7 @@
 \section{Struktur Proyek Moodle Mobile}
 \label{struktur proyek}
 
-Proyek Moodle Mobile terdiri dari kumpulan file-file dan direktori-direktori utama yang mengandung fungsi dan \textit{source code} untuk aplikasi Moodle Mobile, platform Android dan iOS, alat untuk mebangun perangkat lunak, dan konfigurasi. Struktur proyek yang akan mengalami perubahan dapat dilihat pada Gambar \ref{moodle:projectstructre}.
+Proyek Moodle Mobile terdiri dari kumpulan file-file dan direktori-direktori utama yang mengandung fungsi dan \textit{source code} untuk aplikasi Moodle Mobile, platform Android dan iOS, alat untuk mebangun perangkat lunak, dan konfigurasi. Struktur proyek yang akan mengalami perubahan dapat dilihat pada Gambar \ref{moodle:projectstructure}.
 \\
 \begin{figure}[H]
 %\dirtree{%
@@ -22,7 +22,7 @@ Proyek Moodle Mobile terdiri dari kumpulan file-file dan direktori-direktori uta
 \centering
 \includegraphics[scale = 1.5]{project-structure.PNG}
 \caption{Struktur proyek moodleapp yang akan mengalami perubahan}
-\label{moodel:projectstructure}
+\label{moodle:projectstructure}
 \end{figure}
 
 Perubahan pada aplikasi akan sering dilakukan pada direktori \texttt{src}, dan \texttt{config.xml}. Direktori \texttt{src} berisi kode-kode utama dari aplikasi Moodle mobile dan konfigurasinya. Konfigurasi dari Moodle mobile sendiri diatur oleh file \texttt{config.json} di dalam folder \texttt{src}. File \texttt{Config.xml} berfungsi untuk mengatur konfigurasi dari aplikasi Cordova. Dikarenakan Moodle mobile menggunakan Cordova maka pengaturan saat melakukan \textit{build} untuk perangkat bergerak akan diambil dari file \texttt{config.xml}. 
