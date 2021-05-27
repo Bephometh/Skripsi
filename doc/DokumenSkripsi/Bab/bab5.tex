@@ -1,6 +1,9 @@
 \chapter{Implementasi dan Pengujian}
 
-\section{Implementasi Lingkungan Pengembangan}
+\section{Implementasi}
+
+
+\subsection{Implementasi Lingkungan Pengembangan}
 Pengembangan akan dilakuakn di dalam dua lingkungan, yaitu \textit{desktop} dan perangkat bergerak. Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
 
 \begin{enumerate}
@@ -64,7 +67,7 @@ Penggunaan versi Node.js versi 14 atau versi lainnya yang berstatus LTS sudah di
 
 Moodle mobile dapat dijalankan dengan menggunakan perintah \textit{npm start}.  Perintah \textit{npm start} akan memanggil sebuah \textit{script} yang kemudian menjalankan perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0}, namun ketika \textit{npm start} digunakan dalam windows akan tertahan pada \textit{loop} dengan pesan \texttt{[INFO] Waiting for connectivity with npm...	}. Masalah terjebak dalam \textit{loop} tersebut dapat dihindari dengan memanggil perintah \textit{npx gulp watch} dan \textit{npx ionic-app-scripts serve -b --devapp --address=0.0.0.0} secara terpisah. Setelah menajlankan kedua perintah tersebut Moodle mobile dapat diakses dengan memasukkan URL \url{http://localhost:8100} pada \textit{browser} Google Chrome, namun tidak dapat masuk ke dalam IDE UNPAR dikarekanakan \textit{error} yang dibahas pada subbab \ref{mobile:to:ide}. 
 
-\section{Implementasi Penyesuaian Konfigurasi Aplikasi}
+\subsection{Implementasi Penyesuaian Konfigurasi Aplikasi}
 
 Konfigurasi awal dari aplikasi akan diubah untuk menyesuaikan identifikasi dari aplilkasi sendiri. Seperti yang dibahas pada subbab \ref{struktur proyek}, perubahan konfigurasi akan terjadi pada \texttt{config.xml} dan \texttt{src/config.json}. Perubahan pada \texttt{conifg.xml} dapat dilihat pada \mbox{Kode \ref{set:config:xml}}. 
 
@@ -123,8 +126,7 @@ index 65284859784..d9bbd722378 100644
      "cache_update_frequency_sometimes": 3600000,
 \end{lstlisting}
 
-\section{Implementasi Menghubungkan dengan Situs IDE UNPAR}
-%Perubahan yang dilakukan untuk menghubungkan aplikasi IDE UNPAR mobile dengan situs IDE UNPAR dapat dilihat pada subba \ref{mobile:connect}. Perubahan tersebut akan langsung mengarahkan pengguna untuk masuk ke dalam IDE UNPAR menggunakan SSO UNPAR. Namun masuk ke dalam IDE UNPAR melalui aplikasi tidak dapat dilakukan karena masalah yang terjadi pada subbab \ref{mobile:to:ide}, tetapi aplikasi akan tetap mengarahkan ke pengguna untuk masuk menggunakan SSO UNPAR.
+\subsection{Implementasi Menghubungkan dengan Situs IDE UNPAR}
 
 Perubahan yang harus dilakukan untuk menghubungkan IDE UNPAR mobile dengan situs IDE UNPAR telah dibahas pada subbab \ref{mobile:connect}.  Implementasi perubahan tersebut akan memungkinkan aplikasi langsung terhubung dengan situs IDE UNPAR ketika aplikasi dijalankan. Perubahan pada kode dapat dilihat pada  \mbox{Kode \ref{auto-redirect}}. 
 
@@ -159,10 +161,11 @@ index 919869fe652..daaf2aef5c5 100644
      "multisitesdisplay": "",
      "sitefindersettings": {},
 \end{lstlisting} 
-\section{Implementasi Penyesuaian Tema}
+
+\subsection{Implementasi Penyesuaian Tema}
 Tema bawaan Moodle mobile akan diubah untuk menyesuaiakna seperti apa yang sudah dibahas pada subbab \ref{sec:Kondisi IDE UNPAR}. Implementasi perubahan-perubahan tersebut akan dibahas pada subbab subbab berikut.
 
-\subsection{Penyesuaian skema warna}
+\subsubsection{Penyesuaian skema warna}
 Skema warna yang digunakan oleh IDE UNPAR adalah warna putih dengan kode \texttt{\#ffffff}, abu-abu dengan kode \texttt{\#565656} dan hijau dengan kode \texttt{\#0d8722}.  Warna-warna tersebut adalah warna utama yang terlihat ketika membuka IDE UNPAR sebagai mahasiswa. Sehingga warna-warna tersebut akan menjadi fokus utama untuk pengubahan skema warna pada Moodle mobile.
 
 Mengubah warna yang digunakan oleh Moodle mobile dapat dilakukan dengan menambah dan mengganti variable warna yang berada pada \texttt{src/theme/variables.scss}. Karena Moodle mobile sudah menggunakan warna putih dan abu-abu, maka warna yang harus ditambahkan adalah warna hijau. Penambahan warna hijau IDE UNPAR dapat dilakukan dengan menambahkan vairable warna baru dan mengganti nilai variable \texttt{\$core-color}. Perubahan dapat dilihat pada \mbox{Kode \ref{variable-scss}}.
@@ -220,19 +223,19 @@ index 31402ee681..f2bb898b20 100644
      "enableanalytics": false,
 \end{lstlisting}
 
-\subsection{Penyesuaian ikon dan \textit{resource} lainnya}
+\subsubsection{Penyesuaian ikon dan \textit{resource} lainnya}
 Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spalsh screen} dari aplikasi juga akan diganti. Ikon aplikasi akan menggunakan logo UNPAR dan \textit{splash screen} akan menggunakan logo IDE UNPAR. Langkah pertama yang harus dilakukan adalah menyeidkan file \texttt{icon.png} seperti pada Gambar \ref{app:icon} dan \texttt{spalsh.png} seperti pada Gambar \ref{app:splash} di dalam folder \texttt{resource}. Kemudia untuk menghasilkan ikon dan \textit{splash screen} untuk kedua platform Android dan iOS Cordova menyediakan perintah \texttt{npx ionic cordova resource}. Dengan menjalankan perintah tersebut Cordova akan menghasilkan \textit{resource} yang dibutuhkan. \textit{config.xml} juga akan diubah ketika menjalankan perintah tersebut.
 
 \begin{figure}[H] 
 \begin{minipage}{.5\textwidth}
 	\centering  
 	\includegraphics[scale=0.3]{icon.png}  
-	\caption[Logo  UNPAR] {Logo  UNPAR} 
+	\caption[Logo  UNPAR] {Logo  UNPAR untuk ikon} 
 	\label{app:icon}
 \end{minipage}
 \begin{minipage}{.5\textwidth}
 	\centering  
-	\includegraphics[scale=0.1]{splash.png}  
+	\includegraphics[scale=0.085]{splash.png}  
 	\caption[Logo IDE UNPAR untuk \textit{splash screen}] {Logo IDE UNPAR untuk \textit{splash screen}} 
 	\label{app:splash} 
 \end{minipage}
@@ -243,10 +246,10 @@ Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spa
 
 Setelah perubahan tersebut diimplementasikan, dengan melakukan \textit{build} ulang aplikasi menggunakan \texttt{npx ionic cordova build Android} atau \texttt{npx ionic cordova run Android}, maka aplikasi akan menggunakan \textit{resource} yang baru saja dihasilkan.
 
-\section{Implementasi Fitur-fitur}
+\subsection{Implementasi Fitur-fitur}
 Fitur-fitur yang akan diimplementasikan adalah fitur \textit{PDF scanner} dan menu yang mengarahkan pengguna ke situs \url{https://studentportal.unpar.ac.id} seperti yang dibahas pada subbab \ref{feat:feedback}.% Perubahan yang dilakukan untuk fitur \textit{PDF Scanner} dapat dilihat pada subbab \ref{feat:pdfscan}. Dan perubahan yang dilakukan untuk fitur menu yang mengarahkan ke \url{https://studentportal.unpar.ac.id} dapat dilihat pada subbab \ref{feat:menu:link}.
 
-\subsection{Impelementasi PDF \textit{Scanner}}
+\subsubsection{Impelementasi PDF \textit{Scanner}}
 Perubahan yang harus dilakukan telah dibahas pada subbab \ref{feat:pdfscan}. Perubahan pada \texttt{src/core/fileuploader/providers/helper.ts} dapat dilihat pada \mbox{Kode \ref{fileuploader-helper}}. Dan kode program \texttt{src/core/fileuploader/providers/scanner-handler.ts} dapat dilihat pada \hyperref[lamp:A]{Lampiran A}.
 
 \begin{lstlisting}[language=diff, frame=single, label ={fileuploader-helper}, caption = Perubahan pada \texttt{src/core/fileuploader/providers/helper.ts} ]
@@ -379,7 +382,7 @@ index 22d14df4a11..f0b31d17abf 100644
  }
 \end{lstlisting} 
 
-\subsection{Impelementasi tautan menuju Student Portal Unpar}
+\subsubsection{Impelementasi tautan menuju Student Portal Unpar}
 Seperti pada subbab \ref{feat:menu:link}, perubahan pertama yang harus dilakukan adalah membuat sebuah menu baru untuk mengakses tauta \url{https://studentportal.unpar.ac.id}. Membuat menu tersebut dilakukan dengan menambahkan tag HTML \texttt{<a>} dengan variabel \texttt{(click)} seperti pada \mbox{Kode \ref{more-view}}, agar ketika menu tersebut ditekan memanggil fungsi \texttt{openStudentPortal()} yang ditambahkan pada \texttt{src/core/mainmenu/pages/more/more.ts} yang dapat dilihat pada \mbox{Kode \ref{more-component}}.
 
 \begin{lstlisting}[language=diff, frame=single, label ={more-view}, caption = Perubahan pada file \texttt{src/core/mainmenu/pages/more/more.html} ]
@@ -480,7 +483,7 @@ index 2abd385d7a6..e155ef93a01 100644
 
 Perubahan selanjutnya adalah mengahapus menu \textit{change site}. Untuk menghapus menu tersebut dilakukan dengan menghapus bagian kode yang memanggil fungsi \texttt{logout()}. Penghapusan bagian ini diketahui dengan menganalisa kode dan mencari bagian kode mana yang berfungsi untuk mengeluarkan pengguna dari situs yang terhubung sekarang. Perubahan pada kode dapat dilihat pada \mbox{Kode \ref{more-view}}.
 
-\section{Implementasi Meluncrukan apk \textit{Release}}
+\subsection{Implementasi Meluncrukan apk \textit{Release}}
 Seperti apa yang telah dibahas pada subbab \ref{apk:release}, akan dibuat sebuah apk \textit{release} untuk diluncurkan ke dalam Google Play dengan status \textit{open testing}. 
 
 Selama masa penunlisan skripsi, dilakukan dua kali peluncuran aplikasi ke dalam Google Play dengan status \textit{open testing}. Peluncuran pertama dilakukan dengan detail yang ditunjukkan pada Tabel \ref{app:release:first}. Pada rilis aplikasi diluncurkan dengan fitur standar yang sudah ada pada Moodle mobile dengan tujuan dibagikan ke beberapa mahasiswa beserta sebuah kuesioner untuk meminta umpan baliknya atas fitur-fitur yang ingin diimplementasikan dan pengalaman menggunakan aplikasi.
@@ -517,7 +520,10 @@ Rilis kedua kemudian diluncurkan setelah fitur-fitur telah dibahas pada subbab \
 \label{app:release:second}
 \end{table}
 
-\section{Pengujian pada Perangkat Bergerak}
+\section{Pengujian}
+
+
+\subsection{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
 
 Konfigurasi yang tidak disebutkan di dalam dokumentasi Moodle adalah ketika melakukan uji coba pada perangkat bergerak akan terjadi \textit{error} dengan pesan \texttt{> No matching client found for package name 'id.ac.unpar.moodlemobile'}. Pesan tersebut dimunculkan karena pada file \texttt{config.json} dan \texttt{config.xml} identifikasi aplikasi atau \texttt{app\_id} pada \texttt{config.json} dan \texttt{id} pada \texttt{config.xml} telah diubah menjadi \textbf{id.ac.unpar.moodlemobile}. Sehingga ketika \textit{script} dari perintah \texttt{npm run dev:android} dijalankan, \textit{script} tersebut akan melakukan perbandingan antara kedua file tersebut dengan file \texttt{google-service.json}. Karena pada dokumentasi tidak ada perintah untuk mengubah isi dari file \texttt{google-service.json} maka nilai dari variable \texttt{package\_name} tidak akan sesuai dengan identifikasi aplikasi yang sudah diubah. Perubahan dapat dilihat pada \mbox{Kode \ref{google-service.json}}. Dengan melakukan perubahan tersebut maka aplikasi dapat dijalankan pada perangkat bergerak.
@@ -600,12 +606,12 @@ Untuk melihat matakuliah yang diambil oleh pengguna, pengguna dapat menekan tomb
 	\label{app:dashboard} 
 \end{figure}  
 
-\subsection{Halaman mata kuliah}
+\subsubsection{Halaman mata kuliah}
 
 Halaman mata kuliah terbagi menjadi beberapa halaman yang akan menampilkan konten, peserta, nilai, dan kompentensi dari suatu mata kuliah. 
-
-\subsubsection{Halaman konten mata kuliah}
-
+\begin{enumerate}
+%\subsubsection{Halaman konten mata kuliah}
+\item  \textbf{Halaman konten mata kuliah} \\
 Halaman ini akan menunjukkan aktivitas yang terdapat didalam suatu mata kuliah yang telah disiapkan oleh dosen atau penyelenggara mata kuliah. Ketika pertama kali mengakses halaman ini, peserta akan dapat melihat seluruh konten, aktivitas, dan materi dari setiap topik mata kuliah yang dibuka seperti pada Gambar \ref{app:content}. Untuk melihat aktvitas berdasarakan setiap topik dari suatu mata kuliah pengguna dapat menekan tombol \textit{"All sections"} dan memilih topik yang ingin dilihat. Kemudian aplikasi akan memunculkan konten spesifik untuk topik mata kuliah yang dipilih seperti pada Gambar \ref{app:content:detail}.
 
 \begin{figure}[H] 
@@ -638,8 +644,8 @@ Halaman ini akan menunjukkan aktivitas yang terdapat didalam suatu mata kuliah y
 	\label{app:content:detail} 
 \end{figure}  
 
-\subsubsection{Halaman peserta mata kuliah}
-
+%\subsubsection{Halaman peserta mata kuliah}
+\item \textbf{Halaman peserta mata kuliah} \\
 Halaman ini menunjukkan pengajar dan siswa yang mengikuti mata kuliah yang dipilih seperti pada Gambar \ref{app:participants}. Pada halaman ini pengguna juga dapat mencari nama peserta mata kuliah dan melihat profil dari peserta mata kuliah. Namun karena konfigurasi dari situs IDE UNPAR, pengguna hanya dapat melihat peserta dengan peran \textit{teacher} dan beberapa peserta dengan peserta \textit{student}. 
 
 \begin{figure}[H] 
@@ -649,7 +655,8 @@ Halaman ini menunjukkan pengajar dan siswa yang mengikuti mata kuliah yang dipil
 	\label{app:participants} 
 \end{figure}  
 
-\subsubsection{Halaman nilai matakuliah}
+%\subsubsection{Halaman nilai matakuliah}
+\item \textbf{Halaman nilai mata kuliah} \\
 Halaman ini akan menunjukkan nilai tugas dan nilai total mata kuliah pengguna. Halaman nilai dapat dilihat pada Gambar \ref{app:grades}.
 
 \begin{figure}[H] 
@@ -659,7 +666,9 @@ Halaman ini akan menunjukkan nilai tugas dan nilai total mata kuliah pengguna. H
 	\label{app:grades} 
 \end{figure}  
 
-\subsubsection{Halaman kompentensi mata kuliah}
+%\subsubsection{Halaman kompentensi mata kuliah}
+
+\item \textbf{Halaman kompetensi mata kuliah} \\
 Halaman ini menunjukkan kompentensi pengguna pada mata kuliah yang sedang diambil. Karena tidak ada kompentensi yang dihubungkan dari mata kuliah yang sedang ditempuh peneliti maka halaman \textit{Competencies} akan kosong. Halaman \textit{Competencies} dapat dilihat pada Gambar \ref{app:competencies}.
 
 \begin{figure}[H] 
@@ -669,7 +678,9 @@ Halaman ini menunjukkan kompentensi pengguna pada mata kuliah yang sedang diambi
 	\label{app:competencies} 
 \end{figure}  
 
-\subsection{Halaman \textit{Calendar events}}
+\end{enumerate}
+
+\subsubsection{Halaman \textit{Calendar events}}
 
 Halaman \textit{Calendar events} dapat diakses melalui \textit{navigation bar} dengan menekan ikon kalender. Pada halaman ini pengguna akan dapat melihat kapan saja tenggat waktu suatu tugas, kapan adanya kuis, dan aktivitas lain yang telah ditentukan oleh penyelenggara mata kuliah selama penyelenggara menetukan tanggal-tanggalnya. Halaman \textit{Calendar events} dapat dilihat pada Gambar \ref{app:calendar}.
 
@@ -680,7 +691,7 @@ Halaman \textit{Calendar events} dapat diakses melalui \textit{navigation bar} d
 	\label{app:calendar} 
 \end{figure}  
 
-\subsection{Halaman \textit{Messages}}
+\subsubsection{Halaman \textit{Messages}}
 
 Halaman \textit{Messages} dapat diakses dengan menekan ikon \textit{chat box} pada \textit{navigation bar} aplikasi. Ketika dibuka halaman ini akan menunjukkan menu kontak, bagian \textit{starred} untuk pesan yang ditandai dengan bintang, bagian \textit{group} untuk pesan dari kelompok dari mata kuliah yang diikuti, dan \textit{private} untuk pesan yang dikirim ke pengguna dari pengguna lain. Halaman \textit{Messages} dapat dilihat pada Gambar \ref{app:messages}.
 
@@ -711,7 +722,7 @@ Melihat kontak pengguna dapat dikases dengan menekan menu \textit{Contacts} pada
 \end{minipage}
 \end{figure}
 
-\subsection{Halaman \textit{Notifications}}
+\subsubsection{Halaman \textit{Notifications}}
 
 Halaman ini akan menunjukkan seluruh notifikasi yang diterima oleh pengguna, baik notfikassi tenggat waktu suatu tugas ataupun pesan dari pengguna lain. Halaman \textit{Notifications} dapat diakses dengan menekan ikon lonceng pada \textit{navgiation bar} aplikasi. Halaman \textit{Notification} dapat dilihat pada Gambar \ref{app:notifications}.
 
@@ -723,9 +734,11 @@ Halaman ini akan menunjukkan seluruh notifikasi yang diterima oleh pengguna, bai
 	\label{app:notifications} 
 \end{figure}  
 
-\subsection{Halaman menu}
+\subsubsection{Halaman menu}
 
 Halaman ini berisi menu-menu yang dapat digunakan pengguna untuk mengakses halama-halaman lain pada aplikasi. Halaman ini dapat dikases dengan menekan ikon tiga garis horisontal pada \textit{navigation bar} aplikasi. Tampilan halaman menu dapat dilihat pada Gambar \ref{app:menu}.
+
+Halaman menu mengandung beberapa menu lain seperti \textit{Grades}, \textit{Files}, \textit{Scan QR code}, \textit{Website}, Student Portal UNPAR, \textit{Help}, \textit{Perferences}, dan \textit{App settings}.
 
 \begin{figure}[H] 
 	\centering  
@@ -734,8 +747,9 @@ Halaman ini berisi menu-menu yang dapat digunakan pengguna untuk mengakses halam
 	\label{app:menu} 
 \end{figure}  
 
-\subsubsection{Menu \textit{Grades}}
-
+\begin{enumerate}
+%\subsubsection{Menu \textit{Grades}}
+\item \textbf{Menu \textit{Grades}} \\
 Menu \textit{Grades} akan mengarahkan pengguna menuju halaman \textit{Grades} yang akan menunjukkan mata kuliah yang diambil oleh pengguna beserta dengan total nilainya. Ketika satu nama mata kuliah dipilih, maka pengguna akan diarahkan ke halaman detail niali dari mata kuliah tersebut. Halaman \textit{Grades} dapat dilihat pada Gambar \ref{app:menu:grades}.
 
 \begin{figure}[H] 
@@ -745,10 +759,10 @@ Menu \textit{Grades} akan mengarahkan pengguna menuju halaman \textit{Grades} ya
 	\label{app:menu:grades} 
 \end{figure}  
 
-\subsubsection{Menu \textit{Files}}
-\label{menu-files}
+%\subsubsection{Menu \textit{Files}}
+\item \textbf{Menu \textit{Files}} \\
 
-Menu ini akan mengarahkan pengguna ke halaman \textit{Files}. Ketika halaman tersebut pertama kali dibuka, pengguna dapat melihat file-file pribadinya yang tersimpan pada server IDE UNPAR. Dapat dilihat pada Gambar \ref{private}. Dari halaman tersebut pengguna dapat menambahkan file-file dengan menekan tombol dengan ikon tanda tambah.
+Menu ini akan mengarahkan pengguna ke halaman \textit{Files}. Ketika halaman tersebut pertama kali dibuka, pengguna dapat melihat file-file pribadinya yang tersimpan pada server IDE UNPAR. Dapat dilihat pada Gambar \ref{app:menu:files:private}. Dari halaman tersebut pengguna dapat menambahkan file-file dengan menekan tombol dengan ikon tanda tambah.
 
 
 \begin{figure}[H] 
@@ -767,27 +781,33 @@ Menu ini akan mengarahkan pengguna ke halaman \textit{Files}. Ketika halaman ter
 	\label{app:menu:files:site} 
 \end{figure}  
 
-\subsubsection{Menu \textit{Scan QR}}
-
+%\subsubsection{Menu \textit{Scan QR}}
+\item \textbf{Menu \textit{Scan QR}} \\
 Menu ini akan membuka kamera dari perangkat pengguna untuk memindai kode QR dari Moodle.
 
-\subsubsection{Menu Website}
-
+%\subsubsection{Menu Website}
+\item \textbf{Menu \textit{Website}} \\
 Menu ini akan mengarahkan pengguna ke situs IDE UNPAR, dengan membuka halaman tersebut pada \textit{browser} perangkat pengguna.
 
-\subsubsection{Menu Student Portal UNPAR}
+%\subsubsection{Menu Student Portal UNPAR}
+\item \textbf{Menu Student Portal UNPAR} \\
 Menu ini akan mengarahkan pengguna ke situs Student Portal UNPAR, dengan membuka halaman tersebut pada \textit{browser} perangkat pengguna.
 
-\subsubsection{Menu \textit{Help}}
+%\subsubsection{Menu \textit{Help}}
+\item \textbf{Menu \textit{Help}} \\
 Menu ini akan mengarahkan pengguna ke tautan \url{http://docs.moodle.org/38/en/Moodle\_app}. Tautan tersebut berisi bantuan cara penggunaan aplikasi Moodle mobile.
 
-\subsubsection{Menu \textit{Perferences}}
+%\subsubsection{Menu \textit{Perferences}}
+\item \textbf{Menu \textit{Perferences}} \\
 Menu ini akan mengarahkan pengguna ke halaman \textit{Perferences} yang berisi pengaturan untuk fitur \textit{messages} dan \textit{notifications}. Selain itu di halaman \textit{Perferences} pengguna dapat membebaskan tempat penyimpanan yang digunakan oleh aplikasi dan mensinkronisasikan aplikasi dengan situs IDE UNPAR.
 
-\subsubsection{Menu \textit{App settings}}
+%\subsubsection{Menu \textit{App settings}}
+\item \textbf{Menu \textit{App settings}} \\
 Menu ini akan mengarahkan pengguna ke halaman \textit{App settings}, dimana pengguna dapat mengatur pengaturan umum aplikasi, pengguna ruang penyimpanan aplikasi, sinkronisasi aplikasi, dan melihat informasi tentang aplikasi.
+\end{enumerate}
 
-\section{Pengujian Fitur \textit{Scan PDF}}
+
+\subsection{Pengujian Fitur \textit{Scan PDF}}
 
 Fitur \textit{Scan PDF} dapat dikases melalui menu kemudian dengan memilih \textit{Files}. Dari halaman \textit{Files}, pengguna dapat menekan tombol dengan ikon tanda tambah untuk melihat pilihan cara mengunggah file seperti pada Gambar \ref{app:menu:files:options}. 
 
