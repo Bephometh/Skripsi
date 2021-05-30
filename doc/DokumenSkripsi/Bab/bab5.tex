@@ -486,7 +486,7 @@ Perubahan selanjutnya adalah mengahapus menu \textit{change site}. Untuk menghap
 \subsection{Implementasi Meluncrukan apk \textit{Release}}
 Seperti apa yang telah dibahas pada subbab \ref{apk:release}, akan dibuat sebuah apk \textit{release} untuk diluncurkan ke dalam Google Play dengan status \textit{open testing}. 
 
-Selama masa penunlisan skripsi, dilakukan dua kali peluncuran aplikasi ke dalam Google Play dengan status \textit{open testing}. Peluncuran pertama dilakukan dengan detail yang ditunjukkan pada Tabel \ref{app:release:first}. Pada rilis aplikasi diluncurkan dengan fitur standar yang sudah ada pada Moodle mobile dengan tujuan dibagikan ke beberapa mahasiswa beserta sebuah kuesioner untuk meminta umpan baliknya atas fitur-fitur yang ingin diimplementasikan dan pengalaman menggunakan aplikasi.
+Selama masa penunlisan skripsi, dilakukan tiga kali peluncuran aplikasi ke dalam Google Play dengan status \textit{open testing}. Peluncuran pertama dilakukan dengan detail yang ditunjukkan pada Tabel \ref{app:release:first}. Pada rilis aplikasi diluncurkan dengan fitur standar yang sudah ada pada Moodle mobile dengan tujuan dibagikan ke beberapa mahasiswa beserta sebuah kuesioner untuk meminta umpan baliknya atas fitur-fitur yang ingin diimplementasikan dan pengalaman menggunakan aplikasi.
 
 \begin{table}[ht]
 \caption{Detail peluncuran aplikasi peratama}
@@ -520,8 +520,24 @@ Rilis kedua kemudian diluncurkan setelah fitur-fitur telah dibahas pada subbab \
 \label{app:release:second}
 \end{table}
 
-\section{Pengujian}
+Rilis ketiga diluncurkan karena telah terjadi perubahan pada nilai \textit{urlscheme} yang digunakan menjadi \texttt{moodlemobile} yaitu nilai \textit{urlscheme} bawaan dari Moodle. Detail dari rilis ketiga dapat dilihat pada Tabel \ref{app:release:third}
 
+\begin{table}[H]
+\caption{Detail peluncuran aplikasi peratama}
+\centering
+\begin{tabular}{|l | l |}
+\hline
+\textbf{Parameter} & \textbf{Nilai} \\  \hline
+\textit{Tanggal rilis}  &  30  Mei 2021 \\ \hline
+\textit{Target SDK} & 29 \\ \hline
+\textit{Version} &  20011(2.0.1) \\ \hline
+\multirow{2}{*}{\textit{Release notes}} &  \textit{Minor Update:} \\ & \textit{- Change urlscheme to original} \\ 
+\hline
+\end{tabular}
+\label{app:release:third}
+\end{table}
+
+\section{Pengujian}
 
 \subsection{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
@@ -559,13 +575,13 @@ Perintah \texttt{npx ionic cordova run android} akan menginstall \texttt{app-deb
 \begin{figure}[H]
 \begin{minipage}{.5\textwidth} 
 	\centering  
-	\includegraphics[scale=0.15]{spalsh_screen-id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.14]{spalsh_screen-id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman \textit{loading} aplikasi] {Halaman \textit{loading} aplikasi} 
 	\label{app:loading} 
 \end{minipage}
 \begin{minipage}{.5\textwidth}
 	\centering  
-	\includegraphics[scale=0.15]{login_screen-id.ac.unpar.moodlemobile.jpg}  
+	\includegraphics[scale=0.14]{login_screen-id.ac.unpar.moodlemobile.jpg}  
 	\caption[Halaman \textit{login} aplikasi] {Halaman \textit{login} aplikasi} 
 	\label{app:login} 
 \end{minipage}
