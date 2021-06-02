@@ -52,7 +52,7 @@ Nilai dari suatu tugas dalam IDE dapat dimasukkan dengan dua cara. Cara pertama 
 \section{Moodle}
 \label{sec:Moodle}
 
-Moodle (\textit{Modular Object-Oriented Dynamic Learning Environment}\cite{moodle:39}) pertama di kembangkan oleh Martin Dougiamas dan direlease pada 20 Agustus 2002\cite{moodle:39}. Tujuan dari Moodle adalah untuk augmentasi dan memindahkan pembelajaran bersifat \textit{offline} menjadi {online}. Moodle dibangun dengan panduan pandangan \textit{social constructist pedagogy}\cite{moodle:39}. Pandangan Moodle membantu mereka untuk membuat \textit{ Learning Management System} yang memiliki fokus pembelajaran dari sudut pandang pelajar. Tidak hanya digunakan dalam lingkungan pendidikan, Moodle juga digunakan di dalam lingkungan seperti pelatihan, pengembangan, dan bisnis.
+Moodle (\textit{Modular Object-Oriented Dynamic Learning Environment}\cite{moodle:39}) pertama di kembangkan oleh Martin Dougiamas dan dirilis pada 20 Agustus 2002\cite{moodle:39}. Tujuan dari Moodle adalah untuk augmentasi dan memindahkan pembelajaran bersifat \textit{offline} menjadi {online}. Moodle dibangun dengan panduan pandangan \textit{social constructist pedagogy}\cite{moodle:39}. Pandangan Moodle membantu mereka untuk membuat \textit{ Learning Management System} yang memiliki fokus pembelajaran dari sudut pandang pelajar. Tidak hanya digunakan dalam lingkungan pendidikan, Moodle juga digunakan di dalam lingkungan seperti pelatihan, pengembangan, dan bisnis.
 
 Struktur moodle disusun di sekitar \textit{course}. Struktur Moodle biasanya berupa sebuah halaman atau area di dalam platform moodle dimana pengajar dapat memberika aktivitas atau sumber pembeljaran kepada peserta dari \textit{course} mereka.\textit{Course} yang dimaksud adalah mata pelajara, mata kuliah, atau topik pelajaran apapun yang digunakan oleh yayasan yang menggunakan Moodle. 
 
@@ -60,28 +60,29 @@ Moodle bersifat modular sehingga Moodle dibentuk sebagai sebuah aplikasi pusat, 
 
 Moodle telah mencapai dan mematuhi standar internasional sebagai berikut : \cite{moodle:39}
 		\begin{enumerate}
-			\item \textbf{An Open Source Initiative} \\
-				Moodle disediakan sebagai perangkat lunak \textit{open source} yang dapat digunakan dan dimodifikasi secara gratis dibawah lisensi \textit{GNU General Public License}.
+			\item \textbf{\textit{An Open Source Initiative}} \\
+				Moodle disediakan sebagai perangkat lunak \textit{open source} yang dapat digunakan dan dimodifikasi secara gratis dibawah lisensi \textit{\textit{GNU General Public License}}.
 			\item \textbf{IMS LTI\texttrademark} \\
 				Moodle telah memenuhi standar untuk integrasi aplikasi pembelajaran, sehingga pengguna dapar mengitegrasikan dan menyajikan aplikasi dan konten yang dihosting secara eksternal.
-			\item \textbf{SCORM-ADL} \\
+			\item \textbf{\textit{SCORM-ADL}} \\
 				Moodle memungkinkan penggunanya untuk mengirimkan konten SCORM (\textit{Shareable Content Object Reference Model}) dengan mengunggah paket SCORM atau AICC ke dalam \textit{course} Moodle.
 	
-			\item \textbf{Open Badges} \\
+			\item \textbf{\textit{Open Badges}} \\
 				Open Badges milik Mozilla mendukung dan menstandarisasi pemblajaran secara daring dengan menggunakan \textit{badges}. Moodle telah mengitegrasikan fitur tersebut sehingga institusi, organisasi, atau individu dapat membuat dan membagikan \textit{badges} kepada pelajar di platform Moodle.
 		\end{enumerate}
 
 Lisensi Moodle, yaitu \textit{GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007} menyatakan secara eksplisit pada bagian pembukaan bahwa lisensi tersebut menjamin kebebasan untuk membagi dan mengubah semua versi dari aplikasi agar aplikasi tersebut bersifat gratis untuk seluruh penggunanya\cite{GNU:preamble}.
+
 \section{Moodle mobile}
 \label{sec:Moodle mobile}
-Moodle mobile dikembangkan menggunakan Ionic karena Ionic memungkinkan pengembangan aplikasi yang bersifat \textit{cross-platform}\cite{Ionic:intro}. Sifat \textit{cross-platform} dari Ionic membuat Moodle mobile dengan mudah diterapkan ke berbagai platform dengan hanya satu \textit{codebase}. Pengembangan aplikasi dengan \textit{view} yang besar akan lebih cepat dengan penggembangan \textit{framework} bersifat \textit{cross-platform} dibandingkan dengan pengembangan secara \textit{native} \cite{cross-platform}. 
+Moodle mobile dikembangkan menggunakan Ionic, karena Ionic memungkinkan pengembangan aplikasi yang bersifat \textit{cross-platform}\cite{Ionic:intro}. Sifat \textit{cross-platform} dari Ionic membuat Moodle mobile dengan mudah diterapkan ke berbagai platform dengan hanya satu \textit{codebase}. Pengembangan aplikasi dengan \textit{view} yang besar akan lebih cepat dengan penggembangan \textit{framework} bersifat \textit{cross-platform} dibandingkan dengan pengembangan secara \textit{native} \cite{cross-platform}. 
 
 Ionic memungkinkan Moodle mobile untuk bekerja seperti aplikasi \textit{native} karena Ionic menggunakan Cordova. Cordova adalah sebuah \textit{framework} pengembangan aplikasi mobile yang bersifat \textit{open source}. Cordova memungkinkan pengembangan aplikasi mobile dengan menggunakan teknologi standar web. Aplikasi yang dikembangkan dengan menggunakan Cordova akan bergantung kepada binding API yang sesuai standar untuk mengakses kemampuan setiap perangkat seperti sensor, data, status jaringan dan lain-lain\cite{cordova:overview}. Ionic juga dapat dikembangkan dengan integrasi bersama \textit{framework} lain seperti Angular atau React. Moodle mobile versi 3.5 dikembangkan menggunakan Ionic versi 3 \cite{moodle:dev}. Ionic versi 3 masih menggunakan Angular secara langsung, sehingga Moodle mobile dikembangkan dengan Ionic yang diintegrasikan dengan Angular \cite{moodle:dev}.
 
 
 Moodle mobile bersifat modular seperti Moodle berbasis web yang berarti Moodle mobile juga mendukung \textit{themes} dan \textit{plugins}. \textit{Plugin} akan membantu pengembang menambahkan fitur dengan mudah ke dalam aplikasi Moodle mobile. \textit{Themes} memungkinkan pengembang Moodle mobile untuk mengubah gaya dan layout dari aplikasi Moodle mobile sesuai dengan keinginannya. Pada subbab-subbab berikut akan dibahas mengenai fitur-fitur, \textit{plugin}, dan \textit{theme} dari Moodle mobile.
 \subsection{\textit{Themes} dan \textit{Plugins}}
-\textit{Themes} dan \textit{plugins} pada Moodle mobile bekerja berbeda dengan Moodle berbasis web. Perbedaan yang ada dari Moodle berbasis web dengan Moodle mobile diantaranya adalah \textit{themes} dan \textit{plugin}.Pada Moodle mobile sebelum versi 3.5 \textit{themes} yang sudah digunakan pada Moodle web akan secara otomatis digunakan juga pada Moodle mobile. Moodle mobile versi 3.5 dan seterusnya sudah tidak dapat mendukung penggunaan \textit{themes} lagi karena Ionic versi 3 tidak mendukung \textit{customg themes} dari Moodle sebelum versi 3.5.\cite{moodle:dev}. Sehingga untuk mengubah tampilan dari Moodle mobile adalah dengan mengubah source code Moodle mobile sendiri. Awalnya \textit{plugin} pada Moodle mobile sebelum versi 3.5 dapat bekerja dengan membuat modul Angular atau Ionic lalu menambahkannya pada bagian \textit{plugin} di dalam Moodle mobile. Semenjak Moodle mobile versi 3.5 plugin dapat digunakan tanpa harus membuat modul Angular atau Ionic, pengembang aplikasi cukup membuat template plugin menggunakan PHP dan \textit{markup} Ionic 3\cite{moodle:dev}. \textit{Plugin} pada Moodle mobile juga dapat dibagi menjadi tiga jenis dengan cara bekerja yang berbeda-beda. Tiga jenis \textit{plugin} pada Moodle mobile yaitu :
+\textit{Themes} dan \textit{plugins} pada Moodle mobile bekerja berbeda dengan Moodle berbasis web. Perbedaan yang ada dari Moodle berbasis web dengan Moodle mobile diantaranya adalah \textit{themes} dan \textit{plugin}.Pada Moodle mobile sebelum versi 3.5 \textit{themes} yang sudah digunakan pada Moodle web akan secara otomatis digunakan juga pada Moodle mobile. Moodle mobile versi 3.5 dan seterusnya sudah tidak dapat mendukung penggunaan \textit{themes} lagi karena Ionic versi 3 tidak mendukung \textit{custom themes} dari Moodle sebelum versi 3.5.\cite{moodle:dev}. Sehingga untuk mengubah tampilan dari Moodle mobile adalah dengan mengubah source code Moodle mobile sendiri. Awalnya \textit{plugin} pada Moodle mobile sebelum versi 3.5 dapat bekerja dengan membuat modul Angular atau Ionic lalu menambahkannya pada bagian \textit{plugin} di dalam Moodle mobile. Semenjak Moodle mobile versi 3.5 plugin dapat digunakan tanpa harus membuat modul Angular atau Ionic, pengembang aplikasi cukup membuat template plugin menggunakan PHP dan \textit{markup} Ionic 3\cite{moodle:dev}. \textit{Plugin} pada Moodle mobile juga dapat dibagi menjadi tiga jenis dengan cara bekerja yang berbeda-beda. Tiga jenis \textit{plugin} pada Moodle mobile yaitu :
 
 	\begin{enumerate}
 	\item Template \textit{plugin} yang dihasilkan dan diunduh ketika pengguna membuka \textit{plugin}-nya\\
@@ -282,7 +283,7 @@ Versi 1.15 dirilis pada 29 Mei 2015. Versi ini adalah versi terakhir yang dirili
 	\end{itemize}
 
 \subsection{Moodle mobile 2}
-Moodle mobile 2 adalah seri lanjutan dari Moodle mobile 1 dengan perubahan utama pada teknologi yang digunakan. Moodle mobike 2 dikembangkan menggunakan \textit{framework} Ionic 1. Moodle mobile 2 juga menggunakan Cordova untuk kompilasi atau pengemasan interaksi dengan perangkat pengguna. Struktur dari Moodle mobile 2 dibagi menjadi dua, yaitu \textit{core} dan \textit{addons}. 
+Moodle mobile 2 adalah seri lanjutan dari Moodle mobile 1 dengan perubahan utama pada teknologi yang digunakan. Moodle mobile 2 dikembangkan menggunakan \textit{framework} Ionic 1. Moodle mobile 2 juga menggunakan Cordova untuk kompilasi atau pengemasan interaksi dengan perangkat pengguna. Struktur dari Moodle mobile 2 dibagi menjadi dua, yaitu \textit{core} dan \textit{addons}. 
 
 \textit{Core} dan \textit{addons} memiliki struktur yang sama, yaitu struktur standar Angular. \textit{Core} dan \textit{addons} akan memiliki komponen Angular yang diorganisir menjadi \textit{NgModules}\cite{angular:architecture}
 . \textit{NgModules} dapat dianggap sebagai wadah untuk untuk kode yang didedikasikan untuk domain aplikasi, \textit{workflow}, atau kapabilitas aplikasi yang bersifat erat. \textit{NgModules} akan menyediakan sebuah kompilasi kontex untuk komponen. \cite{angular:architecture:modules}
