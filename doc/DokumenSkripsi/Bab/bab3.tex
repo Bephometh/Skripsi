@@ -124,23 +124,25 @@ Pada tanggal 25 Maret 2021 penguji membuat sebuah kuesioner yang dibagikan kepad
 \begin{table}[ht]
 \caption{Hasil kuesioner untuk fitur apa yang diinginkan}
 \centering
-\begin{tabular}{|l | c | c|}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l | l| c | c|}
 \hline
-\multicolumn{1}{|l|}{\multirow{2}{*}{Fitur yang ingin diimplementasikan}} & \multicolumn{2}{l|}{Dapat diimplementasikan?}                    \\ \cline{2-3} 
-\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{Ya} & \multicolumn{1}{l|}{Tidak} \\ \hline
-Push notification & & \checkmark \\ \hline
-Scanner untuk foto menjadi PDF  &  \checkmark & \\ \hline
-Sinkronisasi dengan google calendar & & \checkmark \\ \hline
-Melihat file-file seperti PDF dan PPT di IDE UNPAR & & \checkmark \\ \hline
-Absensi melalui IDE UNPAR &  &\checkmark \\ \hline
-Fitur tambah file otomatis dari apps scanner & \checkmark & \\ \hline
-Jadwal Kuliah & &\checkmark \\ \hline
-Sign in SSO dalam app & &  \checkmark \\ \hline 
-Dapat berpindah page dengan swipe horizontal & & \checkmark\\ \hline
-Fitur Pesan yang berupa message di IDE di konversi menjadi bentuk chat &  & \checkmark \\ \hline
-login langsung di aplikasi & & \checkmark \\
+\multicolumn{1}{|l|}{\multirow{2}{*}{Fitur yang ingin diimplementasikan}} & \multicolumn{1}{|l|}{\multirow{2}{*}{Sudah terimplementasi}} & \multicolumn{2}{|l|}{Dapat diimplementasikan?} \\ 
+\cline{3-4}  
+\multicolumn{1}{|l|}{} & \multicolumn{1}{|l|}{} &\multicolumn{1}{l|}{Ya} & \multicolumn{1}{l|}{Tidak} \\ \hline
+Push notification  & \checkmark & &  \\ \hline
+Scanner untuk foto menjadi PDF&  &  \checkmark & \\ \hline
+Sinkronisasi dengan google calendar& & & \checkmark \\ \hline
+Melihat file-file seperti PDF dan PPT di IDE UNPAR  & \checkmark & &  \\ \hline
+Absensi melalui IDE UNPAR& & \checkmark & \\ \hline
+Fitur tambah file otomatis dari apps scanner& & \checkmark & \\ \hline
+Jadwal Kuliah& & &\checkmark \\ \hline
+Sign in SSO dalam app & & &  \checkmark \\ \hline 
+Dapat berpindah page dengan swipe horizontal & & & \checkmark\\ \hline
+Fitur pesan  berupa message di IDE  menjadi bentuk chat & \checkmark &  &  \\ \hline
+login langsung di aplikasi& & & \checkmark \\
 \hline
-\end{tabular}
+\end{tabular}}
 \label{fitur yang diinginkan}
 \end{table}
 
@@ -160,7 +162,7 @@ Fitur ini tidak dapat diimplementasikan karena dirasa menu \textit{File} yang te
 
 \subsection{Absensi melalui IDE UNPAR} 
 \label{absesnsi IDE}
-Fitur ini tidak dapat diimplementasi karena absensi dilakukan melalui Student Portal UNPAR. Namun penulis akan menambahkan sebuah tombol pada halaman menu untuk membuka situs Student Portal.
+Fitur akan diimplementasi  melalui bentuk menu yang akan mengarahkan pengguna ke Student Portal UNPAR. Implementasi tersebut karena absesni dilakukan di dalam Student Portal Unpar dan tidak adanya integrasi untuk Moodle app.
 
 \subsection{Fitur tambah file otomatis dari apps scanner}
 \label{scanner app}
