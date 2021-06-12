@@ -342,7 +342,7 @@ throw new Error
 Can't read the url \"" + url + "\"");
 \end{lstlisting}
 
-\begin{lstlisting}[frame=single, label={lst:noresourceloaderreplace}, language=PHP, caption=Kode pengganti untuk fungsi \texttt{get}]
+\begin{lstlisting}[frame=single, label={lst:noresourceloaderreplace}, language=java, caption=Kode pengganti untuk fungsi \texttt{get}]
 url = 'templates/' + url;
 
         var resolve;
@@ -380,7 +380,7 @@ url = 'templates/' + url;
    return promise;
 \end{lstlisting}
 
-File kedua yang harus dimodifikasi adalah \texttt{node\_modules/@ionic/app-scripts/dist/util/config.js}, pada bagian \texttt{optimizejs} modifikasi sehingga terlihat seperti pada \mbox{\ref{optimizejs}} dengan menghapus \texttt{context.isProd}.
+File kedua yang harus dimodifikasi adalah \texttt{node\_modules/@ionic/app-scripts/dist/util/config.js}, pada bagian \texttt{optimizejs} modifikasi sehingga terlihat seperti pada \mbox{Kode \ref{optimizejs}} dengan menghapus \texttt{context.isProd}.
 \\
 \\
 
@@ -391,3 +391,43 @@ context.optimizeJs = [
     ].find(function (val) { return typeof val === 'boolean'; });
 \end{lstlisting}
 Setelah modifikasi kedua file tersebut berhasil jalankan \textit{command} \texttt{npm run ionic:build -- --prod} untuk kompilasi. Untuk menginstall pada platform jalankan \textit{command} \texttt{npx cordova run android} untuk Android dan \texttt{npx cordova build ios} untuk iOS.
+
+
+\section{\textit{Plugin} cordova-pdf-generator}
+\label{pdf-gen}
+\textit{Plugin} cordova-pdf-generator adalah plugin yang berfungsi untuk menghasilkan sebuah file PDF secara offline. \textit{Plugin} ini mengubah HTML menjadi PDF, dan juga menyediakan mekanisme untuk membagikan PDF ke dalam aplikasi lain seperti Mial dan lain-
+lain.\cite{cordova-pdf-generator}
+
+Salah satu fitur dari \textit{plugin} ini adalah mengembalikan file dalam representasi Base64 yang dapat digunakan untuk mengunggah file ke dalam server. Fitur tersebut hanya ada untuk platform Android dan iOS saja. \textit{Plugin} ini juga dapat digunakan bersamaan dengan Ionic dan Angular, sehingga \textit{plguin} ini dapat digunakan untuk mengembangkan fitur \textit{PDF Scanner} pada IDE UNPAR mobile. Contoh penggunaan \textit{plugin} dalam ionic dapat dilihat pada\mbox{Kode \ref{example:pdf-gen}}.
+
+\begin{lstlisting}[language= Java, frame=single, label={example:pdf-gen}, caption= Penggunaan \textit{plugin} pada Ionic dan Angular]
+import { Component } from '@angular/core';
+ 
+import { NavController } from 'ionic-angular';
+ 
+declare var cordova:any;    //global;
+ 
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+ 
+  constructor(public navCtrl: NavController) {
+      const before = Date.now();
+ 
+            document.addEventListener('deviceready', () => {
+                console.log('DEVICE READY FIRED AFTER', 
+		(Date.now() - before), 'ms');
+ 
+                //generate the pdf.
+                cordova.plugins.pdf.fromData
+	     ( '<html> <h1>  Hello World  </h1> </html>', options )
+                .then(()=>'ok')
+                .catch((err)=>console.err(err))
+  }
+ 
+}
+ 
+\end{lstlisting}
+
