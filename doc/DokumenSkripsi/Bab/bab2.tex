@@ -431,3 +431,36 @@ export class HomePage {
  
 \end{lstlisting}
 
+\section{Java keytool}
+Java keytool adalah sebuah perintah utilitas manajemen yang memungkinkan pengguna untuk mengelola \textit{public/private key} sendiri dan sertifikasi yang terasosiasi untuk \textit{self-authentication} menggunakan \textit{digital signature}. Sertifikat yang dimaksud adalah sertifikat yang ditandai secara digital dari suatu entitas yang menyatakan bahwa sebuah \textit{public key} dari entitas lain memiliki sebuah nilai. \cite{java:keytool}
+
+Membuat sebuah file \textit{keystore} dengan Keytool dapat dilakukan dengan menggunakan opsi \texttt{-genkey} atau \texttt{-genkyepair}. Kemudian opsi \texttt{-genkey} akan diikuti oleh beberapa opsi lain seperti : \cite{java:keytool}
+
+\begin{itemize}
+\item \texttt{-keystore}, menentukan nama dari file keystore yang akan dihasilkan. 
+\item \texttt{-alias}, nama alias dari proses pemasukan.
+\item \texttt{-keyalg}, algorithma yang akan digunakan untuk \textit{key}.
+\item \texttt{-keysize}, ukuran bit dari \textit{key}.
+\item \texttt{-validity}, menentukan validitas \textit{key} dalam hari.
+\end{itemize}
+
+\section{Java jarsigner}
+Jarsigner berfungsi untuk menandatangani file JAR (\textit{Java Archive}) dan memverifikasi tanda dan integritas file JAR yang telah ditandai. Jarsigner akan menggunakan informasi dari \textit{key} atau sertifikat yang desidiakan sebuah keystore untuk menciptakan sebuah file JAR yang ditandai secara digital. File JAR yang telah ditandai akan mengandung salinan dari keystore untuk \textit{public key} yang sesuai dengan \textit{private key} yang digunakan untuk menandai file. \cite{java:jarsigner} 
+
+Menandai sebuah file JAR dengan jarsigner dapat dilakukan dengan perintah \texttt{jarsigner} diikut dengan beberapa opsi seperti berikut : \cite{java:jarsigner}
+
+\begin{itemize}
+\item \texttt{-keystore}, untuk menentukan dimana letak file keystore yang akan digunakan.
+\item \texttt{-sigalg}, untuk menentukan algorithma yang akan digunakan untuk menandai file.
+\item \texttt{-digestalg}, untuk menentukan nama dari pesan algorithma yang akan digunakan untuk mencerna entri file.
+\item file yang akan ditandai.
+\item alias yang digunakan oleh keystore.
+\end{itemize}
+
+\section{Zipalign}
+Zipalign adalah sebuah alat yang diesdiakan oleh Android SDK yang bertujuan untuk memastikan semua file yang belum dikompresi di dalam sebuha \textit{archive} selaras dengan awal dari file tersebut. Zipalign sebaiknya digunakan untuk mengoptimasi APK sebelum didistribusikan kepada pengguna.\cite{android:zipalign} 
+
+Zipalign akan berjalan otomatis apabila pengembangan aplikasi menggunakan Android Studio. Tetapi karena pengembangan aplikasi pada skripsi ini tidak menggunakan Android Studi, zipalign dapat digunakan melalui \textit{command line}. Untuk menggunakan zipalign melalui \textit{command line} dapat dilakukan dengan menajalankan perintah \texttt{zipalign -v 4 <apk yang telah ditandai> <nama apk setelah di selaraskan>}.
+
+
+
