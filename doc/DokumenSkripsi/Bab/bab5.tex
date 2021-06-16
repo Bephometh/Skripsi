@@ -2,6 +2,7 @@
 
 \section{Implementasi}
 
+Implementasi akan dilakukan dimulai dari implementasi lingkungan pengembangan, penyesuaian konfigurasi aplikasi, kemudian menghubungkan moodleapp dengan situs IDE UNPAR. Setelah itu implementasi selanjutnya adalah menyesuaikan tampilan moodleapp  dengan IDE UNPAR, mengimplementasikan fitur-fitur yang telah dibahas pada subbab \ref {feature feedback}, kemudian meluncurkan aplikasi ke dalam Google Play. 
 
 \subsection{Implementasi Lingkungan Pengembangan}
 Pengembangan akan dilakuakn di dalam dua lingkungan, yaitu \textit{desktop} dan perangkat bergerak. Spesifikasi lingkungan pengembangan yang digunakan oleh peneliti adalah sebagai berikut :
@@ -481,7 +482,7 @@ index 2abd385d7a6..e155ef93a01 100644
    "core.min": "moodle",
 \end{lstlisting} 
 
-Perubahan selanjutnya adalah mengahapus menu \textit{change site}. Untuk menghapus menu tersebut dilakukan dengan menghapus bagian kode yang memanggil fungsi \texttt{logout()}. Penghapusan bagian ini diketahui dengan menganalisa kode dan mencari bagian kode mana yang berfungsi untuk mengeluarkan pengguna dari situs yang terhubung sekarang. Perubahan pada kode dapat dilihat pada \mbox{Kode \ref{more-view}}.
+Penghapusan menu \textit{change site} tidak jadi dilakukan karena itu satu-satunya fitur yang berfungsi untuk pengguna mengganti profil yang digunakan atau \textit{logout}. Sehingga menu \textit{change site} tidak akan dihilangkan.
 
 \subsection{Implementasi Meluncrukan apk \textit{Release}}
 Seperti apa yang telah dibahas pada subbab \ref{apk:release}, akan dibuat sebuah apk \textit{release} untuk diluncurkan ke dalam Google Play dengan status \textit{open testing}. 
@@ -539,7 +540,11 @@ Rilis ketiga diluncurkan karena telah terjadi perubahan pada nilai \textit{urlsc
 
 \section{Pengujian}
 
+Akan dilakukan dua pengujian terhadap aplikasi IDE UNPAR mobile. Yang pertama adalah pengujian fungsional dan yang kedua pengujian eksperimental.
+
 \subsection{Pengujian fungsional}
+Pengujian fungsional akan dilakukan dengan mencoba fitur-fitur yang ada dan sudah terimplementasi ke dalam IDE UNPAR mobile. Dan mencoba mengakses halaman-halaman dari fitur-fitur yang akan diuji coba.
+
 \subsubsection{Pengujian pada Perangkat Bergerak}
 Pengujian pada perangkat bergerak akan dilakukan dengan perangkat bergerak denga sistem operasi Android, dikarenakan penulis hanya memiliki akses ke perangkat bergerak dengan sistem operasi Android. Pengujian dapat dilakukan setelah seluruh konfigurasi yang disarankan oleh dokumentasi telah dilakukan dan beberapa konfigurasi tambahan yang tidak disebutkan di dalam dokumentasi Moodle.
 
