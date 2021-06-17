@@ -235,8 +235,8 @@ Selain skema warna dari aplikasi, \textit{resource} seperti ikon dan \textit{spa
 	\label{app:icon}
 \end{minipage}
 \begin{minipage}{.5\textwidth}
-	\centering  
-	\includegraphics[scale=0.085]{splash.png}  
+	\centering 
+	\includegraphics[scale=0.085]{splash.png}
 	\caption[Logo IDE UNPAR untuk \textit{splash screen}] {Logo IDE UNPAR untuk \textit{splash screen}} 
 	\label{app:splash} 
 \end{minipage}
@@ -251,7 +251,7 @@ Setelah perubahan tersebut diimplementasikan, dengan melakukan \textit{build} ul
 Fitur-fitur yang akan diimplementasikan adalah fitur \textit{PDF scanner} dan menu yang mengarahkan pengguna ke situs \url{https://studentportal.unpar.ac.id} seperti yang dibahas pada subbab \ref{feat:feedback}.% Perubahan yang dilakukan untuk fitur \textit{PDF Scanner} dapat dilihat pada subbab \ref{feat:pdfscan}. Dan perubahan yang dilakukan untuk fitur menu yang mengarahkan ke \url{https://studentportal.unpar.ac.id} dapat dilihat pada subbab \ref{feat:menu:link}.
 
 \subsubsection{Impelementasi PDF \textit{Scanner}}
-Perubahan yang harus dilakukan telah dibahas pada subbab \ref{feat:pdfscan}. Perubahan pada \texttt{src/core/fileuploader/providers/helper.ts} dapat dilihat pada \mbox{Kode \ref{fileuploader-helper}}. Dan kode program \texttt{src/core/fileuploader/providers/scanner-handler.ts} dapat dilihat pada \hyperref[lamp:A]{Lampiran A}.
+Perubahan yang harus dilakukan telah dibahas pada subbab \ref{feat:pdfscan}. Perubahan pada \texttt{src/core/fileuploader/\\providers/helper.ts} dapat dilihat pada \mbox{Kode \ref{fileuploader-helper}}. Dan kode program \texttt{src/core/fileuploader/providers/\\scanner-handler.ts} dapat dilihat pada \hyperref[lamp:A]{Lampiran A}.
 
 \begin{lstlisting}[language=diff, frame=single, label ={fileuploader-helper}, caption = Perubahan pada \texttt{src/core/fileuploader/providers/helper.ts} ]
 diff --git a/src/core/fileuploader/providers/helper.ts 
@@ -910,7 +910,7 @@ Pengguna juga dapat menggunakan fitur \textit{Scan PDF} untuk mengumpulkan tugas
 
 Pengujian eksperimental akan dilakukan dengan membagikan rilis terakhir aplikasi kepada mahasiswa UNPAR dan meminta mahasiswa untuk memberikan nilai 1 sampai 5 fitur \textit{files}, fitur mengumpulkan tugas, fitur messages, fitur \textit{Scan PDF}, dan fitur menu Student Portal. Selain memberikan nilai kepada fitur-fitur tersebut, mahasiswa juga dapat memberikan komentar tambahan mengenai penggunaan aplikasi IDE UNPAR mobile. Kuesioner mulai dibagikan pada tanggal 14 Juni 2021. 
 
-Hasil dari pemabagian kuesioner dapat dilihat sebagai berikut :
+Hasil dari pembagian kuesioner dapat dilihat sebagai berikut :
 
 \begin{enumerate}
 \item Kepuasan pengguji aplikasi terhadap fitur \textit{files} dapat dilihat pada Gambar \ref{responses:feature:files}. Dari gambar tersebut dapat diketahui bahwa mayoritas pengguna merasa puas dengan fitur \textit{files}. 
