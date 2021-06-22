@@ -1,16 +1,67 @@
-\chapter{Sejarah Rilis dari Google Play}
-\label{lamp:C}
+%versi 3 (18-12-2016)
+\chapter{Perubahan untuk Mengubah Warna aplikasi }
+\label{lamp:D}
 
-\def\scl{1}
-% \def\leg{\legend{Switching,Homotopic,Buffer*Length,Length}}
-\def\leg{} 
-\def\std{none}
-\def\ymin{}
-\def\ymax{}
+%terdapat 2 cara untuk memasukkan kode program
+% 1. menggunakan perintah \lstinputlisting (kode program ditempatkan di folder yang sama dengan file ini)
+% 2. menggunakan environment lstlisting (kode program dituliskan di dalam file ini)
+% Perhatikan contoh yang diberikan!!
+%
+% untuk keduanya, ada parameter yang harus diisi:
+% - language: bahasa dari kode program (pilihan: Java, C, C++, PHP, Matlab, C#, HTML, R, Python, SQL, dll)
+% - caption: nama file dari kode program yang akan ditampilkan di dokumen akhir
+%
+% Perhatian: Abaikan warning tentang textasteriskcentered!!
+%
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.3]{play-console-testing-history.png}
-\caption{Sejarah rilis dai Google Play}
-\end{figure}
+\begin{lstlisting}[language = diff, frame=single, label ={variable-scss}, caption = Mengubah warna utama menjadi warna hijau ]
+diff --git a/src/theme/variables.scss b/src/theme/variables.scss
+index 20a2d27e9a..7f3bac0f9d 100644
+--- a/src/theme/variables.scss
++++ b/src/theme/variables.scss
+@@ -30,6 +30,7 @@ $red:             #cb3d4d;
+ $orange:          #f98012; // Accent (never text).
+ $yellow:          #fbad1a; // Accent (never text).
+ $purple:          #8e24aa; // Accent (never text).
++ $green :          #0d8722; // IDE Main color
+ 
+ // Branded apps customization
+ // --------------------------------------------------
+@@ -52,7 +53,7 @@ $orange-light:    lighten($orange, 10%) !default;
+ $yellow-light:    mix($yellow, white, 20%) !default;
+ $yellow-dark:     mix($yellow, black, 40%) !default;
+ 
+- $core-color:          $orange !default;
++ $core-color:          $green !default;
+ $core-color-light:    lighten($core-color, 10%) !default;
+ $core-color-dark:     darken($core-color, 10%) !default;
+\end{lstlisting}
+
+\begin{lstlisting}[language = diff, frame=single, label ={status-bar-color}, caption = Variable untuk mengubah warna dari \textit{status bar} pada config.json ]
+diff --git a/src/config.json b/src/config.json
+index 31402ee681..f2bb898b20 100644
+--- a/src/config.json
++++ b/src/config.json
+@@ -79,13 +79,13 @@
+     "skipssoconfirmation": false,
+     "forcedefaultlanguage": false,
+     "privacypolicy": "https:\/\/moodle.net\/moodle-app-privacy\/",
+-    "notificoncolor": "#f98012",
+-    "statusbarbg": false,
+-    "statusbarlighttext": false,
+-    "statusbarbgios": "#f98012",
+-    "statusbarlighttextios": true,
+-    "statusbarbgandroid": "#df7310",
+-    "statusbarlighttextandroid": true,
++    "notificoncolor": "#0d8722",
++    "statusbarbg": "#0d8722",
++    "statusbarlighttext": "#0d8722",
++    "statusbarbgios": "#0d8722",
++    "statusbarlighttextios": "#0d8722",
++    "statusbarbgandroid": false,
++    "statusbarlighttextandroid": false,
+     "statusbarbgremotetheme": "#000000",
+     "statusbarlighttextremotetheme": true,
+     "enableanalytics": false,
+\end{lstlisting}
