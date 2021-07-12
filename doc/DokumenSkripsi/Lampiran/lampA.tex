@@ -1,72 +1,32 @@
-%versi 3 (18-12-2016)
-\chapter{Perubahan konfigurasi aplikasi}
+%versi 2 (8-10-2016)
+\chapter{Kuesioner Untuk Umpan Balik}
 \label{lamp:A}
 
-%terdapat 2 cara untuk memasukkan kode program
-% 1. menggunakan perintah \lstinputlisting (kode program ditempatkan di folder yang sama dengan file ini)
-% 2. menggunakan environment lstlisting (kode program dituliskan di dalam file ini)
-% Perhatikan contoh yang diberikan!!
-%
-% untuk keduanya, ada parameter yang harus diisi:
-% - language: bahasa dari kode program (pilihan: Java, C, C++, PHP, Matlab, C#, HTML, R, Python, SQL, dll)
-% - caption: nama file dari kode program yang akan ditampilkan di dokumen akhir
-%
-% Perhatian: Abaikan warning tentang textasteriskcentered!!
-%
+\def\scl{1}
+% \def\leg{\legend{Switching,Homotopic,Buffer*Length,Length}}
+\def\leg{} 
+\def\std{none}
+\def\ymin{}
+\def\ymax{}
 
+Kuesioner yang disebarkan beserta dengan responnya untuk mendapatkan umpan balik bagi yang menguji coba aplikasi IDE UNPAR mobile.
 
-\begin{lstlisting}[language=diff, frame=single, label ={set:config:xml}, caption = Perubahan pada file \texttt{config.xml} ]
+\begin{figure}[H] 
+	\centering  
+	\centering
+	\includegraphics[scale=0.6]{form-questionaire-1.png}
+	\caption{\textit{Header} dan pertanyaan pertama}
+	\label{fig:questionaire} 
+\end{figure} 
 
-diff --git a/config.xml b/config.xml
-index 01aeaa0c1a0..bd1cf277101 100644
---- a/config.xml
-+++ b/config.xml
-@@ -1,8 +1,8 @@
- <?xml version='1.0' encoding='utf-8'?>
--  <widget android-versionCode="39300" id="com.moodle.moodlemobile" 
--   ios-CFBundleVersion="3.9.3.0" version="3.9.3" 
--  versionCode="39300" xmlns="http://www.w3.org/ns/widgets" xmlns:android=
--  "http://schemas.android.com/apk/res/android" xmlns:cdv= 
--  "http://cordova.apache.org/ns/1.0">
--    <name>Moodle</name>
--    <description>Moodle official app</description>
--    <author email="mobile@moodle.com" href="http://moodle.com">
--     Moodle Mobile team</author>
-+ <widget android-versionCode="10000" id="id.ac.unpar.moodlemobile" 
-+ ios-CFBundleVersion="1.0.0.0" version="1.0.0" 
-+ versionCode="10000" xmlns="http://www.w3.org/ns/widgets" xmlns:android=
-+  "http://schemas.android.com/apk/res/android" xmlns:cdv=
-+ "http://cordova.apache.org/ns/1.0">
-+    <name>IDE UNPAR Mobile</name>
-+    <description>IDE UNPAR app</description>
-+    <author email="7316068@student.unpar.ac.id" >
-+    Gabriel Panji Lazuardi</author>
-     <content src="index.html" />
-     <access origin="*" />
-     <access launch-external="yes" origin="tel:*" />
-\end{lstlisting} 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.6]{form-questionaire-2.png}
+	\caption{Pertanyaan kedua dan ketiga}
+\end{figure}
 
-\begin{lstlisting}[language=diff, frame=single, label ={set:src:config:json}, caption = Perubahan pada file \texttt{src/config.json} ]
-diff --git a/src/config.json b/src/config.json
-index 65284859784..d9bbd722378 100644
---- a/src/config.json
-+++ b/src/config.json
-@@ -1,9 +1,9 @@
- {
--    "app_id": "com.moodle.moodlemobile",
--    "appname": "Moodle Mobile",
--    "desktopappname": "Moodle Desktop",
--    "versioncode": 3930,
--    "versionname": "3.9.3",
-+    "app_id": "id.ac.unpar.moodlemobile",
-+    "appname": "IDE UNPAR Mobile",
-+    "desktopappname": "IDE UNPAR Desktop",
-+    "versioncode": 10000,
-+    "versionname": "1.0",
-     "cache_update_frequency_usually": 420000,
-     "cache_update_frequency_often": 1200000,
-     "cache_update_frequency_sometimes": 3600000,
-\end{lstlisting}
-
-
-
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.6]{form-questionaire-3.png}
+	\caption{Pertanyaan keempat dan kelima}
+\end{figure}

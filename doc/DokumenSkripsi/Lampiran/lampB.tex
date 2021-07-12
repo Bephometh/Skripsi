@@ -1,5 +1,5 @@
 %versi 3 (18-12-2016)
-\chapter{Perubahan Pada File \texttt{src/config.json} untuk Menghubungkan ke Situs IDE UNPAR}
+\chapter{Perubahan konfigurasi aplikasi}
 \label{lamp:B}
 
 %terdapat 2 cara untuk memasukkan kode program
@@ -15,35 +15,58 @@
 %
 
 
+\begin{lstlisting}[language=diff, frame=single, label ={set:config:xml}, caption = Perubahan pada file \texttt{config.xml} ]
 
-\begin{lstlisting}[language=diff, frame=single, label ={auto-redirect}, caption = Perubahan pada file \texttt{src/config.json} ]
+diff --git a/config.xml b/config.xml
+index 01aeaa0c1a0..bd1cf277101 100644
+--- a/config.xml
++++ b/config.xml
+@@ -1,8 +1,8 @@
+ <?xml version='1.0' encoding='utf-8'?>
+-  <widget android-versionCode="39300" id="com.moodle.moodlemobile" 
+-   ios-CFBundleVersion="3.9.3.0" version="3.9.3" 
+-  versionCode="39300" xmlns="http://www.w3.org/ns/widgets" xmlns:android=
+-  "http://schemas.android.com/apk/res/android" xmlns:cdv= 
+-  "http://cordova.apache.org/ns/1.0">
+-    <name>Moodle</name>
+-    <description>Moodle official app</description>
+-    <author email="mobile@moodle.com" href="http://moodle.com">
+-     Moodle Mobile team</author>
++ <widget android-versionCode="10000" id="id.ac.unpar.moodlemobile" 
++ ios-CFBundleVersion="1.0.0.0" version="1.0.0" 
++ versionCode="10000" xmlns="http://www.w3.org/ns/widgets" xmlns:android=
++  "http://schemas.android.com/apk/res/android" xmlns:cdv=
++ "http://cordova.apache.org/ns/1.0">
++    <name>IDE UNPAR Mobile</name>
++    <description>IDE UNPAR app</description>
++    <author email="7316068@student.unpar.ac.id" >
++    Gabriel Panji Lazuardi</author>
+     <content src="index.html" />
+     <access origin="*" />
+     <access launch-external="yes" origin="tel:*" />
+\end{lstlisting} 
 
+\begin{lstlisting}[language=diff, frame=single, label ={set:src:config:json}, caption = Perubahan pada file \texttt{src/config.json} ]
 diff --git a/src/config.json b/src/config.json
-index 919869fe652..daaf2aef5c5 100644
+index 65284859784..d9bbd722378 100644
 --- a/src/config.json
 +++ b/src/config.json
-@@ -68,10 +68,10 @@
-         75.89,
-         93.75
-     ],
--    "demo_sites": {
--        "student": {
--            "url": "https:\/\/school.moodledemo.net",
--            "username": "student",
--            "password": "moodle"
--        },
--        "teacher": {
--            "url": "https:\/\/school.moodledemo.net",
--            "username": "teacher",
--            "password": "moodle"
--        }
--    },
-+     "demo_sites" :[] ,
-     "customurlscheme": "moodlemobile",
--    "siteurl": "https://moodledemo.pascal.id/",
-+    "siteurl": "https://ide.unpar.ac.id/",
-     "sitename": "",
-     "multisitesdisplay": "",
-     "sitefindersettings": {},
-\end{lstlisting} 
+@@ -1,9 +1,9 @@
+ {
+-    "app_id": "com.moodle.moodlemobile",
+-    "appname": "Moodle Mobile",
+-    "desktopappname": "Moodle Desktop",
+-    "versioncode": 3930,
+-    "versionname": "3.9.3",
++    "app_id": "id.ac.unpar.moodlemobile",
++    "appname": "IDE UNPAR Mobile",
++    "desktopappname": "IDE UNPAR Desktop",
++    "versioncode": 10000,
++    "versionname": "1.0",
+     "cache_update_frequency_usually": 420000,
+     "cache_update_frequency_often": 1200000,
+     "cache_update_frequency_sometimes": 3600000,
+\end{lstlisting}
+
+
 
